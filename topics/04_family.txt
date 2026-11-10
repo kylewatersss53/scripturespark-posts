@@ -1,0 +1,75 @@
+@parents | Parents | family | Parents, save this one.
+V Proverbs 22:6 =train ; Deuteronomy 6:6-7 =children ; Ephesians 6:4 =fathers ; Psalm 127:3 =children ; 3 John 1:4 =joy ; Colossians 3:21 =fathers ; Proverbs 29:17 =discipline ; Isaiah 54:13 =sons ; Joshua 24:15 =house ; Psalm 103:13 =father ; Proverbs 14:26 =children ; Isaiah 40:11 =lambs
+C Deuteronomy 6 ; Proverbs 22 ; Ephesians 6 ; Psalm 127 ; Psalm 78 ; 1 Samuel 1 ; Luke 2 ; Joshua 24 ; Psalm 128 ; 2 Timothy 1
+
+@moms | Moms | family | Moms, this one's for you.
+V Proverbs 31:25-26 =strength ; Proverbs 31:28 =children ; Isaiah 66:13 =mother ; Isaiah 40:11 =lambs ; Proverbs 31:30 =charm ; 2 Timothy 1:5 =mother ; Psalm 127:3 =heritage ; Galatians 6:9 =weary ; Proverbs 14:1 =builds ; Isaiah 49:15 =nursing ; Proverbs 1:8-9 =mother ; Matthew 11:28 =rest
+C Proverbs 31 ; 1 Samuel 1 ; Luke 1 ; Exodus 2 ; 2 Timothy 1 ; Ruth 1 ; Isaiah 66 ; Psalm 127 ; Luke 2 ; Psalm 139
+
+@tiredmoms | Tired Moms | family | Tired mama, read this.
+V Isaiah 40:11 =lambs ; Matthew 11:28-30 =weary ; Galatians 6:9 =weary ; Isaiah 40:29 =faint ; 2 Corinthians 12:9 =weakness ; Psalm 127:2 =sleep ; Lamentations 3:22-23 =mercies ; Psalm 23:1-3 =restores ; Philippians 4:13 =strength ; Psalm 46:10 =still ; Isaiah 41:10 =strengthen ; Zephaniah 3:17 =rejoice
+C Isaiah 40 ; Matthew 11 ; Psalm 23 ; 1 Samuel 1 ; Psalm 127 ; Luke 10 ; Psalm 131 ; 2 Corinthians 12 ; Lamentations 3 ; Proverbs 31
+
+@dads | Dads | family | Dads, this one's for you.
+V Ephesians 6:4 =fathers ; Psalm 103:13 =father ; Proverbs 20:7 =righteous ; Proverbs 23:24 =father ; Joshua 24:15 =house ; Proverbs 3:11-12 =father ; Colossians 3:21 =fathers ; Proverbs 14:26 =children ; 1 Corinthians 16:13-14 =love ; Deuteronomy 6:6-7 =children ; Psalm 127:4-5 =arrows ; Proverbs 4:1 =father
+C Ephesians 6 ; Joshua 24 ; Luke 15 ; Deuteronomy 6 ; Psalm 127 ; Proverbs 4 ; Genesis 22 ; 1 Kings 2 ; Psalm 103 ; Matthew 7
+
+@kids | Kids | family | Verses to teach your kids before they turn 10.
+V Ephesians 6:1 =children ; Psalm 118:24 =day ; Proverbs 3:5 =trust ; Joshua 1:9 =afraid ; John 3:16 =loved ; Psalm 56:3 =afraid ; Philippians 4:13 =strength ; 1 John 4:19 =first ; Psalm 23:1 =shepherd ; Ephesians 4:32 =kind ; 1 Timothy 4:12 =youth ; Colossians 3:20 =children
+C Genesis 1 ; Psalm 23 ; 1 Samuel 17 ; Daniel 6 ; Jonah 1 ; Mark 10 ; Luke 2 ; John 6 ; Genesis 6 ; Luke 15
+
+@teens | Teens | family | Teens, read this.
+V 1 Timothy 4:12 =youth ; Ecclesiastes 12:1 =youth ; Psalm 119:9 =young ; Jeremiah 29:11 =plans ; Romans 12:2 =conformed ; Proverbs 3:5-6 =trust ; 2 Timothy 2:22 =youthful ; Philippians 4:13 =strength ; 1 Corinthians 15:33 =company ; Psalm 139:14 =wonderfully ; Proverbs 4:23 =heart ; Lamentations 3:27 =young
+C Daniel 1 ; 1 Samuel 17 ; Psalm 139 ; Proverbs 4 ; 1 Timothy 4 ; Romans 12 ; Jeremiah 1 ; Ecclesiastes 12 ; Genesis 37 ; Esther 4
+
+@prodigal | a Prodigal Child | family | Praying for a child who walked away? Read this.
+V Luke 15:20 =compassion ; Isaiah 54:13 =sons ; Proverbs 22:6 =old ; Jeremiah 31:16-17 =return ; 2 Peter 3:9 =repentance ; Luke 15:4 =lost ; Isaiah 49:25 =children ; Ezekiel 34:16 =lost ; Luke 19:10 =lost ; Galatians 6:9 =weary ; Isaiah 59:21 =covenant ; Luke 18:1 =pray
+C Luke 15 ; Jeremiah 31 ; Ezekiel 34 ; Isaiah 49 ; Luke 18 ; Hosea 11 ; Isaiah 54 ; Luke 19 ; 2 Peter 3 ; Jonah 2
+
+@family | Family | family | Verses to pray over your family.
+V Joshua 24:15 =house ; Psalm 127:1 =house ; Acts 16:31 =household ; Colossians 3:13-14 =love ; Psalm 133:1 =harmony ; Proverbs 24:3-4 =wisdom ; Ephesians 4:2-3 =unity ; Deuteronomy 6:6-7 =children ; 1 Timothy 5:8 =household ; Psalm 103:17 =children ; Numbers 6:24-26 =bless ; Proverbs 14:26 =refuge
+C Joshua 24 ; Psalm 127 ; Psalm 128 ; Deuteronomy 6 ; Genesis 45 ; Ruth 1 ; Colossians 3 ; Ephesians 5 ; Ephesians 6 ; Acts 16
+
+@familyconflict | Family Conflict | family | When things are tense at home, read this.
+V Romans 12:18 =peace ; Psalm 133:1 =harmony ; Colossians 3:13 =forgive ; Ephesians 4:2-3 =unity ; Proverbs 15:1 =gentle ; Genesis 50:20 =good ; Matthew 5:9 =peacemakers ; Ephesians 4:31-32 =bitterness ; Proverbs 17:1 =strife ; 1 Peter 3:8-9 =tenderhearted ; James 1:19-20 =slow ; Romans 15:5-6 =harmony
+C Genesis 33 ; Genesis 45 ; Genesis 50 ; Luke 15 ; Genesis 13 ; Psalm 133 ; Romans 12 ; Ephesians 4 ; Colossians 3 ; 1 Peter 3
+
+@grandparents | Grandparents | family | For grandparents who pray for the next generation.
+V Proverbs 17:6 =grandchildren ; Psalm 71:18 =generation ; 2 Timothy 1:5 =grandmother ; Psalm 103:17 =children ; Deuteronomy 4:9 =children ; Psalm 145:4 =generation ; Proverbs 16:31 =gray ; Isaiah 46:4 =old ; Psalm 92:14 =old age ; Psalm 78:4 =generation ; Proverbs 13:22 =inheritance ; Titus 2:3-4 =older
+C Psalm 71 ; Psalm 78 ; 2 Timothy 1 ; Ruth 4 ; Psalm 92 ; Psalm 145 ; Deuteronomy 4 ; Psalm 103 ; Titus 2 ; Genesis 48
+
+@newborn | a New Baby | family | Verses to pray over a newborn.
+V Psalm 139:13-14 =womb ; Psalm 127:3 =heritage ; Jeremiah 1:5 =womb ; Numbers 6:24-26 =bless ; 1 Samuel 1:27-28 =prayed ; Psalm 22:10 =birth ; Isaiah 44:3 =offspring ; Proverbs 22:6 =train ; Luke 2:52 =wisdom ; Psalm 121:8 =watch ; Matthew 19:14 =children ; 3 John 1:4 =joy
+C Psalm 139 ; 1 Samuel 1 ; Luke 1 ; Luke 2 ; Psalm 127 ; Numbers 6 ; Psalm 121 ; Matthew 19 ; Jeremiah 1 ; Psalm 128
+
+@pregnancy | Pregnancy | family | For every mom-to-be.
+V Psalm 139:13-14 =womb ; Jeremiah 1:5 =womb ; Isaiah 66:9 =birth ; Psalm 127:3 =heritage ; Isaiah 41:10 =fear ; Philippians 4:6-7 =anxious ; Luke 1:45 =believed ; Isaiah 40:11 =lambs ; Psalm 22:9-10 =womb ; 1 Samuel 1:27 =prayed ; Psalm 121:7-8 =guard ; John 16:21 =child
+C Psalm 139 ; Luke 1 ; 1 Samuel 1 ; Genesis 21 ; Psalm 127 ; Psalm 121 ; Isaiah 40 ; Psalm 22 ; Judges 13 ; Philippians 4
+
+@infertility | Infertility | family | For anyone praying for a baby that hasn't come yet.
+V 1 Samuel 1:27 =prayed ; Psalm 113:9 =barren ; Genesis 18:14 =difficult ; Proverbs 13:12 =hope ; Psalm 34:18 =brokenhearted ; Isaiah 54:1 =barren ; Psalm 27:13-14 =wait ; Romans 4:20-21 =promised ; Psalm 62:8 =hearts ; Genesis 30:22 =remembered ; Romans 15:13 =hope ; Habakkuk 3:17-18 =rejoice
+C 1 Samuel 1 ; Genesis 18 ; Genesis 21 ; Genesis 30 ; Luke 1 ; Judges 13 ; Psalm 113 ; Isaiah 54 ; Romans 4 ; Psalm 13
+
+@adoption | Adoption | family | For families built through adoption.
+V Ephesians 1:5 =adoption ; Romans 8:15 =sonship ; Galatians 4:4-5 =adoption ; Psalm 68:5-6 =fatherless ; James 1:27 =orphans ; John 14:18 =orphans ; Psalm 27:10 =forsake ; Deuteronomy 10:18 =fatherless ; 1 John 3:1 =children ; Psalm 10:14 =fatherless ; Isaiah 1:17 =fatherless ; Galatians 4:7 =son
+C Exodus 2 ; Esther 2 ; Ephesians 1 ; Romans 8 ; Galatians 4 ; 2 Samuel 9 ; Psalm 68 ; James 1 ; Ruth 4 ; 1 John 3
+
+@singleparents | Single Parents | family | Single parents, God sees everything you carry.
+V Psalm 68:5 =father ; Isaiah 54:5 =husband ; Isaiah 40:11 =lambs ; Psalm 146:9 =fatherless ; Isaiah 41:10 =uphold ; Philippians 4:19 =needs ; Galatians 6:9 =weary ; 2 Corinthians 12:9 =grace ; Genesis 16:13 =sees ; Deuteronomy 31:8 =before you ; Matthew 11:28 =burdened ; Proverbs 31:25 =strength
+C Genesis 16 ; Genesis 21 ; 1 Kings 17 ; 2 Kings 4 ; Ruth 1 ; Psalm 68 ; Isaiah 54 ; Isaiah 40 ; Psalm 146 ; Matthew 11
+
+@caregivers | Caregivers | family | For everyone caring for someone they love.
+V Galatians 6:2 =burdens ; Galatians 6:9 =weary ; Isaiah 46:4 =carry ; Matthew 25:40 =least ; 2 Corinthians 1:3-4 =comfort ; Isaiah 40:29-31 =weary ; Matthew 11:28 =rest ; 1 Peter 4:10 =serve ; Hebrews 6:10 =forget ; Colossians 3:23-24 =whole being ; Psalm 55:22 =burden ; Ruth 1:16 =go
+C Ruth 1 ; Luke 10 ; Isaiah 40 ; Galatians 6 ; Matthew 25 ; 2 Corinthians 1 ; John 19 ; Isaiah 46 ; Psalm 55 ; 2 Corinthians 4
+
+@aging | Getting Older | family | Getting older? God isn't finished with you.
+V Isaiah 46:4 =old age ; Psalm 92:12-14 =old age ; Psalm 71:9 =old ; Psalm 71:18 =gray ; Proverbs 16:31 =gray ; 2 Corinthians 4:16 =outer ; Psalm 90:12 =days ; Job 12:12 =wisdom ; Titus 2:2 =older ; Isaiah 40:31 =renew ; Proverbs 20:29 =gray ; Psalm 37:25 =old
+C Psalm 71 ; Psalm 90 ; Psalm 92 ; Joshua 14 ; Ecclesiastes 12 ; Luke 2 ; Genesis 12 ; Isaiah 46 ; 2 Corinthians 4 ; 2 Timothy 4
+
+@widows | Widows & Widowers | family | For anyone who lost their husband or wife.
+V Psalm 68:5 =widows ; Isaiah 54:5 =husband ; Psalm 146:9 =widow ; Psalm 34:18 =brokenhearted ; Deuteronomy 10:18 =widow ; James 1:27 =widows ; Psalm 147:3 =wounds ; Revelation 21:4 =tear ; Isaiah 41:10 =uphold ; Jeremiah 49:11 =widows ; Matthew 5:4 =mourn ; Proverbs 15:25 =widow
+C Ruth 1 ; Ruth 4 ; 1 Kings 17 ; 2 Kings 4 ; Luke 7 ; Isaiah 54 ; Psalm 68 ; Psalm 146 ; Luke 2 ; Revelation 21
+
+@siblings | Siblings | family | For the brother or sister you'd do anything for.
+V Psalm 133:1 =brothers ; Proverbs 17:17 =brother ; Proverbs 18:24 =brother ; 1 John 4:20-21 =brother ; Romans 12:10 =devoted ; Genesis 4:9 =brother ; Genesis 45:15 =brothers ; 1 Peter 3:8 =brothers ; Hebrews 13:1 =brotherly ; Matthew 5:23-24 =brother ; 1 John 3:18 =love ; Proverbs 27:10 =brother
+C Genesis 33 ; Genesis 45 ; Genesis 50 ; Psalm 133 ; Luke 15 ; Exodus 4 ; Genesis 4 ; Luke 10 ; John 11 ; John 1

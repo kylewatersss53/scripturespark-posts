@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<script src="engine.js"></script>
+<script>
+window.ready = (async () => {
+  await ScriptureEngine.loadFonts("fonts/");
+  await ScriptureEngine.loadPromo("promo.jpg");
+  await document.fonts.ready;
+  window.LIB = await (await fetch("library.json")).json();
+  return true;
+})();
+window.renderPost = async (id, opts) => {
+  const post = LIB.posts.find(p => p.id === id);
+  const slides = ScriptureEngine.buildSlides(post, LIB);
+  const imgs = slides.map((s, i) => ScriptureEngine.renderSlide(s, post, i, opts || {}).toDataURL("image/jpeg", 0.92));
+  return { id, title: post.ti, caption: ScriptureEngine.caption(post, LIB), imgs };
+};
+</script></body></html>

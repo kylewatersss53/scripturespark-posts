@@ -1,0 +1,104 @@
+# Format:
+# @id | Subject (reads after "Bible Verses for ...") | category | single-verse hook
+# V ref =keyword ; ref =keyword ; ...     (keyword = word that must appear in the BSB text; sanity check)
+# C chapter ; chapter ; ...
+
+@anxiety | Anxiety | mind | If anxiety is loud today, read this.
+V Philippians 4:6-7 =anxious ; 1 Peter 5:7 =anxiety ; Matthew 6:34 =tomorrow ; Isaiah 41:10 =fear ; John 14:27 =peace ; Psalm 94:19 =anxiety ; Matthew 11:28-29 =rest ; Psalm 55:22 =burden ; Proverbs 12:25 =anxiety ; Isaiah 26:3 =peace ; Psalm 56:3 =afraid ; 2 Timothy 1:7 =spirit
+C Psalm 23 ; Matthew 6 ; Philippians 4 ; Psalm 46 ; Psalm 91 ; Isaiah 41 ; Psalm 121 ; John 14 ; Psalm 139 ; 1 Peter 5
+
+@fear | Fear | mind | Afraid of what's ahead? Read this.
+V Isaiah 41:10 =fear ; Joshua 1:9 =afraid ; Psalm 27:1 =fear ; Deuteronomy 31:6 =afraid ; 2 Timothy 1:7 =fear ; Psalm 56:3-4 =afraid ; Psalm 23:4 =fear ; Isaiah 43:1 =fear ; 1 John 4:18 =fear ; Psalm 34:4 =fears ; Hebrews 13:6 =afraid ; Psalm 118:6 =afraid
+C Psalm 27 ; Psalm 91 ; Isaiah 43 ; Joshua 1 ; Psalm 46 ; Mark 4 ; Psalm 34 ; Isaiah 41 ; Exodus 14 ; Psalm 121
+
+@overthinking | Overthinking | mind | If your mind won't stop racing, read this.
+V Philippians 4:8 =think ; Isaiah 26:3 =mind ; Romans 12:2 =mind ; 2 Corinthians 10:5 =thought ; Colossians 3:2 =minds ; Isaiah 55:8-9 =thoughts ; Romans 8:6 =mind ; Proverbs 3:5-6 =understanding ; Psalm 46:10 =still ; Matthew 6:27 =worrying ; John 14:1 =hearts ; Psalm 139:23-24 =heart
+C Philippians 4 ; Psalm 139 ; Romans 12 ; Psalm 46 ; Matthew 6 ; Isaiah 26 ; Colossians 3 ; Proverbs 3 ; Psalm 131 ; Psalm 62
+
+@depression | Depression | mind | If everything feels heavy right now, this is for you.
+V Psalm 34:18 =brokenhearted ; Psalm 42:11 =hope ; Psalm 40:1-2 =pit ; Matthew 11:28 =weary ; Deuteronomy 31:8 =discouraged ; Psalm 147:3 =wounds ; 2 Corinthians 4:8-9 =despair ; Lamentations 3:22-23 =mercies ; Psalm 30:5 =joy ; Isaiah 41:10 =strengthen ; Psalm 143:7-8 =morning ; John 16:33 =overcome
+C Psalm 42 ; Psalm 40 ; Psalm 34 ; 1 Kings 19 ; Lamentations 3 ; Psalm 13 ; Isaiah 40 ; Psalm 143 ; 2 Corinthians 4 ; Psalm 77
+
+@lonely | Loneliness | mind | Feeling alone tonight? You're not. Read this.
+V Deuteronomy 31:6 =forsake ; Psalm 68:6 =lonely ; Matthew 28:20 =always ; Psalm 25:16 =lonely ; Hebrews 13:5 =forsake ; Psalm 27:10 =forsake ; John 14:18 =orphans ; Joshua 1:9 =with you ; Psalm 139:7-10 =presence ; Isaiah 43:2 =waters ; Romans 8:38-39 =separate ; Zephaniah 3:17 =rejoice
+C Psalm 139 ; Psalm 23 ; John 14 ; Psalm 25 ; Isaiah 43 ; Genesis 16 ; 1 Kings 19 ; Psalm 27 ; Romans 8 ; Psalm 68
+
+@sleep | When You Can't Sleep | mind | Can't sleep? Read this before you close your eyes.
+V Psalm 4:8 =sleep ; Proverbs 3:24 =sleep ; Psalm 3:5 =sleep ; Psalm 127:2 =sleep ; Matthew 11:28 =rest ; Psalm 121:3-4 =slumber ; Psalm 91:1 =shelter ; Isaiah 26:3 =peace ; Psalm 63:6-7 =night ; John 14:27 =peace ; Psalm 16:7-8 =night ; Psalm 46:10 =still
+C Psalm 4 ; Psalm 91 ; Psalm 121 ; Psalm 23 ; Psalm 3 ; Psalm 63 ; Psalm 131 ; Psalm 16 ; Matthew 6 ; Philippians 4
+
+@stress | Stress | mind | Stretched too thin? Read this.
+V Matthew 11:28-30 =weary ; Psalm 55:22 =burden ; Philippians 4:6-7 =anxious ; John 16:33 =peace ; Psalm 61:2 =heart ; Isaiah 40:29-31 =weary ; Psalm 46:1 =refuge ; 2 Corinthians 12:9 =weakness ; Exodus 14:14 =fight ; Proverbs 16:3 =commit ; Psalm 62:1-2 =rest ; 1 Peter 5:7 =anxiety
+C Matthew 11 ; Psalm 46 ; Isaiah 40 ; Psalm 62 ; Exodus 18 ; Luke 10 ; Mark 6 ; Psalm 61 ; Philippians 4 ; 2 Corinthians 12
+
+@overwhelmed | Feeling Overwhelmed | mind | Overwhelmed? Breathe and read this.
+V Psalm 61:2 =rock ; Psalm 18:16 =waters ; Isaiah 43:2 =waters ; Psalm 142:3 =faint ; 2 Corinthians 4:8-9 =crushed ; Psalm 73:26 =heart ; Psalm 34:17 =troubles ; Nahum 1:7 =distress ; Deuteronomy 33:27 =arms ; Isaiah 40:11 =lambs ; Psalm 116:7 =rest ; Lamentations 3:22-23 =mercies
+C Psalm 61 ; Psalm 18 ; Isaiah 43 ; Psalm 142 ; Exodus 18 ; Psalm 73 ; Psalm 116 ; Isaiah 40 ; 2 Corinthians 4 ; Lamentations 3
+
+@anger | Anger | mind | Before you say something you'll regret, read this.
+V James 1:19-20 =anger ; Ephesians 4:26-27 =angry ; Proverbs 15:1 =answer ; Proverbs 29:11 =fool ; Ecclesiastes 7:9 =anger ; Proverbs 14:29 =patient ; Ephesians 4:31-32 =bitterness ; Colossians 3:8 =anger ; Proverbs 16:32 =slow to anger ; Psalm 37:8 =anger ; Romans 12:19 =vengeance ; Proverbs 19:11 =offense
+C Proverbs 15 ; James 1 ; Ephesians 4 ; Psalm 37 ; Romans 12 ; Genesis 4 ; Jonah 4 ; Matthew 5 ; Colossians 3 ; Proverbs 16
+
+@comparison | Comparison & Jealousy | mind | Comparing your life to theirs again? Read this.
+V Galatians 6:4-5 =own ; Proverbs 14:30 =envy ; James 3:16 =jealousy ; 2 Corinthians 10:12 =compare ; Psalm 37:1 =envy ; Philippians 4:11-12 =content ; Hebrews 13:5 =content ; 1 Corinthians 13:4 =envy ; Ephesians 2:10 =workmanship ; Psalm 139:14 =wonderfully ; Galatians 5:26 =envy ; John 21:22 =follow
+C Psalm 73 ; 1 Samuel 18 ; Genesis 37 ; John 21 ; Philippians 4 ; Psalm 37 ; Galatians 6 ; James 3 ; Psalm 139 ; Ecclesiastes 4
+
+@selfworth | When You Feel Like You're Not Enough | mind | If you feel like you're not enough, read this.
+V Psalm 139:13-14 =wonderfully ; Ephesians 2:10 =workmanship ; 1 Peter 2:9 =chosen ; Isaiah 43:4 =precious ; Zephaniah 3:17 =rejoice ; Genesis 1:27 =image ; Luke 12:6-7 =sparrows ; Jeremiah 31:3 =love ; 1 John 3:1 =children ; 2 Corinthians 5:17 =new ; Jeremiah 1:5 =womb ; 2 Corinthians 12:9 =sufficient
+C Psalm 139 ; Ephesians 1 ; Ephesians 2 ; Isaiah 43 ; 1 Peter 2 ; Romans 8 ; Luke 15 ; Psalm 8 ; Genesis 1 ; Zephaniah 3
+
+@givingup | When You Feel Like Giving Up | mind | Thinking about giving up? Read this first.
+V Galatians 6:9 =weary ; Isaiah 40:31 =wings ; Jeremiah 29:11 =hope ; Romans 15:13 =hope ; Lamentations 3:21-23 =hope ; 2 Corinthians 4:16-17 =lose heart ; Psalm 73:26 =fail ; Hebrews 10:23 =hold ; Philippians 1:6 =good work ; Romans 5:3-5 =hope ; Psalm 31:24 =courage ; James 1:12 =trial
+C 1 Kings 19 ; Psalm 42 ; Lamentations 3 ; 2 Corinthians 4 ; Romans 5 ; Hebrews 12 ; Psalm 73 ; Isaiah 40 ; Psalm 13 ; Job 42
+
+@burnout | Burnout | mind | Running on empty? Read this.
+V Matthew 11:28-30 =rest ; Mark 6:31 =rest ; Isaiah 40:29 =faint ; Psalm 23:2-3 =restores ; Exodus 33:14 =rest ; Psalm 127:2 =sleep ; Galatians 6:9 =weary ; Hebrews 4:9-10 =rest ; Psalm 46:10 =still ; 2 Corinthians 12:9 =grace ; Isaiah 30:15 =quiet ; Jeremiah 31:25 =weary
+C 1 Kings 19 ; Matthew 11 ; Psalm 23 ; Exodus 18 ; Mark 6 ; Isaiah 40 ; Luke 10 ; Psalm 127 ; Hebrews 4 ; Ecclesiastes 3
+
+@peace | Peace | mind | Need peace today? Read this slowly.
+V John 14:27 =peace ; Philippians 4:7 =peace ; Isaiah 26:3 =peace ; Numbers 6:24-26 =peace ; Romans 15:13 =peace ; Colossians 3:15 =peace ; 2 Thessalonians 3:16 =peace ; Psalm 29:11 =peace ; Romans 5:1 =peace ; John 16:33 =peace ; Psalm 4:8 =peace ; Isaiah 9:6 =Peace
+C John 14 ; Philippians 4 ; Psalm 23 ; Isaiah 26 ; Psalm 46 ; Romans 5 ; Psalm 131 ; Mark 4 ; Psalm 4 ; Colossians 3
+
+@joy | Joy | mind | Joy that doesn't depend on your circumstances.
+V Nehemiah 8:10 =joy ; Psalm 16:11 =joy ; John 15:11 =joy ; Romans 15:13 =joy ; Philippians 4:4 =Rejoice ; James 1:2-3 =joy ; Psalm 30:5 =joy ; Psalm 118:24 =rejoice ; Habakkuk 3:17-18 =rejoice ; 1 Thessalonians 5:16-18 =Rejoice ; Galatians 5:22-23 =joy ; Isaiah 12:3 =joy
+C Philippians 4 ; Psalm 16 ; Psalm 100 ; Habakkuk 3 ; John 15 ; Philippians 1 ; Psalm 126 ; Luke 15 ; Psalm 30 ; Nehemiah 8
+
+@hope | Hope | mind | If you're running low on hope, read this.
+V Jeremiah 29:11 =hope ; Romans 15:13 =hope ; Romans 8:28 =good ; Lamentations 3:24-25 =hope ; Isaiah 40:31 =renew ; Psalm 42:11 =hope ; Hebrews 6:19 =anchor ; Romans 5:5 =hope ; 1 Peter 1:3 =hope ; Psalm 39:7 =hope ; Micah 7:7 =wait ; Revelation 21:4 =tear
+C Romans 8 ; Lamentations 3 ; Psalm 42 ; Isaiah 40 ; Romans 5 ; 1 Peter 1 ; Revelation 21 ; Hebrews 11 ; Psalm 130 ; Jeremiah 29
+
+@strength | Strength | mind | When you have nothing left, read this.
+V Isaiah 40:31 =strength ; Philippians 4:13 =strength ; Isaiah 41:10 =strengthen ; 2 Corinthians 12:10 =weak ; Psalm 46:1 =strength ; Nehemiah 8:10 =strength ; Psalm 73:26 =strength ; Exodus 15:2 =strength ; Psalm 18:32 =strength ; Ephesians 6:10 =strong ; Habakkuk 3:19 =strength ; Psalm 28:7 =strength
+C Isaiah 40 ; Psalm 18 ; 2 Corinthians 12 ; Ephesians 6 ; Psalm 46 ; Judges 6 ; Psalm 28 ; Philippians 4 ; Habakkuk 3 ; Joshua 1
+
+@courage | Courage | mind | Need courage for something today? Read this.
+V Joshua 1:9 =courageous ; Deuteronomy 31:6 =courageous ; Psalm 31:24 =courage ; 1 Corinthians 16:13 =courage ; Psalm 27:14 =courage ; Isaiah 41:13 =fear ; 2 Timothy 1:7 =power ; Acts 4:29 =boldness ; Esther 4:14 =time as this ; Proverbs 28:1 =bold ; Hebrews 13:6 =afraid ; Matthew 14:27 =courage
+C Joshua 1 ; Esther 4 ; 1 Samuel 17 ; Daniel 3 ; Daniel 6 ; Acts 4 ; Psalm 27 ; Judges 6 ; Nehemiah 4 ; Matthew 14
+
+@guilt | Guilt & Shame | mind | If you can't stop replaying what you did, read this.
+V Romans 8:1 =condemnation ; 1 John 1:9 =confess ; Psalm 103:12 =transgressions ; Isaiah 1:18 =scarlet ; Micah 7:18-19 =sea ; 2 Corinthians 5:17 =new ; Psalm 34:5 =ashamed ; Hebrews 8:12 =remember ; Isaiah 43:25 =remember ; Psalm 32:5 =sin ; Isaiah 54:4 =shame ; Hebrews 4:16 =mercy
+C Psalm 51 ; Psalm 32 ; Romans 8 ; John 8 ; Luke 15 ; John 21 ; Psalm 103 ; Isaiah 1 ; Luke 7 ; 1 John 1
+
+@regret | Regret & Your Past | mind | Your past doesn't get the final word. Read this.
+V Isaiah 43:18-19 =something new ; Philippians 3:13-14 =forgetting ; 2 Corinthians 5:17 =new creation ; Lamentations 3:22-23 =new every morning ; Joel 2:25 =years ; Romans 8:28 =good ; Psalm 103:10-12 =transgressions ; Ezekiel 36:26 =heart ; 1 Peter 5:10 =restore ; Revelation 21:5 =new ; Micah 7:19 =sea ; Isaiah 1:18 =snow
+C John 21 ; Luke 15 ; Genesis 50 ; Isaiah 43 ; Philippians 3 ; Psalm 51 ; Joel 2 ; 2 Corinthians 5 ; Acts 9 ; Ruth 1
+
+@negativethoughts | Negative Thoughts | mind | Not every thought in your head deserves your trust.
+V Philippians 4:8 =true ; 2 Corinthians 10:5 =captive ; Romans 12:2 =renewing ; Colossians 3:2 =above ; Proverbs 4:23 =heart ; Isaiah 26:3 =mind ; Psalm 19:14 =meditation ; Romans 8:6 =mind ; Ephesians 4:22-24 =new self ; Psalm 94:19 =consolation ; Lamentations 3:21-22 =hope ; Psalm 42:5 =hope
+C Philippians 4 ; Romans 12 ; 2 Corinthians 10 ; Colossians 3 ; Psalm 42 ; Psalm 19 ; Ephesians 4 ; Proverbs 4 ; Romans 8 ; Lamentations 3
+
+@panic | Panic Attacks | mind | In the middle of a panic attack? Slow down and read this.
+V Psalm 46:1 =refuge ; Isaiah 41:10 =afraid ; Psalm 34:4 =fears ; John 14:27 =troubled ; Psalm 56:3 =afraid ; Isaiah 26:3 =peace ; Psalm 94:19 =anxiety ; Mark 4:39 =still ; Psalm 18:2 =rock ; Psalm 62:1-2 =rest ; 2 Timothy 1:7 =fear ; Psalm 55:22 =burden
+C Psalm 46 ; Mark 4 ; Psalm 62 ; Isaiah 41 ; Psalm 18 ; Psalm 56 ; Psalm 34 ; Psalm 131 ; John 14 ; Philippians 4
+
+@numb | When You Feel Far From God | mind | If God feels far away right now, read this.
+V James 4:8 =near ; Psalm 145:18 =near ; Deuteronomy 4:29 =seek ; Jeremiah 29:13 =seek ; Psalm 139:7-8 =presence ; Acts 17:27 =far ; Psalm 34:18 =near ; Hebrews 13:5 =forsake ; Psalm 42:1-2 =thirsts ; Isaiah 59:1 =arm ; Luke 15:20 =compassion ; Zephaniah 3:17 =among
+C Psalm 42 ; Psalm 13 ; Psalm 139 ; Luke 15 ; Psalm 63 ; Psalm 22 ; Psalm 88 ; Psalm 27 ; Isaiah 55 ; Hosea 2
+
+@confidence | Confidence | mind | Confidence that doesn't come from you.
+V Philippians 4:13 =strength ; Proverbs 3:26 =confidence ; Hebrews 4:16 =confidence ; Philippians 1:6 =confident ; 2 Corinthians 3:5 =competence ; Hebrews 10:35 =confidence ; Isaiah 32:17 =confidence ; Psalm 27:3 =trust ; 1 John 5:14 =confidence ; Romans 8:31 =for us ; Jeremiah 17:7 =trust ; 2 Timothy 1:7 =power
+C Psalm 27 ; Exodus 4 ; Jeremiah 1 ; Judges 6 ; 1 Samuel 17 ; Romans 8 ; Hebrews 4 ; Philippians 4 ; 2 Corinthians 3 ; Joshua 1
+
+@patience | Patience | mind | Running out of patience? Read this.
+V Romans 12:12 =patient ; Galatians 5:22-23 =patience ; Ephesians 4:2 =patience ; James 1:4 =perseverance ; Psalm 37:7 =patiently ; Proverbs 14:29 =patient ; Ecclesiastes 7:8 =patient ; James 5:7-8 =patient ; Isaiah 40:31 =wait ; Colossians 3:12 =patience ; 1 Corinthians 13:4 =patient ; Lamentations 3:25-26 =wait
+C James 5 ; Psalm 37 ; James 1 ; Galatians 5 ; Psalm 40 ; Genesis 21 ; Habakkuk 2 ; Romans 12 ; 1 Corinthians 13 ; Ecclesiastes 3

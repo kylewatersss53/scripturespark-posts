@@ -1,0 +1,59 @@
+@marriage | Marriage | love | Save this for your marriage.
+V Genesis 2:24 =one flesh ; Ecclesiastes 4:9-10 =two ; Ecclesiastes 4:12 =cord ; Ephesians 5:25 =husbands ; Ephesians 5:33 =respect ; Colossians 3:14 =love ; 1 Corinthians 13:4-5 =patient ; Mark 10:9 =God ; 1 Peter 4:8 =love ; Proverbs 18:22 =wife ; Ephesians 4:2-3 =humility ; Song of Solomon 8:7 =waters
+C 1 Corinthians 13 ; Ephesians 5 ; Genesis 2 ; Song of Solomon 2 ; Colossians 3 ; Ecclesiastes 4 ; 1 Peter 3 ; Proverbs 31 ; Ruth 3 ; Romans 12
+
+@couples | Couples | love | Read this with the person you love.
+V 1 Corinthians 13:4-7 =love ; Ecclesiastes 4:9-10 =two ; Colossians 3:14 =love ; 1 Peter 4:8 =deeply ; Ephesians 4:2 =patience ; Romans 12:10 =devoted ; 1 John 4:7 =love ; Song of Solomon 8:6 =seal ; Proverbs 3:3-4 =loving ; Ruth 1:16 =go ; Philippians 2:3-4 =interests ; 1 Corinthians 16:14 =love
+C 1 Corinthians 13 ; Ecclesiastes 4 ; Colossians 3 ; Ephesians 4 ; Song of Solomon 2 ; Philippians 2 ; 1 John 4 ; Romans 12 ; Ruth 1 ; Genesis 2
+
+@marriagestruggles | a Struggling Marriage | love | If your marriage is going through a hard season, read this.
+V Ephesians 4:2-3 =peace ; Colossians 3:13-14 =forgive ; 1 Peter 4:8 =multitude ; Proverbs 15:1 =gentle ; James 1:19 =slow ; Ephesians 4:26 =sun ; 1 Corinthians 13:7 =endures ; Ecclesiastes 4:12 =cord ; Romans 12:18 =peace ; Mark 10:9 =separate ; Philippians 2:3-4 =humility ; Ephesians 4:32 =kind
+C 1 Corinthians 13 ; Ephesians 4 ; Ephesians 5 ; Colossians 3 ; Hosea 3 ; Genesis 2 ; 1 Peter 3 ; Philippians 2 ; James 3 ; Romans 12
+
+@husbands | Husbands | love | Husbands, read this.
+V Ephesians 5:25 =husbands ; Ephesians 5:28 =own bodies ; 1 Peter 3:7 =husbands ; Colossians 3:19 =husbands ; Proverbs 5:18-19 =wife ; Proverbs 18:22 =wife ; Ecclesiastes 9:9 =wife ; 1 Corinthians 7:3 =husband ; Proverbs 31:10-11 =husband ; Joshua 24:15 =house ; 1 Corinthians 16:13-14 =love ; Micah 6:8 =humbly
+C Ephesians 5 ; 1 Peter 3 ; Proverbs 31 ; Joshua 24 ; 1 Corinthians 13 ; Colossians 3 ; Genesis 2 ; Song of Solomon 4 ; Philippians 2 ; Proverbs 5
+
+@wives | Wives | love | Wives, read this.
+V Proverbs 31:10-11 =wife ; Proverbs 31:25-26 =strength ; Proverbs 31:30 =charm ; 1 Peter 3:3-4 =spirit ; Proverbs 14:1 =builds ; Ephesians 5:33 =respect ; 1 Corinthians 16:14 =love ; Proverbs 12:4 =crown ; Ruth 3:11 =noble ; 1 Corinthians 13:4-5 =love ; Colossians 3:12 =compassion ; Proverbs 19:14 =prudent
+C Proverbs 31 ; 1 Peter 3 ; Ruth 3 ; Ephesians 5 ; Titus 2 ; 1 Corinthians 13 ; Esther 4 ; 1 Samuel 25 ; Song of Solomon 2 ; Colossians 3
+
+@dating | Dating | love | Dating with God at the center starts here.
+V 2 Corinthians 6:14 =yoked ; Proverbs 4:23 =heart ; Song of Solomon 2:7 =awaken ; 1 Corinthians 13:4-7 =love ; Proverbs 31:30 =fears ; Matthew 6:33 =seek ; Psalm 37:4 =desires ; 1 Thessalonians 4:3-4 =holy ; Proverbs 3:5-6 =trust ; Philippians 2:3-4 =humility ; Proverbs 13:20 =wise ; 1 Corinthians 15:33 =company
+C Genesis 24 ; Ruth 2 ; Ruth 3 ; Song of Solomon 2 ; 1 Corinthians 13 ; Proverbs 31 ; 2 Corinthians 6 ; Proverbs 4 ; 1 Thessalonians 4 ; Philippians 2
+
+@singleness | Singleness | love | Single and wondering if God sees you? Read this.
+V 1 Corinthians 7:32 =unmarried ; Psalm 84:11 =good ; Isaiah 54:5 =husband ; Psalm 37:4 =desires ; Matthew 6:33 =seek ; Jeremiah 29:11 =plans ; Psalm 16:5-6 =lines ; Philippians 4:11 =content ; Psalm 73:25-26 =portion ; Isaiah 62:5 =rejoice ; Psalm 68:6 =lonely ; Ecclesiastes 3:1 =season
+C 1 Corinthians 7 ; Ruth 1 ; Ruth 2 ; Psalm 16 ; Psalm 84 ; Isaiah 54 ; Philippians 4 ; Psalm 37 ; Jeremiah 29 ; Ecclesiastes 3
+
+@futurespouse | Praying for Your Future Spouse | love | Praying for the person you'll marry someday? Start here.
+V Genesis 2:18 =alone ; Proverbs 18:22 =finds ; Proverbs 19:14 =prudent ; Proverbs 31:10 =wife ; Ecclesiastes 3:11 =beautiful ; Psalm 37:4-5 =desires ; 2 Corinthians 6:14 =yoked ; Proverbs 3:5-6 =trust ; Song of Solomon 2:7 =awaken ; Genesis 24:12 =success ; Philippians 4:6 =requests ; Matthew 6:33 =seek
+C Genesis 24 ; Ruth 2 ; Ruth 3 ; Proverbs 31 ; Genesis 2 ; Song of Solomon 2 ; 1 Corinthians 13 ; Psalm 37 ; Ecclesiastes 3 ; Philippians 4
+
+@engaged | Engaged Couples | love | Getting married soon? Read this together.
+V Genesis 2:24 =one flesh ; Ecclesiastes 4:12 =cord ; Colossians 3:14 =love ; 1 Corinthians 13:4-7 =love ; Ruth 1:16 =people ; Song of Solomon 8:6 =seal ; Psalm 127:1 =house ; Proverbs 3:3-4 =loving ; Ephesians 4:2-3 =unity ; Mark 10:8-9 =two ; 1 John 4:19 =first ; Romans 12:10 =devoted
+C Genesis 2 ; 1 Corinthians 13 ; Ephesians 5 ; Song of Solomon 2 ; Ruth 1 ; Psalm 127 ; John 2 ; Colossians 3 ; Ecclesiastes 4 ; 1 Peter 3
+
+@wedding | Weddings | love | The best verses to read at a wedding.
+V 1 Corinthians 13:4-7 =love ; Ruth 1:16 =go ; Song of Solomon 8:6 =seal ; Ecclesiastes 4:9-10 =two ; Genesis 2:24 =one flesh ; Colossians 3:14 =love ; Mark 10:9 =God ; 1 John 4:16 =God is love ; Song of Solomon 2:16 =beloved ; Proverbs 18:22 =favor ; Ephesians 5:31-32 =mystery ; 1 Corinthians 13:13 =greatest
+C 1 Corinthians 13 ; Genesis 2 ; Song of Solomon 8 ; Ecclesiastes 4 ; Ruth 1 ; John 2 ; Ephesians 5 ; Colossians 3 ; 1 John 4 ; Psalm 128
+
+@love | Love | love | What real love looks like, according to God.
+V 1 Corinthians 13:4-7 =love ; John 15:13 =friends ; 1 John 4:7-8 =love ; 1 John 4:19 =first ; Romans 13:10 =love ; 1 Peter 4:8 =love ; Colossians 3:14 =unity ; John 13:34-35 =love ; Romans 12:9-10 =love ; 1 Corinthians 16:14 =love ; 1 Corinthians 13:13 =greatest ; Proverbs 10:12 =covers
+C 1 Corinthians 13 ; 1 John 4 ; John 15 ; Romans 12 ; John 13 ; Luke 10 ; Ruth 1 ; Song of Solomon 2 ; Romans 13 ; Colossians 3
+
+@friendship | Friendship | love | Send this to a friend who's always there for you.
+V Proverbs 17:17 =friend ; Proverbs 18:24 =friend ; John 15:13 =friends ; Ecclesiastes 4:9-10 =two ; Proverbs 27:17 =sharpens ; Proverbs 27:9 =friend ; 1 Thessalonians 5:11 =encourage ; Proverbs 13:20 =wise ; Romans 12:10 =devoted ; Galatians 6:2 =burdens ; Job 2:11 =comfort ; 1 Samuel 18:1 =loved him
+C 1 Samuel 18 ; 1 Samuel 20 ; Ruth 1 ; John 15 ; Proverbs 27 ; Ecclesiastes 4 ; Job 2 ; Mark 2 ; Romans 12 ; 2 Timothy 1
+
+@toxicpeople | Difficult People | love | Dealing with a difficult person? Read this first.
+V Romans 12:18 =peace ; Proverbs 15:1 =gentle ; Matthew 5:44 =enemies ; Proverbs 22:24-25 =angry ; Romans 12:20-21 =overcome ; Proverbs 26:4 =fool ; Colossians 4:6 =gracious ; 1 Peter 3:9 =evil ; Proverbs 19:11 =offense ; Luke 6:27-28 =bless ; Titus 3:10 =divisive ; Matthew 10:16 =shrewd
+C Romans 12 ; Proverbs 15 ; Matthew 5 ; Luke 6 ; 1 Samuel 24 ; 1 Samuel 25 ; Genesis 26 ; Proverbs 26 ; 1 Peter 3 ; Nehemiah 6
+
+@conflict | Conflict | love | Before the next argument, read this.
+V Matthew 18:15 =brother ; Proverbs 15:1 =gentle ; James 1:19 =slow ; Romans 12:18 =peace ; Matthew 5:9 =peacemakers ; Ephesians 4:26 =sun ; Proverbs 17:14 =quarrel ; Philippians 2:3 =humility ; Colossians 3:13 =forgive ; James 4:1 =quarrels ; Proverbs 20:3 =dispute ; Matthew 5:23-24 =reconciled
+C Matthew 18 ; Genesis 13 ; Genesis 33 ; Acts 15 ; Philippians 4 ; James 4 ; Proverbs 15 ; Romans 12 ; Matthew 5 ; Genesis 45
+
+@kindness | Kindness | love | A reminder to be kind today.
+V Ephesians 4:32 =kind ; Colossians 3:12 =kindness ; Proverbs 11:17 =kind ; Galatians 5:22-23 =kindness ; Micah 6:8 =mercy ; Luke 6:31 =do to others ; Proverbs 16:24 =pleasant ; 1 Corinthians 13:4 =kind ; Proverbs 19:17 =poor ; Romans 12:10 =devoted ; Hebrews 13:2 =strangers ; 1 Thessalonians 5:15 =good
+C Ruth 2 ; Luke 10 ; 2 Samuel 9 ; Ephesians 4 ; Colossians 3 ; Romans 12 ; Acts 28 ; Galatians 6 ; Matthew 25 ; Micah 6

@@ -1,0 +1,139 @@
+@newbeliever | New Believers | faith | Just gave your life to Jesus? Start here.
+V 2 Corinthians 5:17 =new ; John 3:16 =loved ; Romans 10:9 =confess ; Ephesians 2:8-9 =grace ; Romans 8:1 =condemnation ; John 10:27-28 =sheep ; 1 John 5:13 =eternal ; Philippians 1:6 =good work ; Galatians 2:20 =crucified ; Romans 5:8 =sinners ; John 1:12 =children ; Matthew 28:20 =always
+C John 3 ; John 1 ; Romans 8 ; Ephesians 2 ; Romans 5 ; Psalm 23 ; Matthew 5 ; Luke 15 ; Acts 2 ; 1 John 1
+
+@startbible | Starting to Read the Bible | faith | Never read the Bible before? Start here.
+V Psalm 119:105 =lamp ; 2 Timothy 3:16-17 =Scripture ; Hebrews 4:12 =word ; Joshua 1:8 =meditate ; Psalm 119:11 =heart ; Isaiah 40:8 =word ; Matthew 4:4 =bread ; James 1:22 =doers ; Romans 15:4 =written ; Psalm 1:1-2 =law ; John 1:1 =Word ; Psalm 19:7-8 =law
+C John 1 ; Genesis 1 ; Psalm 23 ; Matthew 5 ; Romans 8 ; John 3 ; Psalm 1 ; Proverbs 3 ; Philippians 4 ; Luke 15
+
+@prayer | Prayer | faith | Don't know how to pray? Start here.
+V Philippians 4:6 =prayer ; 1 Thessalonians 5:16-18 =pray ; Matthew 6:6 =pray ; Jeremiah 33:3 =call ; James 5:16 =prayer ; Matthew 7:7 =ask ; 1 John 5:14 =ask ; Romans 8:26 =pray ; Mark 11:24 =prayer ; Psalm 145:18 =near ; Hebrews 4:16 =throne ; Colossians 4:2 =prayer
+C Matthew 6 ; Luke 11 ; John 17 ; Psalm 145 ; Daniel 9 ; Nehemiah 1 ; 1 Samuel 1 ; Ephesians 3 ; James 5 ; Luke 18
+
+@faith | Faith | faith | Faith when you can't see the next step.
+V Hebrews 11:1 =faith ; Hebrews 11:6 =faith ; 2 Corinthians 5:7 =faith ; Mark 11:22-23 =faith ; Matthew 17:20 =mustard ; Romans 10:17 =faith ; James 2:17 =faith ; Galatians 2:20 =faith ; Ephesians 2:8 =faith ; Mark 9:23-24 =believe ; Proverbs 3:5-6 =trust ; Romans 4:20-21 =faith
+C Hebrews 11 ; Genesis 22 ; Genesis 12 ; Daniel 3 ; Matthew 14 ; Mark 5 ; Romans 4 ; Joshua 6 ; Mark 9 ; James 2
+
+@doubt | Doubt | faith | Struggling with doubt? You're not the first. Read this.
+V Mark 9:24 =unbelief ; Jude 1:22 =doubt ; James 1:5-6 =doubt ; John 20:27-29 =believe ; Matthew 14:31 =doubt ; Psalm 73:16-17 =sanctuary ; Isaiah 55:8-9 =thoughts ; Romans 10:17 =faith ; Hebrews 11:6 =seek ; Jeremiah 29:13 =seek ; Matthew 28:17 =doubted ; 2 Timothy 2:13 =faithless
+C John 20 ; Mark 9 ; Psalm 73 ; Matthew 11 ; Matthew 14 ; Habakkuk 1 ; Job 38 ; Luke 24 ; Psalm 77 ; Jude 1
+
+@godslove | God's Love | faith | If you need to be reminded how loved you are, read this.
+V John 3:16 =loved ; Romans 5:8 =love ; Romans 8:38-39 =love ; 1 John 4:9-10 =love ; Jeremiah 31:3 =everlasting ; Zephaniah 3:17 =love ; Ephesians 3:17-19 =love ; 1 John 3:1 =love ; Psalm 136:26 =devotion ; Lamentations 3:22-23 =loving ; Isaiah 54:10 =loving devotion ; Psalm 86:15 =compassionate
+C Romans 8 ; 1 John 4 ; Luke 15 ; Ephesians 3 ; John 3 ; Psalm 136 ; Psalm 103 ; Hosea 11 ; Isaiah 54 ; John 15
+
+@grace | Grace | faith | You can't earn it. That's the whole point.
+V Ephesians 2:8-9 =grace ; 2 Corinthians 12:9 =grace ; Romans 3:23-24 =grace ; Titus 2:11 =grace ; Hebrews 4:16 =grace ; John 1:16 =grace ; Romans 5:20 =grace ; 2 Timothy 1:9 =grace ; Romans 6:14 =grace ; James 4:6 =grace ; 1 Peter 5:10 =grace ; Titus 3:5 =mercy
+C Ephesians 2 ; Romans 5 ; Romans 3 ; Titus 3 ; Luke 15 ; John 8 ; 2 Samuel 9 ; Luke 7 ; Romans 6 ; Galatians 2
+
+@salvation | Salvation | faith | What the Bible actually says about being saved.
+V John 3:16 =eternal ; Romans 10:9-10 =saved ; Ephesians 2:8-9 =saved ; Acts 4:12 =salvation ; Romans 6:23 =gift ; John 14:6 =way ; Romans 3:23 =sinned ; Romans 5:8 =sinners ; Titus 3:5 =saved ; 1 John 5:11-12 =life ; Acts 16:31 =saved ; John 5:24 =eternal life
+C John 3 ; Romans 3 ; Romans 5 ; Romans 10 ; Ephesians 2 ; Acts 2 ; Acts 16 ; Luke 23 ; Isaiah 53 ; John 14
+
+@identity | Your Identity in Christ | faith | Who God says you are.
+V 2 Corinthians 5:17 =new creation ; Galatians 2:20 =Christ lives ; 1 Peter 2:9 =chosen ; John 1:12 =children ; Ephesians 2:10 =workmanship ; Romans 8:17 =heirs ; John 15:15 =friends ; Colossians 3:3 =hidden ; 1 John 3:1 =love ; Romans 8:37 =conquerors ; 1 Corinthians 6:19 =temple ; Matthew 5:14 =light
+C Ephesians 1 ; Ephesians 2 ; Romans 8 ; Colossians 3 ; 1 Peter 2 ; Galatians 2 ; 2 Corinthians 5 ; John 15 ; Psalm 139 ; Matthew 5
+
+@holyspirit | the Holy Spirit | faith | Who the Holy Spirit is, in His own words.
+V John 14:26 =Holy Spirit ; Acts 1:8 =power ; Romans 8:26 =Spirit ; Galatians 5:22-23 =fruit ; John 16:13 =truth ; 1 Corinthians 6:19 =Spirit ; Romans 8:11 =Spirit ; 2 Timothy 1:7 =Spirit ; Ephesians 1:13-14 =sealed ; Luke 11:13 =Spirit ; Romans 15:13 =Spirit ; Acts 2:38 =Holy Spirit
+C Acts 2 ; John 14 ; John 16 ; Romans 8 ; Galatians 5 ; 1 Corinthians 12 ; Ezekiel 37 ; Joel 2 ; Ephesians 1 ; Acts 1
+
+@worship | Worship | faith | Verses to read before worship.
+V Psalm 95:6 =worship ; John 4:23-24 =worship ; Romans 12:1 =worship ; Psalm 100:4 =thanksgiving ; Psalm 150:6 =breath ; Hebrews 13:15 =praise ; Psalm 34:1 =bless ; Psalm 29:2 =worship ; Revelation 4:11 =worthy ; Psalm 63:3-4 =glorify ; Psalm 96:9 =worship ; Colossians 3:16 =sing
+C Psalm 100 ; Psalm 95 ; Psalm 150 ; Revelation 4 ; Isaiah 6 ; John 4 ; Psalm 103 ; Psalm 145 ; 2 Chronicles 20 ; Psalm 96
+
+@gratitude | Gratitude | faith | Count your blessings with these verses.
+V 1 Thessalonians 5:18 =thanks ; Psalm 107:1 =thanks ; Colossians 3:17 =thanks ; Psalm 100:4 =thanksgiving ; Philippians 4:6 =thanksgiving ; Psalm 103:2 =forget ; James 1:17 =gift ; Psalm 118:24 =day ; Colossians 2:6-7 =thankfulness ; Psalm 9:1 =thanks ; Ephesians 5:20 =thanks ; Psalm 136:1 =thanks
+C Psalm 100 ; Psalm 103 ; Psalm 136 ; Luke 17 ; Psalm 107 ; Colossians 3 ; Psalm 34 ; 1 Thessalonians 5 ; Psalm 92 ; Philippians 4
+
+@trust | Trusting God | faith | When you don't understand what God is doing, read this.
+V Proverbs 3:5-6 =trust ; Psalm 56:3 =trust ; Isaiah 26:4 =trust ; Jeremiah 17:7-8 =trust ; Psalm 37:5 =trust ; Psalm 9:10 =trust ; Psalm 28:7 =trusts ; Nahum 1:7 =trust ; Psalm 62:8 =trust ; Romans 15:13 =believe ; Psalm 20:7 =trust ; Isaiah 12:2 =trust
+C Proverbs 3 ; Genesis 22 ; Psalm 37 ; Jeremiah 17 ; Daniel 3 ; Psalm 62 ; Job 42 ; Habakkuk 3 ; Psalm 91 ; Matthew 6
+
+@gods-promises | God's Promises | faith | Promises from God you can hold on to.
+V Isaiah 41:10 =help ; Jeremiah 29:11 =plans ; Romans 8:28 =good ; Philippians 4:19 =needs ; Matthew 11:28 =rest ; Deuteronomy 31:8 =forsake ; John 14:2-3 =place ; Isaiah 40:31 =renew ; 1 John 1:9 =forgive ; James 1:5 =wisdom ; Matthew 28:20 =always ; Revelation 21:4 =tear
+C Romans 8 ; Isaiah 40 ; Isaiah 41 ; Psalm 91 ; John 14 ; Revelation 21 ; Genesis 9 ; Genesis 15 ; Jeremiah 31 ; 2 Peter 1
+
+@faithfulness | God's Faithfulness | faith | God has never once broken a promise.
+V Lamentations 3:22-23 =faithfulness ; Deuteronomy 7:9 =faithful ; 2 Timothy 2:13 =faithful ; 1 Corinthians 1:9 =faithful ; Psalm 36:5 =faithfulness ; Hebrews 10:23 =faithful ; 1 Thessalonians 5:24 =faithful ; Psalm 89:8 =faithfulness ; Numbers 23:19 =lie ; Psalm 100:5 =faithfulness ; Joshua 21:45 =promises ; 2 Thessalonians 3:3 =faithful
+C Lamentations 3 ; Psalm 89 ; Joshua 21 ; Psalm 136 ; Genesis 21 ; Deuteronomy 7 ; Psalm 100 ; Hebrews 10 ; Joshua 23 ; Psalm 105
+
+@presence | God's Presence | faith | God is closer than you think.
+V Psalm 16:11 =presence ; Exodus 33:14 =Presence ; Psalm 139:7-10 =presence ; Joshua 1:9 =with you ; Matthew 28:20 =always ; Psalm 46:1 =ever-present ; James 4:8 =near ; Psalm 145:18 =near ; Isaiah 43:2 =with you ; Zephaniah 3:17 =among ; Deuteronomy 31:6 =with you ; Psalm 23:4 =with me
+C Psalm 139 ; Exodus 33 ; Psalm 16 ; Psalm 23 ; Psalm 84 ; Isaiah 43 ; John 14 ; Genesis 28 ; Psalm 27 ; Revelation 21
+
+@surrender | Surrender | faith | Letting go of control starts here.
+V Proverbs 3:5-6 =trust ; Romans 12:1 =sacrifice ; Luke 22:42 =will ; Galatians 2:20 =crucified ; Psalm 37:5 =commit ; Matthew 16:24-25 =cross ; Proverbs 16:3 =commit ; Psalm 46:10 =still ; 1 Peter 5:6-7 =humble ; James 4:10 =humble ; Philippians 3:7-8 =loss ; John 3:30 =increase
+C Romans 12 ; Matthew 26 ; Luke 22 ; Genesis 22 ; Philippians 3 ; Psalm 46 ; 1 Samuel 3 ; Luke 1 ; Isaiah 6 ; Matthew 16
+
+@obedience | Obedience | faith | Obedience is how you love God back.
+V John 14:15 =keep ; James 1:22 =doers ; 1 Samuel 15:22 =obedience ; Deuteronomy 11:26-27 =obey ; Luke 11:28 =obey ; 1 John 5:3 =commandments ; John 14:23 =word ; Romans 6:16 =obedience ; Joshua 1:8 =careful ; Psalm 119:60 =commandments ; Matthew 7:24 =rock ; Deuteronomy 28:2 =blessings
+C Genesis 22 ; Genesis 12 ; Genesis 6 ; 1 Samuel 15 ; Jonah 1 ; Jonah 3 ; John 14 ; James 1 ; Matthew 7 ; Joshua 6
+
+@growth | Spiritual Growth | faith | Want to grow closer to God this year? Start here.
+V 2 Peter 3:18 =grow ; Philippians 1:6 =good work ; Colossians 2:6-7 =rooted ; 1 Peter 2:2 =grow ; Ephesians 4:15 =grow ; Romans 12:2 =transformed ; John 15:5 =vine ; 2 Corinthians 3:18 =transformed ; Hebrews 6:1 =maturity ; 2 Peter 1:5-7 =faith ; Psalm 1:3 =tree ; Galatians 5:22-23 =fruit
+C John 15 ; Psalm 1 ; 2 Peter 1 ; Colossians 2 ; Romans 12 ; Galatians 5 ; Ephesians 4 ; Hebrews 12 ; Matthew 13 ; Jeremiah 17
+
+@discipline | Discipline & Consistency | faith | Discipline is a spiritual thing too.
+V 1 Corinthians 9:24 =race ; Hebrews 12:11 =discipline ; 1 Timothy 4:7-8 =godliness ; Proverbs 12:1 =discipline ; 2 Timothy 1:7 =self-control ; Galatians 6:9 =weary ; Proverbs 25:28 =control ; Titus 2:11-12 =sensible ; Proverbs 13:4 =diligent ; Colossians 3:23 =work ; Hebrews 12:1 =endurance ; Philippians 3:14 =goal
+C 1 Corinthians 9 ; Hebrews 12 ; Proverbs 6 ; Daniel 1 ; Daniel 6 ; Nehemiah 4 ; 2 Timothy 2 ; Philippians 3 ; Proverbs 24 ; 1 Timothy 4
+
+@selfcontrol | Self-Control | faith | Self-control is a fruit, not a feeling.
+V Galatians 5:22-23 =self-control ; Proverbs 25:28 =control ; 2 Timothy 1:7 =self-control ; Titus 2:11-12 =sensible ; 1 Peter 5:8 =sober ; 1 Corinthians 10:13 =temptation ; Proverbs 16:32 =temper ; 2 Peter 1:5-6 =self-control ; 1 Corinthians 9:25 =discipline ; Romans 13:14 =flesh ; James 1:19 =slow ; Proverbs 29:11 =fool
+C Galatians 5 ; Proverbs 25 ; 1 Corinthians 9 ; Titus 2 ; Daniel 1 ; Genesis 39 ; James 3 ; Proverbs 16 ; 2 Peter 1 ; Romans 13
+
+@humility | Humility | faith | Humility isn't thinking less of yourself.
+V Philippians 2:3-4 =humility ; James 4:10 =humble ; Micah 6:8 =humbly ; 1 Peter 5:5-6 =humble ; Proverbs 11:2 =humility ; Proverbs 22:4 =humility ; Matthew 23:12 =humbles ; Colossians 3:12 =humility ; Ephesians 4:2 =humility ; Romans 12:3 =think ; Proverbs 3:34 =humble ; Philippians 2:5-7 =servant
+C Philippians 2 ; John 13 ; Luke 18 ; Daniel 4 ; James 4 ; 1 Peter 5 ; Matthew 18 ; 2 Chronicles 7 ; Luke 14 ; Micah 6
+
+@pride | Pride | faith | Pride sneaks in quietly. Read this.
+V Proverbs 16:18 =pride ; Proverbs 11:2 =pride ; James 4:6 =proud ; Proverbs 29:23 =pride ; 1 John 2:16 =pride ; Romans 12:16 =proud ; Galatians 6:3 =deceives ; Proverbs 8:13 =pride ; 1 Corinthians 4:7 =boast ; Jeremiah 9:24 =boast ; Obadiah 1:3 =pride ; Luke 14:11 =exalts
+C Daniel 4 ; Luke 18 ; Proverbs 16 ; 2 Chronicles 26 ; Isaiah 14 ; Luke 14 ; James 4 ; Esther 5 ; Genesis 11 ; Philippians 2
+
+@contentment | Contentment | faith | Learning to be content where you are.
+V Philippians 4:11-12 =content ; Hebrews 13:5 =content ; 1 Timothy 6:6-8 =contentment ; Psalm 23:1 =want ; Proverbs 30:8-9 =poverty ; Psalm 16:5-6 =portion ; Ecclesiastes 5:10 =money ; Matthew 6:19-21 =treasures ; Psalm 37:16 =little ; Luke 12:15 =greed ; Proverbs 15:16 =little ; Psalm 73:25-26 =portion
+C Philippians 4 ; Psalm 23 ; 1 Timothy 6 ; Ecclesiastes 5 ; Matthew 6 ; Luke 12 ; Psalm 16 ; Psalm 73 ; Proverbs 30 ; Hebrews 13
+
+@wisdom | Wisdom | faith | Need wisdom for a decision? Start here.
+V James 1:5 =wisdom ; Proverbs 1:7 =knowledge ; Proverbs 3:5-6 =understanding ; Proverbs 9:10 =wisdom ; Proverbs 2:6 =wisdom ; Psalm 111:10 =wisdom ; Colossians 3:16 =wisdom ; James 3:17 =wisdom ; Proverbs 4:7 =wisdom ; Proverbs 16:16 =wisdom ; Psalm 90:12 =wisdom ; Proverbs 19:20 =wise
+C Proverbs 3 ; James 1 ; Proverbs 2 ; Proverbs 4 ; James 3 ; 1 Kings 3 ; Proverbs 8 ; Ecclesiastes 12 ; Proverbs 16 ; Psalm 1
+
+@decisions | Big Decisions | faith | Facing a big decision? Read this before you choose.
+V Proverbs 3:5-6 =paths ; James 1:5 =wisdom ; Psalm 32:8 =instruct ; Proverbs 16:9 =steps ; Isaiah 30:21 =way ; Proverbs 15:22 =advisers ; Psalm 37:23 =steps ; Proverbs 16:3 =commit ; Romans 12:2 =will ; Psalm 119:105 =lamp ; Proverbs 19:21 =purpose ; Jeremiah 33:3 =call
+C Proverbs 3 ; James 1 ; Psalm 32 ; 1 Kings 3 ; Acts 15 ; Proverbs 16 ; Judges 6 ; Romans 12 ; Psalm 25 ; Nehemiah 2
+
+@guidance | God's Guidance | faith | Not sure which way to go? Read this.
+V Psalm 32:8 =instruct ; Isaiah 30:21 =way ; Proverbs 3:5-6 =paths ; Psalm 25:4-5 =ways ; Psalm 119:105 =lamp ; John 16:13 =guide ; Isaiah 58:11 =guide ; Psalm 48:14 =guide ; Psalm 143:8 =way ; Psalm 23:3 =guides ; Isaiah 42:16 =blind ; Proverbs 16:9 =steps
+C Psalm 25 ; Psalm 32 ; Psalm 143 ; Isaiah 58 ; John 10 ; Exodus 13 ; Acts 16 ; Genesis 24 ; Psalm 23 ; Proverbs 3
+
+@purpose | Your Purpose | faith | Wondering what you were made for? Read this.
+V Jeremiah 29:11 =plans ; Ephesians 2:10 =good works ; Romans 8:28 =purpose ; Proverbs 19:21 =purpose ; Jeremiah 1:5 =appointed ; Esther 4:14 =time as this ; Psalm 138:8 =purpose ; Philippians 2:13 =purpose ; 2 Timothy 1:9 =purpose ; 1 Peter 4:10 =gift ; Colossians 3:23 =work ; Psalm 57:2 =fulfills
+C Jeremiah 1 ; Esther 4 ; Ephesians 2 ; Exodus 3 ; Judges 6 ; 1 Samuel 16 ; Romans 12 ; 1 Corinthians 12 ; Isaiah 6 ; Acts 9
+
+@rest | Rest | faith | Permission to rest, straight from God.
+V Matthew 11:28-30 =rest ; Exodus 33:14 =rest ; Psalm 23:1-3 =lie down ; Psalm 62:1 =rest ; Hebrews 4:9-11 =rest ; Psalm 127:2 =sleep ; Mark 6:31 =rest ; Exodus 20:9-10 =Sabbath ; Isaiah 30:15 =rest ; Jeremiah 6:16 =rest ; Psalm 116:7 =rest ; Psalm 4:8 =sleep
+C Matthew 11 ; Psalm 23 ; Hebrews 4 ; Psalm 62 ; Genesis 2 ; Exodus 20 ; Mark 6 ; Psalm 127 ; 1 Kings 19 ; Psalm 131
+
+@fasting | Fasting | faith | Thinking about fasting? Read this first.
+V Matthew 6:17-18 =fast ; Isaiah 58:6 =fast ; Joel 2:12 =fasting ; Acts 13:2-3 =fasting ; Matthew 4:4 =bread ; Ezra 8:23 =fasted ; Esther 4:16 =fast ; Daniel 9:3 =fasting ; Nehemiah 1:4 =fasting ; Luke 2:37 =fasting ; Matthew 9:15 =fast ; Psalm 35:13 =fasting
+C Isaiah 58 ; Matthew 6 ; Matthew 4 ; Daniel 9 ; Esther 4 ; Nehemiah 1 ; Joel 2 ; Ezra 8 ; Acts 13 ; Jonah 3
+
+@holiness | Living Set Apart | faith | Called to be different, on purpose.
+V 1 Peter 1:15-16 =holy ; Romans 12:2 =conformed ; 2 Corinthians 6:17 =separate ; Hebrews 12:14 =holiness ; Leviticus 20:26 =holy ; 1 Thessalonians 4:7 =holiness ; Ephesians 5:8 =light ; Matthew 5:14 =light ; Titus 2:11-12 =ungodliness ; 1 John 2:15 =world ; James 4:4 =world ; Colossians 3:1-2 =above
+C Romans 12 ; 1 Peter 1 ; Colossians 3 ; Ephesians 5 ; Daniel 1 ; Matthew 5 ; 1 John 2 ; 2 Corinthians 6 ; Leviticus 19 ; Titus 2
+
+@heaven | Heaven | faith | What the Bible says about heaven.
+V John 14:2-3 =house ; Revelation 21:4 =tear ; Philippians 3:20 =citizenship ; 1 Corinthians 2:9 =eye ; 2 Corinthians 5:1 =eternal ; Revelation 21:3 =dwelling ; Revelation 22:5 =night ; Matthew 6:20 =treasures ; Romans 8:18 =glory ; 1 Thessalonians 4:17 =always ; 2 Peter 3:13 =new heaven ; Hebrews 13:14 =city
+C Revelation 21 ; Revelation 22 ; John 14 ; 1 Corinthians 15 ; 2 Corinthians 5 ; 1 Thessalonians 4 ; Revelation 7 ; Isaiah 65 ; Philippians 3 ; Hebrews 11
+
+@eternallife | Eternal Life | faith | Death is not the end of the story.
+V John 3:16 =eternal ; John 11:25-26 =resurrection ; Romans 6:23 =eternal ; 1 John 5:13 =eternal ; John 10:28 =eternal ; John 17:3 =eternal ; 1 Corinthians 15:54-55 =sting ; 2 Corinthians 4:18 =eternal ; Titus 3:7 =hope ; John 5:24 =eternal ; Romans 8:11 =life ; 1 Thessalonians 4:14 =rose
+C John 11 ; 1 Corinthians 15 ; John 3 ; John 5 ; 1 Thessalonians 4 ; Revelation 21 ; 2 Corinthians 5 ; John 10 ; Romans 6 ; 1 John 5
+
+@forgiveness | God's Forgiveness | faith | There is nothing you've done that God can't forgive.
+V 1 John 1:9 =forgive ; Psalm 103:12 =transgressions ; Isaiah 1:18 =scarlet ; Micah 7:18-19 =iniquity ; Ephesians 1:7 =forgiveness ; Acts 3:19 =repent ; Isaiah 43:25 =blot ; Colossians 1:13-14 =forgiveness ; Psalm 32:1 =forgiven ; Hebrews 8:12 =remember ; Psalm 86:5 =forgiving ; Romans 8:1 =condemnation
+C Psalm 51 ; Psalm 32 ; Luke 15 ; Psalm 103 ; John 8 ; Luke 7 ; Isaiah 1 ; Micah 7 ; 1 John 1 ; Luke 23
+
+@repentance | Coming Back to God | faith | Drifted away from God? The door is still open.
+V Luke 15:20 =compassion ; Acts 3:19 =repent ; 2 Chronicles 7:14 =turn ; James 4:8 =near ; Joel 2:13 =return ; Isaiah 55:6-7 =return ; Hosea 6:1 =return ; 1 John 1:9 =confess ; Malachi 3:7 =return ; Zechariah 1:3 =return ; Lamentations 3:40 =turn back ; Revelation 3:20 =door
+C Luke 15 ; Psalm 51 ; Hosea 14 ; Joel 2 ; Isaiah 55 ; Jonah 3 ; John 21 ; 2 Chronicles 7 ; Lamentations 3 ; Revelation 3

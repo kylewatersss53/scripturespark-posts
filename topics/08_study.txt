@@ -1,0 +1,107 @@
+# Study themes use custom titles: TV = title for the verse post, TC = title for the chapter post.
+
+@iam | the "I Am" Statements of Jesus | study | Jesus told us exactly who He is.
+TV The "I Am" Statements of Jesus
+V John 6:35 =bread ; John 8:12 =light ; John 10:9 =gate ; John 10:11 =shepherd ; John 11:25 =resurrection ; John 14:6 =way ; John 15:5 =vine ; John 8:58 =Abraham ; Exodus 3:14 =I AM ; Revelation 22:13 =Alpha
+TC Chapters Where Jesus Says "I Am"
+C John 6 ; John 8 ; John 10 ; John 11 ; John 14 ; John 15 ; Exodus 3 ; Revelation 1 ; Revelation 22 ; Mark 14
+
+@namesofgod | the Names of God | study | Every name of God tells you something about Him.
+TV The Names of God, and What They Mean
+V Genesis 22:14 =provide ; Exodus 15:26 =heals ; Exodus 17:15 =Banner ; Judges 6:24 =Peace ; Psalm 23:1 =shepherd ; Jeremiah 23:6 =Righteousness ; Genesis 16:13 =sees ; Genesis 17:1 =Almighty ; Isaiah 9:6 =Counselor ; Psalm 18:2 =rock ; Isaiah 40:28 =everlasting ; Genesis 14:19 =Most High
+TC Chapters Where God Reveals His Name
+C Exodus 3 ; Genesis 22 ; Genesis 16 ; Judges 6 ; Psalm 23 ; Isaiah 9 ; Exodus 34 ; Psalm 91 ; Isaiah 40 ; Revelation 1
+
+@prophecies | Prophecies About Jesus | study | Written hundreds of years before He was born.
+TV Prophecies About Jesus That Came True
+V Isaiah 7:14 =virgin ; Micah 5:2 =Bethlehem ; Isaiah 9:6 =child ; Zechariah 9:9 =donkey ; Isaiah 53:5 =pierced ; Isaiah 53:7 =lamb ; Psalm 22:16 =pierced ; Psalm 22:18 =lots ; Psalm 34:20 =bones ; Zechariah 12:10 =pierced ; Psalm 16:10 =decay ; Isaiah 61:1 =good news
+TC Old Testament Chapters That Point to Jesus
+C Isaiah 53 ; Psalm 22 ; Isaiah 9 ; Micah 5 ; Zechariah 9 ; Isaiah 7 ; Psalm 16 ; Zechariah 12 ; Isaiah 61 ; Psalm 110
+
+@memorize | Verses Every Christian Should Know | study | If you only memorize a few verses, start with these.
+TV Bible Verses Every Christian Should Memorize
+V John 3:16 =loved ; Romans 8:28 =good ; Philippians 4:13 =strength ; Proverbs 3:5-6 =trust ; Jeremiah 29:11 =plans ; Romans 3:23 =sinned ; Romans 6:23 =wages ; Ephesians 2:8-9 =grace ; Isaiah 40:31 =renew ; Joshua 1:9 =courageous ; Psalm 119:105 =lamp ; 2 Timothy 3:16-17 =Scripture
+TC Bible Chapters Every Christian Should Read
+C Psalm 23 ; John 3 ; Romans 8 ; 1 Corinthians 13 ; Matthew 5 ; Isaiah 53 ; Genesis 1 ; John 15 ; Hebrews 11 ; Philippians 4
+
+@shortverses | Short Verses to Memorize | study | Short enough to memorize today.
+TV Short Bible Verses You Can Memorize Today
+V Psalm 46:10 =still ; 1 Thessalonians 5:16 =Rejoice ; 1 Thessalonians 5:17 =Pray ; 1 John 4:19 =love ; Psalm 118:24 =day ; 1 Corinthians 16:14 =love ; Psalm 56:3 =afraid ; Exodus 14:14 =fight ; Psalm 23:1 =shepherd ; Matthew 5:8 =pure ; Hebrews 13:8 =same ; Psalm 119:105 =lamp
+
+@jesuswords | Words of Jesus | study | Words Jesus said that still hold today.
+TV Comforting Words From Jesus Himself
+V Matthew 11:28 =rest ; John 14:27 =peace ; John 16:33 =overcome ; Matthew 28:20 =always ; John 14:1 =troubled ; Matthew 6:34 =tomorrow ; John 10:10 =life ; Revelation 3:20 =door ; Mark 5:36 =believe ; John 6:37 =never ; John 8:12 =light ; Luke 12:32 =flock
+TC Chapters Full of Jesus' Own Words
+C Matthew 5 ; Matthew 6 ; Matthew 7 ; John 14 ; John 15 ; John 16 ; John 17 ; Luke 15 ; John 10 ; Matthew 11
+
+@miracles | the Miracles of Jesus | study | Read these and remember what He can do.
+TC Chapters About the Miracles of Jesus
+C John 2 ; Mark 4 ; John 6 ; John 11 ; Mark 5 ; John 9 ; Luke 5 ; Mark 2 ; Luke 17 ; Matthew 14
+
+@parables | the Parables of Jesus | study | The stories Jesus told, and why they still matter.
+TC Parables of Jesus Everyone Should Read
+C Luke 15 ; Luke 10 ; Matthew 13 ; Matthew 25 ; Luke 18 ; Matthew 18 ; Luke 12 ; Matthew 20 ; Luke 16 ; Matthew 7
+
+@psalmsemotion | the Psalms | study | There's a Psalm for every feeling you have.
+TC A Psalm for Every Emotion
+C Psalm 23 ; Psalm 13 ; Psalm 51 ; Psalm 42 ; Psalm 46 ; Psalm 100 ; Psalm 139 ; Psalm 121 ; Psalm 34 ; Psalm 27
+
+@otstories | Old Testament Stories | study | The stories every Christian should know.
+TC Old Testament Stories Everyone Should Read
+C Genesis 1 ; Genesis 6 ; Genesis 22 ; Genesis 37 ; Exodus 14 ; Joshua 6 ; 1 Samuel 17 ; Daniel 3 ; Daniel 6 ; Jonah 1
+
+@womenoffaith | Women of Faith | study | Women in the Bible whose faith changed history.
+TC Bible Chapters About Women of Faith
+C Ruth 1 ; Esther 4 ; 1 Samuel 1 ; Luke 1 ; John 4 ; Luke 10 ; Judges 4 ; Joshua 2 ; 1 Samuel 25 ; John 20
+
+@menoffaith | Men of Faith | study | Ordinary men God used in extraordinary ways.
+TC Bible Chapters About Men of Faith
+C Genesis 12 ; Genesis 39 ; Exodus 3 ; 1 Samuel 17 ; Nehemiah 1 ; Daniel 1 ; Joshua 1 ; Acts 9 ; Genesis 6 ; Job 1
+
+@wisdomchapters | Wisdom | study | Read these chapters slowly.
+TC Bible Chapters With the Most Wisdom
+C Proverbs 3 ; James 1 ; Ecclesiastes 12 ; Proverbs 4 ; Matthew 5 ; James 3 ; Proverbs 16 ; Ecclesiastes 3 ; Proverbs 2 ; Matthew 7
+
+@lifeofjesus | the Life of Jesus | study | Walk through the life of Jesus in 10 chapters.
+TC Chapters to Read About the Life of Jesus
+C Luke 2 ; Matthew 3 ; Matthew 4 ; John 2 ; Matthew 5 ; John 11 ; John 13 ; Matthew 26 ; John 19 ; John 20
+
+@godspower | God's Power | study | Nothing is too hard for Him.
+TC Bible Chapters That Show God's Power
+C Exodus 14 ; Joshua 10 ; 1 Kings 18 ; Daniel 3 ; Daniel 6 ; Job 38 ; Psalm 29 ; Isaiah 40 ; Mark 4 ; John 11
+
+@shortchapters | Short Chapters | study | No time? These take five minutes or less.
+TC Bible Chapters You Can Read in 5 Minutes
+C Psalm 23 ; Psalm 1 ; Psalm 100 ; Psalm 121 ; Psalm 131 ; Psalm 46 ; Psalm 127 ; Psalm 133 ; 1 Corinthians 13 ; Psalm 8
+
+@prayers | Prayers From Scripture | study | Pray these straight from the Bible.
+TV Bible Verses to Pray Over Your Day
+V Psalm 143:8 =morning ; Psalm 90:17 =favor ; Numbers 6:24-26 =bless ; Psalm 19:14 =words ; Psalm 25:4-5 =ways ; Psalm 51:10 =clean ; Psalm 86:11 =way ; Philippians 1:9-10 =love ; Colossians 1:9 =knowledge ; Ephesians 3:16-17 =strengthen ; Psalm 139:23-24 =Search ; Psalm 5:3 =morning
+TC Great Prayers in the Bible
+C Matthew 6 ; John 17 ; Ephesians 1 ; Ephesians 3 ; Daniel 9 ; Nehemiah 1 ; 1 Samuel 2 ; Psalm 51 ; Colossians 1 ; 1 Kings 8
+
+@armor | the Armor of God | study | Suit up. Here's the armor of God, piece by piece.
+TV The Armor of God, Piece by Piece
+V Ephesians 6:10 =strong ; Ephesians 6:11 =armor ; Ephesians 6:12 =struggle ; Ephesians 6:13 =stand ; Ephesians 6:14 =truth ; Ephesians 6:15 =feet ; Ephesians 6:16 =shield ; Ephesians 6:17 =sword ; Ephesians 6:18 =pray ; Isaiah 59:17 =helmet ; 1 Thessalonians 5:8 =helmet ; Romans 13:12 =armor
+TC Chapters About Fighting Spiritual Battles
+C Ephesians 6 ; 2 Corinthians 10 ; Isaiah 59 ; 1 Thessalonians 5 ; Romans 13 ; Matthew 4 ; 1 Peter 5 ; 2 Chronicles 20 ; 2 Kings 6 ; Joshua 6
+
+@fruit | the Fruit of the Spirit | study | What a Spirit-led life actually looks like.
+TV The Fruit of the Spirit in Scripture
+V Galatians 5:22-23 =fruit ; 1 Corinthians 13:4 =love ; Nehemiah 8:10 =joy ; John 14:27 =peace ; Romans 12:12 =patient ; Ephesians 4:32 =kind ; Psalm 23:6 =goodness ; Lamentations 3:22-23 =faithfulness ; Philippians 4:5 =gentleness ; Proverbs 25:28 =control ; John 15:5 =fruit ; Galatians 5:16 =Spirit
+TC Chapters About Living by the Spirit
+C Galatians 5 ; John 15 ; 1 Corinthians 13 ; Colossians 3 ; 2 Peter 1 ; Romans 12 ; Philippians 4 ; Romans 8 ; Psalm 1 ; Ephesians 5
+
+@beatitudes | the Beatitudes | study | The upside-down kingdom, in Jesus' words.
+TV The Beatitudes, One by One
+V Matthew 5:3 =poor ; Matthew 5:4 =mourn ; Matthew 5:5 =meek ; Matthew 5:6 =hunger ; Matthew 5:7 =merciful ; Matthew 5:8 =pure ; Matthew 5:9 =peacemakers ; Matthew 5:10 =persecuted ; Matthew 5:11-12 =insult
+
+@commandments | the Ten Commandments | study | The Ten Commandments, straight from Scripture.
+TV The Ten Commandments
+V Exodus 20:3 =other gods ; Exodus 20:4 =idol ; Exodus 20:7 =name ; Exodus 20:8 =Sabbath ; Exodus 20:12 =Honor ; Exodus 20:13 =murder ; Exodus 20:14 =adultery ; Exodus 20:15 =steal ; Exodus 20:16 =false ; Exodus 20:17 =covet
+
+@creation | God's Creation | study | Go outside and read this.
+TV Bible Verses About God's Creation
+V Psalm 19:1 =heavens ; Genesis 1:1 =beginning ; Romans 1:20 =creation ; Psalm 24:1 =earth ; Job 12:7-8 =animals ; Psalm 104:24 =works ; Isaiah 40:26 =starry ; Psalm 8:3-4 =moon ; Colossians 1:16 =created ; Psalm 148:3-5 =sun ; Genesis 1:31 =very good ; Nehemiah 9:6 =heavens
+TC Bible Chapters About Creation
+C Genesis 1 ; Genesis 2 ; Psalm 19 ; Psalm 104 ; Job 38 ; Job 39 ; Psalm 8 ; Psalm 148 ; Isaiah 40 ; Colossians 1

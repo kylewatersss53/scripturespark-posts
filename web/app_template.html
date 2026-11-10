@@ -1,0 +1,435 @@
+<title>Scripture Spark Post Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a single "day sheet" column, like a page torn from a devotional calendar; two post cards with a filmstrip of slides, library below. */
+:root {
+  --bg: #F4F2F8;
+  --surface: #FFFFFF;
+  --surface-2: #ECE8F4;
+  --ink: #1D1926;
+  --muted: #5F5870;
+  --line: #DCD6E7;
+  --accent: #5B45A0;
+  --accent-ink: #FFFFFF;
+  --ok: #2F7A4F;
+  --ok-bg: #E2F1E7;
+  --shadow: 0 1px 2px rgba(29, 25, 38, .06), 0 8px 24px rgba(29, 25, 38, .06);
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15131B; --surface: #1F1C28; --surface-2: #2A2635; --ink: #EEEAF6; --muted: #A8A1B8; --line: #383245;
+    --accent: #B8A6F2; --accent-ink: #1A1528; --ok: #8FD3A8; --ok-bg: #1E3327; --shadow: none; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15131B; --surface: #1F1C28; --surface-2: #2A2635; --ink: #EEEAF6; --muted: #A8A1B8; --line: #383245;
+  --accent: #B8A6F2; --accent-ink: #1A1528; --ok: #8FD3A8; --ok-bg: #1E3327; --shadow: none; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 56px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.muted { color: var(--muted); }
+button, .btn {
+  font: inherit; font-weight: 600; font-size: 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink); padding: 9px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; min-height: 40px;
+}
+button:hover { border-color: var(--accent); }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button[disabled] { opacity: .5; cursor: default; }
+input, select {
+  font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; min-height: 40px; width: 100%;
+}
+
+/* masthead */
+.mast { display: flex; flex-direction: column; gap: 6px; }
+.mast h1 { font-size: clamp(30px, 7vw, 44px); line-height: 1.05; }
+.mast p { margin: 0; max-width: 60ch; }
+.daynav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.daynav .date { font-family: var(--serif); font-size: 22px; flex: 1; min-width: 0; }
+.daynav .date small { display: block; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.iconbtn { width: 40px; padding: 0; justify-content: center; }
+
+/* post cards */
+.posts { display: flex; flex-direction: column; gap: 22px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 18px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.cardhead { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.cardhead h2 { font-size: 24px; line-height: 1.15; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
+.chip.done { background: var(--ok-bg); color: var(--ok); }
+.strip { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+.strip img { width: 150px; height: 200px; flex: 0 0 auto; border-radius: 10px; scroll-snap-align: start; border: 1px solid var(--line); background: var(--surface-2); cursor: zoom-in; object-fit: cover; }
+.strip .ph { width: 150px; height: 200px; flex: 0 0 auto; border-radius: 10px; background: var(--surface-2); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+details { border-top: 1px solid var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--muted); }
+.caption { white-space: pre-wrap; font-size: 14px; background: var(--surface-2); border-radius: 10px; padding: 12px; margin-top: 10px; user-select: text; overflow-wrap: anywhere; }
+.status { font-size: 13px; color: var(--muted); min-height: 20px; }
+.check { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; cursor: pointer; }
+.check input { width: 20px; height: 20px; min-height: 0; accent-color: var(--accent); }
+
+/* sections */
+section > h2 { font-size: 26px; margin-bottom: 4px; }
+section > p { margin: 0 0 14px; }
+.upcoming { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); overflow: hidden; }
+.upcoming li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 10px 14px; border-top: 1px solid var(--line); cursor: pointer; }
+.upcoming li:first-child { border-top: 0; }
+.upcoming li:hover { background: var(--surface-2); }
+.upcoming .d { font-size: 13px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.upcoming .t { min-width: 0; font-size: 14px; }
+.upcoming .t span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.results { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.topic { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.topic b { font-family: var(--serif); font-weight: 500; font-size: 19px; }
+.topic .actions button { min-height: 34px; padding: 5px 12px; font-size: 13px; }
+.settings { display: grid; grid-template-columns: 1fr; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; }
+.settings label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px; }
+.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.foot { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* viewer */
+.viewer { position: fixed; inset: 0; background: rgba(12, 10, 18, .92); z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.viewer img { max-width: 100%; max-height: calc(100% - 70px); border-radius: 12px; }
+.viewer .vbar { display: flex; gap: 10px; align-items: center; color: #fff; }
+.viewer .vbar span { min-width: 70px; text-align: center; font-variant-numeric: tabular-nums; }
+.viewer button { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.25); }
+@media (prefers-reduced-motion: no-preference) { .card { transition: border-color .2s; } }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="eyebrow">Scripture Spark · TikTok studio</div>
+    <h1>Today's Scripture posts</h1>
+    <p class="muted">Ready-to-post carousels for every day, built to be saved and shared, each ending on the Scripture Spark slide. Save the slides, copy the caption, post.</p>
+  </header>
+
+  <div class="daynav" aria-label="Choose day">
+    <button class="iconbtn" id="prevDay" aria-label="Previous day">‹</button>
+    <div class="date" id="dateLabel">Loading…<small>&nbsp;</small></div>
+    <button class="iconbtn" id="nextDay" aria-label="Next day">›</button>
+    <button id="todayBtn">Today</button>
+  </div>
+
+  <div class="posts" id="posts">
+    <div class="card"><div class="strip"><div class="ph"></div><div class="ph"></div><div class="ph"></div></div><div class="status">Setting the type…</div></div>
+  </div>
+
+  <section>
+    <h2>Coming up</h2>
+    <p class="muted">The next two weeks. Tap a day to prepare it ahead of time.</p>
+    <ul class="upcoming" id="upcoming"></ul>
+  </section>
+
+  <section>
+    <h2>Make any post</h2>
+    <p class="muted">Search the library to make a post for a request, a holiday, or a comment someone left.</p>
+    <div class="search">
+      <input id="q" type="search" placeholder="Try anxiety, marriage, grief, moms…" aria-label="Search topics" autocomplete="off">
+      <button id="randomBtn">Surprise me</button>
+    </div>
+    <div class="results" id="results"></div>
+    <div class="posts" id="custom" style="margin-top:14px"></div>
+  </section>
+
+  <section>
+    <h2>Settings</h2>
+    <div class="settings">
+      <label for="handle">Handle at the top of each slide
+        <input id="handle" type="text" placeholder="@yourhandle" maxlength="30" autocomplete="off">
+      </label>
+      <label for="perDay">Posts per day
+        <select id="perDay"><option value="1">1 a day</option><option value="2">2 a day</option><option value="3">3 a day</option><option value="4">4 a day</option></select>
+      </label>
+      <label for="endSlide">Last slide (your app slide is used unless you pick a new image)
+        <input id="endSlide" type="file" accept="image/*">
+      </label>
+      <div><button id="resetEnd" type="button">Use the Scripture Spark slide</button></div>
+      <label for="palette">Color style
+        <select id="palette"><option value="">Mixed (a different sky each post)</option></select>
+      </label>
+    </div>
+  </section>
+
+  <section>
+    <h2>How to post</h2>
+    <ol class="steps">
+      <li>Tap <b>Save slides</b> and save each image to your Photos.</li>
+      <li>In TikTok, tap <b>+</b>, choose <b>Photo</b>, and pick the slides in order.</li>
+      <li>Tap <b>Copy title</b> and <b>Copy caption</b>, and paste them in.</li>
+      <li>Add a soft worship or piano sound, then post. Space your posts a few hours apart through the day.</li>
+    </ol>
+  </section>
+
+  <p class="foot" id="foot">All Scripture is from the Berean Standard Bible, which is in the public domain, so you can post it freely.</p>
+</div>
+
+<div class="viewer" id="viewer" hidden>
+  <img id="vimg" alt="">
+  <div class="vbar">
+    <button id="vprev" aria-label="Previous slide">‹</button>
+    <span id="vcount">1 / 7</span>
+    <button id="vnext" aria-label="Next slide">›</button>
+    <button id="vclose">Close</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+/*ENGINE*/
+</script>
+<script>
+(function () {
+  "use strict";
+  const E = window.ScriptureEngine;
+  const $ = s => document.querySelector(s);
+  const TYPE = { D: "Today’s word", V: "10 verses", C: "10 chapters", P: "7-day plan", S: "Single verse", KC: "Chapter lists", KV: "Verse lists" };
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+  let LIB = null, BYID = {}, START = null, dayIndex = 0, todayIndex = 0, rawToday = 0, downloads = null;
+  const downloadsReady = (window.claude && window.claude.use ? window.claude.use("downloads") : Promise.resolve(null))
+    .then(d => (downloads = d)).catch(() => null);
+  const settings = { handle: store.get("ss.handle", "@scripturesparkapp"), palette: store.get("selah.palette", ""), perDay: Number(store.get("ss.perDay", "3")) || 3 };
+  const SLOT = ["Post 1 · morning", "Post 2 · midday", "Post 3 · afternoon", "Post 4 · evening"];
+  const SLOTS_FOR = { 1: [0], 2: [0, 1], 3: [0, 1, 2], 4: [0, 1, 2, 3] };
+
+  function localDate(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function dateFor(i) { const d = new Date(START); d.setDate(d.getDate() + i); return d; }
+  function fmt(d, o) { return d.toLocaleDateString(undefined, o); }
+  function idxFor(d) { return Math.round((localDate(d) - START) / 86400000); }
+  function postsFor(i) { const n = LIB.schedule.length; const k = ((i % n) + n) % n; return LIB.schedule[k].map(id => BYID[id]); }
+
+  function opts() { return { handle: settings.handle.trim() || null, palette: settings.palette === "" ? null : Number(settings.palette) }; }
+
+  function renderPostImages(post) {
+    const slides = E.buildSlides(post, LIB);
+    return slides.map((s, i) => E.renderSlide(s, post, i, opts()));
+  }
+  function toBlob(canvas) { return new Promise(res => canvas.toBlob(res, "image/jpeg", 0.92)); }
+
+  function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 50); }
+
+  async function copy(text, statusEl, what) {
+    try { await navigator.clipboard.writeText(text); statusEl.textContent = what + " copied."; }
+    catch (e) { statusEl.textContent = "Copy didn't work here. Open the caption below and select it."; }
+  }
+
+  function cardFor(post, label, dateKey) {
+    const card = document.createElement("article");
+    card.className = "card";
+    const doneKey = dateKey ? `selah.posted.${dateKey}.${post.id}` : null;
+    const done = doneKey && store.get(doneKey, "") === "1";
+    const caption = E.caption(post, LIB);
+    const title = post.ti.length > 90 ? post.ti.slice(0, 89) + "…" : post.ti;
+    card.innerHTML = `
+      <div class="cardhead">
+        <div style="min-width:0;display:flex;flex-direction:column;gap:6px">
+          <div class="eyebrow"></div>
+          <h2></h2>
+          <div class="chips"><span class="chip type"></span><span class="chip count"></span>${done ? '<span class="chip done">Posted</span>' : ''}</div>
+        </div>
+      </div>
+      <div class="strip" aria-label="Slides"></div>
+      <div class="actions">
+        <button class="primary save">Save slides</button>
+        <button class="zip">Save as .zip</button>
+        <button class="ctitle">Copy title</button>
+        <button class="ccap">Copy caption</button>
+      </div>
+      <div class="status" role="status"></div>
+      ${doneKey ? '<label class="check"><input type="checkbox" class="posted"> I posted this</label>' : ''}
+      <details><summary>Caption</summary><div class="caption"></div></details>`;
+    card.querySelector(".eyebrow").textContent = label;
+    card.querySelector("h2").textContent = post.ti;
+    card.querySelector(".type").textContent = TYPE[post.t] || post.t;
+    if (post.t === "S") { const c = document.createElement("span"); c.className = "chip"; c.textContent = post.v; card.querySelector(".chips").append(c); }
+    card.querySelector(".caption").textContent = caption;
+    const status = card.querySelector(".status");
+    const strip = card.querySelector(".strip");
+    if (doneKey) {
+      const cb = card.querySelector(".posted"); cb.checked = done;
+      cb.addEventListener("change", () => { store.set(doneKey, cb.checked ? "1" : ""); renderDay(); });
+    }
+
+    let canvases = [], urls = [];
+    // render after paint so the page stays responsive
+    setTimeout(async () => {
+      canvases = renderPostImages(post);
+      card.querySelector(".count").textContent = `${canvases.length} slides`;
+      for (let i = 0; i < canvases.length; i++) {
+        const b = await toBlob(canvases[i]);
+        const url = URL.createObjectURL(b); urls.push(url);
+        const img = document.createElement("img"); img.src = url; img.alt = `Slide ${i + 1}`; img.loading = "lazy";
+        img.addEventListener("click", () => openViewer(urls, i));
+        strip.appendChild(img);
+      }
+      downloadsReady.then(d => { if (!d && !status.textContent) status.textContent = "Press and hold a slide to save it to your Photos."; });
+    }, 0);
+
+    const base = slug(post.ti);
+    card.querySelector(".save").addEventListener("click", async e => {
+      if (!downloads) await downloadsReady;
+      if (!downloads) { status.textContent = "Saving isn't available here. Press and hold each slide to save it."; return; }
+      const btn = e.currentTarget; btn.disabled = true;
+      let saved = 0;
+      for (let i = 0; i < canvases.length; i++) {
+        status.textContent = `Saving slide ${i + 1} of ${canvases.length}…`;
+        try {
+          await downloads.save({ filename: `${base}-${String(i + 1).padStart(2, "0")}.jpg`, data: await toBlob(canvases[i]) });
+          saved++;
+        } catch (err) {
+          if (err && err.code === "declined") { status.textContent = `Stopped at slide ${i + 1}. ${saved} saved.`; btn.disabled = false; return; }
+          if (err && err.code === "rate_limited") { await new Promise(r => setTimeout(r, 1500)); i--; continue; }
+          status.textContent = "Saving isn't available here. Press and hold each slide to save it."; btn.disabled = false; return;
+        }
+      }
+      status.textContent = `Saved ${saved} slides. Post them in this order.`; btn.disabled = false;
+    });
+    card.querySelector(".zip").addEventListener("click", async e => {
+      if (!downloads) await downloadsReady;
+      if (!downloads || !window.JSZip) { status.textContent = "Zip saving isn't available here."; return; }
+      const btn = e.currentTarget; btn.disabled = true; status.textContent = "Packing slides…";
+      try {
+        const zip = new JSZip();
+        for (let i = 0; i < canvases.length; i++) zip.file(`${String(i + 1).padStart(2, "0")}.jpg`, await toBlob(canvases[i]));
+        zip.file("caption.txt", `TITLE\n${title}\n\nCAPTION\n${caption}\n`);
+        const blob = await zip.generateAsync({ type: "blob" });
+        await downloads.save({ filename: `${base}.zip`, data: blob });
+        status.textContent = "Saved the zip.";
+      } catch (err) { status.textContent = err && err.code === "declined" ? "Not saved." : "Couldn't save the zip here."; }
+      btn.disabled = false;
+    });
+    card.querySelector(".ctitle").addEventListener("click", () => copy(title, status, "Title"));
+    card.querySelector(".ccap").addEventListener("click", () => copy(caption, status, "Caption"));
+    return card;
+  }
+
+  function renderDay() {
+    const d = dateFor(dayIndex);
+    const diff = dayIndex - rawToday;
+    const rel = diff === 0 ? "Today" : diff === 1 ? "Tomorrow" : diff === -1 ? "Yesterday" : fmt(d, { weekday: "long" });
+    $("#dateLabel").innerHTML = "";
+    $("#dateLabel").append(document.createTextNode(fmt(d, { weekday: "short", month: "long", day: "numeric" })));
+    const sm = document.createElement("small"); sm.textContent = rel; $("#dateLabel").append(sm);
+    const all = postsFor(dayIndex);
+    const key = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    const box = $("#posts"); box.innerHTML = "";
+    SLOTS_FOR[settings.perDay].forEach((si, n) => box.append(cardFor(all[si], `Post ${n + 1} of ${settings.perDay}`, key)));
+    renderUpcoming();
+  }
+
+  function renderUpcoming() {
+    const ul = $("#upcoming"); ul.innerHTML = "";
+    for (let i = todayIndex; i < todayIndex + 14; i++) {
+      const d = dateFor(i); const all = postsFor(i); const dayPosts = SLOTS_FOR[settings.perDay].map(k => all[k]);
+      const li = document.createElement("li"); li.tabIndex = 0;
+      const dd = document.createElement("div"); dd.className = "d"; dd.textContent = fmt(d, { weekday: "short", month: "short", day: "numeric" });
+      const tt = document.createElement("div"); tt.className = "t";
+      dayPosts.forEach(p => { const s = document.createElement("span"); s.textContent = p.ti; tt.append(s); });
+      if (i === dayIndex) li.style.background = "var(--surface-2)";
+      li.append(dd, tt);
+      const go = () => { dayIndex = i; renderDay(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+      li.addEventListener("click", go); li.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+      ul.append(li);
+    }
+  }
+
+  // ---------- library search ----------
+  function search() {
+    const q = $("#q").value.trim().toLowerCase();
+    const box = $("#results"); box.innerHTML = "";
+    if (!q) return;
+    const hits = Object.entries(LIB.topics).filter(([id, t]) => (t.s + " " + id + " " + (t.tags || []).join(" ") + " " + t.hook).toLowerCase().includes(q)).slice(0, 12);
+    if (!hits.length) { box.innerHTML = '<p class="muted">No topic matches that. Try a feeling, a person, or a season of life.</p>'; return; }
+    hits.forEach(([id, t]) => {
+      const div = document.createElement("div"); div.className = "topic";
+      const b = document.createElement("b"); b.textContent = t.s.charAt(0).toUpperCase() + t.s.slice(1);
+      const acts = document.createElement("div"); acts.className = "actions";
+      const add = (label, pid) => { if (!BYID[pid]) return; const btn = document.createElement("button"); btn.textContent = label; btn.addEventListener("click", () => showCustom(BYID[pid])); acts.append(btn); };
+      add("Verse list", `V:${id}`); add("Chapter list", `C:${id}`); add("7-day plan", `P:${id}`);
+      if (t.v.length) add(`Single verse (${t.v.length})`, `S:${id}:${Math.floor(Math.random() * t.v.length)}`);
+      div.append(b, acts); box.append(div);
+    });
+  }
+  function showCustom(post) {
+    const box = $("#custom"); box.innerHTML = "";
+    box.append(cardFor(post, "Your pick", null));
+    box.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // ---------- viewer ----------
+  let vUrls = [], vI = 0;
+  function openViewer(urls, i) { vUrls = urls; vI = i; showV(); $("#viewer").hidden = false; $("#vclose").focus(); }
+  function showV() { $("#vimg").src = vUrls[vI]; $("#vimg").alt = `Slide ${vI + 1}`; $("#vcount").textContent = `${vI + 1} / ${vUrls.length}`; }
+  $("#vprev").addEventListener("click", () => { vI = (vI - 1 + vUrls.length) % vUrls.length; showV(); });
+  $("#vnext").addEventListener("click", () => { vI = (vI + 1) % vUrls.length; showV(); });
+  $("#vclose").addEventListener("click", () => { $("#viewer").hidden = true; });
+  document.addEventListener("keydown", e => {
+    if ($("#viewer").hidden) return;
+    if (e.key === "Escape") $("#viewer").hidden = true;
+    if (e.key === "ArrowRight") $("#vnext").click();
+    if (e.key === "ArrowLeft") $("#vprev").click();
+  });
+  let tx = null;
+  $("#viewer").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+  $("#viewer").addEventListener("touchend", e => { if (tx == null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 40) (dx < 0 ? $("#vnext") : $("#vprev")).click(); tx = null; });
+
+  // ---------- boot ----------
+  async function boot() {
+    const custom = store.get("ss.endSlide", "");
+    const [fontsOk, lib] = await Promise.all([E.loadFonts("fonts/"), fetch("library.json").then(r => r.json()), E.loadPromo(custom || "promo.jpg")]);
+    LIB = lib; LIB.posts.forEach(p => { BYID[p.id] = p; });
+    const [y, m, d] = LIB.meta.start.split("-").map(Number);
+    START = new Date(y, m - 1, d);
+    rawToday = idxFor(new Date());
+    todayIndex = Math.max(0, rawToday);
+    dayIndex = todayIndex;
+    const pal = $("#palette");
+    E.PALETTES.forEach((p, i) => { const o = document.createElement("option"); o.value = String(i); o.textContent = p.name; pal.append(o); });
+    pal.value = settings.palette;
+    $("#handle").value = settings.handle;
+    $("#perDay").value = String(settings.perDay);
+    const end = dateFor(LIB.schedule.length - 1);
+    const nTopics = Object.keys(LIB.topics).length;
+    $("#foot").textContent = `${LIB.posts.length.toLocaleString()} posts from ${nTopics} topics, scheduled through ${fmt(end, { month: "long", year: "numeric" })}. All Scripture is from the Berean Standard Bible, which is in the public domain, so you can post it freely.` + (fontsOk ? "" : " (Slide fonts didn't load; slides use a fallback serif.)");
+    renderDay();
+  }
+  $("#prevDay").addEventListener("click", () => { dayIndex = Math.max(0, dayIndex - 1); renderDay(); });
+  $("#nextDay").addEventListener("click", () => { dayIndex += 1; renderDay(); });
+  $("#todayBtn").addEventListener("click", () => { dayIndex = todayIndex; renderDay(); });
+  let qt; $("#q").addEventListener("input", () => { clearTimeout(qt); qt = setTimeout(search, 150); });
+  $("#randomBtn").addEventListener("click", () => { if (!LIB) return; const ps = LIB.posts; showCustom(ps[Math.floor(Math.random() * ps.length)]); });
+  let ht; $("#handle").addEventListener("input", e => { settings.handle = e.target.value; store.set("ss.handle", settings.handle); clearTimeout(ht); ht = setTimeout(renderDay, 500); });
+  $("#perDay").addEventListener("change", e => { settings.perDay = Number(e.target.value); store.set("ss.perDay", e.target.value); renderDay(); });
+  $("#endSlide").addEventListener("change", e => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    const url = URL.createObjectURL(f); const im = new Image();
+    im.onload = () => {
+      // store a 1080x1440 copy so the choice is remembered on this device
+      const c = document.createElement("canvas"); c.width = 1080; c.height = 1440; const g = c.getContext("2d");
+      const k = Math.max(1080 / im.width, 1440 / im.height); g.drawImage(im, (1080 - im.width * k) / 2, (1440 - im.height * k) / 2, im.width * k, im.height * k);
+      const data = c.toDataURL("image/jpeg", 0.88); store.set("ss.endSlide", data);
+      E.loadPromo(data).then(renderDay);
+    };
+    im.src = url;
+  });
+  $("#resetEnd").addEventListener("click", () => { store.set("ss.endSlide", ""); E.loadPromo("promo.jpg").then(renderDay); });
+  $("#palette").addEventListener("change", e => { settings.palette = e.target.value; store.set("selah.palette", settings.palette); renderDay(); });
+
+  boot().catch(err => { $("#posts").innerHTML = '<div class="card"><p>Couldn\'t load the post library. Reload the page to try again.</p></div>'; console.error(err); });
+})();
+</script>
