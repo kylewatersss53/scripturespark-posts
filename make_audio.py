@@ -1,39 +1,35 @@
-"""Build web/daily_audio.m4a: the birdsong under every daily-word video.
+"""Build web/daily_audio.m4a: the calm birdsong under every daily-word video.
 
-Source: "Dawnchorus-uk.ogg", a public-domain recording of a dawn chorus in
-Shipton Gorge, England, on Wikimedia Commons
-(https://commons.wikimedia.org/wiki/File:Dawnchorus-uk.ogg). Public domain, so no
-attribution is required. We take 12.5 s starting at 12:42 (clear, melodic songs,
-little wind or traffic), notch out a faint ~511 Hz-spaced buzz, reduce hiss,
-roll off rumble, set the level to about -19 LUFS (soft, sits under TikTok's UI
-sounds) and fade both ends.
-
-Only needed to regenerate the file (needs network access to upload.wikimedia.org);
-the result is committed, so the nightly job never downloads anything.
+Source: audio/daily_birds_source.wav (bird clip supplied by the account owner,
+~5 s mono). The first 0.85 s has dropouts, so we use 0.85 s to the end (~4.1 s),
+loop it 4x with 0.6 s crossfades so the joins are seamless, roll off rumble,
+set the level to about -19 LUFS (soft), make it stereo, trim to 12.5 s and fade
+both ends. To change the sound, replace the source wav and rerun:
 
     python3 make_audio.py
 """
-import os, subprocess, tempfile, urllib.request
+import os, subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.join(HERE, "audio", "daily_birds_source.wav")
 OUT = os.path.join(HERE, "web", "daily_audio.m4a")
-SRC = "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/de/Dawnchorus-uk.ogg/Dawnchorus-uk.ogg.mp3"
-START, LEN = 762, 12.5
+START, LEN, XF, COPIES = 0.85, 12.5, 0.6, 4
 
-FILTERS = ",".join([
-    "highpass=f=300:poles=2", "lowpass=f=11000",
-    # faint electrical / insect buzz in the recording
-    "equalizer=f=511:t=q:w=8:g=-18", "equalizer=f=1179:t=q:w=8:g=-15",
-    "equalizer=f=1690:t=q:w=10:g=-22", "equalizer=f=2202:t=q:w=10:g=-15",
-    "afftdn=nr=12:nf=-50",
-    "loudnorm=I=-19:TP=-3:LRA=7",
-    "afade=t=in:st=0:d=1.0", f"afade=t=out:st={LEN - 1.6}:d=1.6",
-])
+def build(src=SRC, out=OUT):
+    inputs = []
+    for _ in range(COPIES):
+        inputs += ["-ss", str(START), "-i", src]
+    chain, last = [], "0:a"
+    for i in range(1, COPIES):
+        lab = f"x{i}"
+        chain.append(f"[{last}][{i}:a]acrossfade=d={XF}:c1=tri:c2=tri[{lab}]")
+        last = lab
+    chain.append(f"[{last}]highpass=f=200:poles=2,loudnorm=I=-19:TP=-3:LRA=7,"
+                 f"atrim=0:{LEN},afade=t=in:st=0:d=0.8,afade=t=out:st={LEN - 1.6}:d=1.6,"
+                 f"aformat=channel_layouts=stereo[a]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(chain),
+                    "-map", "[a]", "-ar", "44100", "-c:a", "aac", "-b:a", "192k", out], check=True)
+    return out
 
 if __name__ == "__main__":
-    with tempfile.TemporaryDirectory() as d:
-        src = os.path.join(d, "src.mp3")
-        urllib.request.urlretrieve(SRC, src)
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(START), "-t", str(LEN), "-i", src,
-                        "-af", FILTERS, "-ar", "44100", "-c:a", "aac", "-b:a", "192k", OUT], check=True)
-    print("wrote", OUT)
+    print("wrote", build())
