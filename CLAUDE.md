@@ -3,7 +3,7 @@
 Generates TikTok photo carousels for @scripturesparkapp (promotes the Scripture Spark iOS app, "Read Scripture with someone") and schedules them through Buffer.
 
 ## Goal
-Bookmarks/saves and app awareness. Post 3x daily (America/Chicago): 07:00 "Today God is saying to you" daily word (12 s video with calm music), 12:00 and 19:00 list carousels (photo posts, no music). Content must not feel stale: rotating topics, title phrasings, formats and colors.
+Bookmarks/saves and app awareness. Post 3x daily (America/Chicago): 07:00 "Today God is saying to you" daily word (12 s video with birdsong), 12:00 and 19:00 list carousels (photo posts, no music). Content must not feel stale: rotating topics, title phrasings, formats and colors.
 
 ## How it works
 - `data/BSB.json`: Berean Standard Bible (public domain). `bible.py` parses/validates references and cleans display text (Psalm superscriptions, quote balancing).
@@ -13,7 +13,7 @@ Bookmarks/saves and app awareness. Post 3x daily (America/Chicago): 07:00 "Today
 - `gen.py` → `build/library.json`: all posts (V verse lists, C chapter lists, P 7-day plans, S single verse, KC/KV multi-list stacks, D daily word) and a 3-year schedule from 2026-11-10. Each schedule day = `[D, list, list, single, list]`; Buffer uses slots 0,1,2. Holidays are pinned (Easter, Thanksgiving, Advent, Christmas, etc.). `WHEN` dict gives "When You..." titles (best performers on the account).
 - `web/engine.js`: canvas slide renderer shared by everything. 1080x1440 JPEG. Palettes (light pastels + NIGHT darks for daily word), per-post color mode (same / drift / mixed), app promo end slide (`web/promo.jpg`), captions (save CTA + app line + 988 line on sensitive topics + `APP_PLANS` mentions).
 - `render_batch.py`: headless Chrome (Playwright, `/usr/bin/google-chrome`) renders posts via `web/harness.html`. For `D:` posts it also writes `tall.jpg`, a full-screen 1080x1920 frame (engine `opts.tall`: background stretched to fill, normal layout offset 170px down).
-- Daily-word video: `make_video.py` turns `tall.jpg` into a 12 s 1080x1920 H.264/AAC MP4 with `web/calm_music.m4a` (original synthesized track from `make_music.py`; replace the file to change the music, same track on every daily video). No app promo slide in the video; the caption carries the app line.
+- Daily-word video: `make_video.py` turns `tall.jpg` into a 12 s 1080x1920 H.264/AAC MP4 with birdsong from `web/daily_audio.m4a` (public-domain dawn chorus from Wikimedia Commons, cleaned by `make_audio.py`; same audio on every daily video, about -19 LUFS). No app promo slide in the video; the caption carries the app line.
 - `make_site.py START DAYS` → `site/` + `manifest.json` (per slot: key, date, time, post, title, caption, images; daily slots also have `video` = `<key>/video.mp4`).
 - `publish_images.sh START DAYS`: force-pushes `site/` to the orphan `images` branch. Public URLs: `https://raw.githubusercontent.com/kylewatersss53/scripturespark-posts/images/<key>/<NN>.jpg`.
 - `build_app.py` → `build/app/` (Post Studio web app, published as a claude.ai artifact: manual daily view, library search, save slides, copy captions).

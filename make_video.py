@@ -2,7 +2,7 @@
 
 Input is the full-screen 1080x1920 daily-word frame (render_batch.py writes it as
 tall.jpg for every D: post). Output: 1080x1920, 30 fps, H.264 + AAC, 12 s, soft
-fade-in, music from web/calm_music.m4a (see make_music.py) faded at both ends.
+fade-in, birdsong from web/daily_audio.m4a (see make_audio.py) faded at both ends.
 No app promo slide; the caption carries the app line.
 
     python3 make_video.py OUT.mp4 tall.jpg
@@ -10,7 +10,7 @@ No app promo slide; the caption carries the app line.
 import os, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-MUSIC = os.path.join(HERE, "web", "calm_music.m4a")
+MUSIC = os.path.join(HERE, "web", "daily_audio.m4a")
 TOTAL = 12.0
 
 def make_daily_video(frame, out, music=MUSIC, total=TOTAL):
