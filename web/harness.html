@@ -14,4 +14,10 @@ window.renderPost = async (id, opts) => {
   const imgs = slides.map((s, i) => ScriptureEngine.renderSlide(s, post, i, opts || {}).toDataURL("image/jpeg", 0.92));
   return { id, title: post.ti, caption: ScriptureEngine.caption(post, LIB), imgs };
 };
+// daily word as a full-screen 1080x1920 frame (for the daily video)
+window.renderTall = async (id, opts) => {
+  const post = LIB.posts.find(p => p.id === id);
+  const slides = ScriptureEngine.buildSlides(post, LIB);
+  return ScriptureEngine.renderSlide(slides[0], post, 0, Object.assign({}, opts || {}, { tall: true })).toDataURL("image/jpeg", 0.95);
+};
 </script></body></html>

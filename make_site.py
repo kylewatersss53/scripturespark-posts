@@ -1,6 +1,7 @@
 """Render the next N days of scheduled posts into site/ (served by Netlify), plus manifest.json."""
 import json, os, shutil, sys, datetime as dt
 import render_batch
+from make_video import make_daily_video
 HERE = os.path.dirname(os.path.abspath(__file__))
 start_day = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else dt.date.today()
 days = int(sys.argv[2]) if len(sys.argv) > 2 else 5
@@ -22,7 +23,11 @@ for d, hhmm, pid in jobs:
     imgs = []
     for f in r["files"][:10]:
         shutil.copy(f, os.path.join(site, key, os.path.basename(f))); imgs.append(f"{key}/{os.path.basename(f)}")
-    manifest.append({"key": key, "date": d.isoformat(), "time": hhmm, "post": pid, "title": r["title"], "caption": r["caption"], "images": imgs})
+    entry = {"key": key, "date": d.isoformat(), "time": hhmm, "post": pid, "title": r["title"], "caption": r["caption"], "images": imgs}
+    if r.get("tall"):   # daily word -> 12 s full-screen video with calm music (post this instead of the images)
+        make_daily_video(r["tall"], os.path.join(site, key, "video.mp4"))
+        entry["video"] = f"{key}/video.mp4"
+    manifest.append(entry)
 json.dump(manifest, open(os.path.join(site, "manifest.json"), "w"), ensure_ascii=False, indent=1)
 open(os.path.join(site, "index.html"), "w").write("<!doctype html><title>Scripture Spark posts</title><p>Image host for scheduled posts.</p>")
 shutil.rmtree(tmp, ignore_errors=True)

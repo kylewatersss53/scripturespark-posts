@@ -516,14 +516,22 @@
     return PALETTES[hash(post.id + ":" + index) % PALETTES.length];                 // every slide different
   }
 
+  // opts.tall (daily word only): 1080x1920 frame for the daily video. The background is
+  // stretched to fill the full height and the normal 1080x1440 layout sits TALL_Y px down,
+  // clear of TikTok's top tabs and bottom caption overlay.
+  const TALL_H = 1920, TALL_Y = 170;
   function renderSlide(slide, post, index, opts = {}) {
-    const c = document.createElement("canvas"); c.width = W; c.height = H;
+    const tall = !!opts.tall && slide.kind === "daily";
+    const c = document.createElement("canvas"); c.width = W; c.height = tall ? TALL_H : H;
     const ctx = c.getContext("2d");
     const pal = opts.palette != null ? PALETTES[opts.palette] : paletteForSlide(post, index);
     if (slide.kind === "daily") {
-      const h = hash(post.id);
-      if (h % 5 < 3) { const np = NIGHT[h % NIGHT.length]; nightBackground(ctx, np, h); drawDaily(ctx, np, slide, opts); }
-      else { const lp = PALETTES[h % PALETTES.length]; background(ctx, lp, h); drawDailyLight(ctx, lp, slide, opts); }
+      const h = hash(post.id), night = h % 5 < 3;
+      const p = night ? NIGHT[h % NIGHT.length] : PALETTES[h % PALETTES.length];
+      if (tall) { ctx.save(); ctx.scale(1, TALL_H / H); }
+      night ? nightBackground(ctx, p, h) : background(ctx, p, h);
+      if (tall) { ctx.restore(); ctx.translate(0, TALL_Y); }
+      night ? drawDaily(ctx, p, slide, opts) : drawDailyLight(ctx, p, slide, opts);
       return c;
     }
     background(ctx, pal, hash(post.id) + index * 7919);

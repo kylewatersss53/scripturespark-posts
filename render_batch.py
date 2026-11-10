@@ -34,6 +34,12 @@ def render(post_ids, outdir, handle=None):
                 with open(fn, "wb") as f:
                     f.write(base64.b64decode(data.split(",", 1)[1]))
                 files.append(fn)
+            if pid.startswith("D:"):   # full-screen frame for the daily video
+                t = page.evaluate("([id, o]) => window.renderTall(id, o)", [pid, {"handle": handle} if handle else {}])
+                fn = os.path.join(d, "tall.jpg")
+                with open(fn, "wb") as f:
+                    f.write(base64.b64decode(t.split(",", 1)[1]))
+                r["tall"] = fn
             r.pop("imgs"); r["files"] = files; r["dir"] = d
             results.append(r)
         b.close()
