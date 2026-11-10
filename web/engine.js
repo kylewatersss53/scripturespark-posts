@@ -459,7 +459,7 @@
       { t: "— " + s.ref, fam: SANS, w: 600, st: "normal", k: 0.6, lh: 1.3, gap: 1.0, color: pal.acc, spaced: true },
       { t: s.close, fam: SERIF, w: 500, st: "normal", k: 1.05, lh: 1.25, gap: 0, color: pal.ink },
     ];
-    const top = 320, bottom = H - 120;
+    const top = 400, bottom = H - 110;
     let base = 64, laid;
     for (; base >= 28; base -= 1) {
       let y = 0; laid = [];
@@ -472,9 +472,17 @@
       if (y <= bottom - top) { laid.total = y; break; }
     }
     // header
-    font(ctx, SANS, 34, 600); ctx.fillStyle = pal.acc; spaced(ctx, s.dateLabel.toUpperCase(), W / 2, 150, 6, "center");
-    font(ctx, SERIF, 46, 400, "italic"); ctx.fillStyle = hexA(pal.ink, 0.8); ctx.textAlign = "center"; ctx.fillText("God is saying to you today:", W / 2, 232);
-    ctx.fillStyle = hexA(pal.acc, 0.6); ctx.fillRect(W / 2 - 40, 268, 80, 3);
+    // big date (about 3x the old 34px label), shrunk only if a long month would overflow
+    const date = s.dateLabel.toUpperCase();
+    let ds = 102;
+    for (; ds > 60; ds -= 2) {
+      font(ctx, SANS, ds, 600);
+      const sp = ds * 0.08, wdt = [...date].reduce((a, c) => a + ctx.measureText(c).width + sp, -sp);
+      if (wdt <= TW) break;
+    }
+    font(ctx, SANS, ds, 600); ctx.fillStyle = pal.acc; spaced(ctx, date, W / 2, 200, ds * 0.08, "center");
+    font(ctx, SERIF, 46, 400, "italic"); ctx.fillStyle = hexA(pal.ink, 0.8); ctx.textAlign = "center"; ctx.fillText("God is saying to you today:", W / 2, 296);
+    ctx.fillStyle = hexA(pal.acc, 0.6); ctx.fillRect(W / 2 - 40, 334, 80, 3);
     const y0 = top + Math.max(0, (bottom - top - laid.total) / 2) * 0.85;
     laid.forEach(({ p, size, lines, y }) => {
       font(ctx, p.fam, size, p.w, p.st); ctx.fillStyle = p.color;
