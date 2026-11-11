@@ -25,12 +25,12 @@ CSV = os.path.join(ADIR, "performance.csv")
 REPORT = os.path.join(ADIR, "REPORT.md")
 TUNING = os.path.join(ADIR, "tuning.json")
 CT = ZoneInfo("America/Chicago")
-SLOT_BY_TIME = {"07:00": 0, "12:00": 1, "16:00": 5, "19:00": 2}
+SLOT_BY_TIME = {"07:00": 0, "12:00": 1, "16:00": 5, "19:00": 2, "21:00": 3}
 MIN_POSTS, MIN_DAYS = 28, 7
 LIST_TYPES = ["V", "C", "P", "KC", "KV"]
 QUIZ_STYLES = ["T", "F", "W", "B"]
 TYPE_NAME = {"D": "Daily word video", "V": "10 verses", "C": "10 chapters", "P": "7-day plan", "KC": "Chapter list stack",
-             "KV": "Verse list stack", "S": "Single verse", "Q": "Bible quiz"}
+             "KV": "Verse list stack", "S": "Verse video (9pm)", "Q": "Bible quiz"}
 STYLE_NAME = {"T": "Bible Trivia", "F": "Finish the Verse", "W": "Who Said It?", "B": "Guess the Book"}
 FIELDS = ["buffer_id", "key", "date", "time", "weekday", "post", "type", "style", "topics", "category", "title", "title_style",
           "views", "likes", "comments", "shares", "reach", "eng_rate", "avg_watch_sec", "metrics_updated", "ingested"]
@@ -107,9 +107,15 @@ def match(node, L, byid):
         cands.append((day[SLOT_BY_TIME[hhmm]], hhmm))
     cands += [(pid, hhmm) for pid in day]
     for pid, tm in cands:
-        ti = _norm(byid[pid].get("ti", ""))
-        if ti and first.startswith(ti):
-            return byid[pid], f"{d.isoformat()}-{tm.replace(':', '')}"
+        for t in (byid[pid].get("vh"), byid[pid].get("ti")):
+            if t and first.startswith(_norm(t)):
+                return byid[pid], f"{d.isoformat()}-{tm.replace(':', '')}"
+    # published slots are frozen, so after a content edit the post may no longer be in that day's schedule
+    if hhmm in SLOT_BY_TIME and first:
+        for p in L["posts"]:
+            for t in (p.get("vh"), p.get("ti")):
+                if t and len(_norm(t)) > 12 and first.startswith(_norm(t)) and (p["t"] != "D" or p["date"] == d.isoformat()):
+                    return p, f"{d.isoformat()}-{hhmm.replace(':', '')}"
     return None, None
 
 
@@ -144,7 +150,7 @@ def ingest(path):
         d, tm = key[:10], key[11:13] + ":" + key[13:]
         row = {"buffer_id": node["id"], "key": key, "date": d, "time": tm,
                "weekday": dt.date.fromisoformat(d).strftime("%a"), "post": post["id"], "type": post["t"],
-               "style": post.get("f", ""), "topics": " ".join(ks), "category": cat, "title": post.get("ti", ""),
+               "style": post.get("f", ""), "topics": " ".join(ks), "category": cat, "title": post.get("vh") or post.get("ti", ""),
                "title_style": title_style(post), **_metrics(node), "metrics_updated": node.get("metricsUpdatedAt") or "",
                "ingested": dt.datetime.now(CT).isoformat(timespec="minutes")}
         if node["id"] in rows:
@@ -166,8 +172,9 @@ def _f(x):
 
 
 def scored(rows):
-    """Posts with real stats, each with a 0-1 score: 50% views, 20% like rate, 15% comment rate, 15% share rate
-    (percentile ranks within the account, so the score is about this account's own posts)."""
+    """Posts with real stats, each with a 0-1 score. Views come first (the owner's goal: the most eyeballs on the
+    Scripture Spark brand): 70% views, 12% share rate, 10% comment rate, 8% like rate. Shares and comments are
+    kept because they are what earns the next round of views. Percentile ranks within this account's own posts."""
     rs = [dict(r) for r in rows.values() if _f(r.get("views")) > 0]
     if not rs:
         return []
@@ -179,7 +186,7 @@ def scored(rows):
     com = [_f(r["comments"]) / max(1, _f(r["views"])) for r in rs]
     sh = [_f(r["shares"]) / max(1, _f(r["views"])) for r in rs]
     for r, a, b, c, d in zip(rs, pct(v), pct(like), pct(com), pct(sh)):
-        r["score"] = 0.5 * a + 0.2 * b + 0.15 * c + 0.15 * d
+        r["score"] = 0.70 * a + 0.08 * b + 0.10 * c + 0.12 * d
     return rs
 
 
@@ -195,7 +202,8 @@ def groups(rs, keyf):
 def summarize(items):
     v = [_f(r["views"]) for r in items]
     tot = max(1, sum(v))
-    return {"n": len(items), "median_views": statistics.median(v),
+    w = [_f(r.get("avg_watch_sec")) for r in items if _f(r.get("avg_watch_sec")) > 0]
+    return {"n": len(items), "median_views": statistics.median(v), "avg_watch": statistics.mean(w) if w else None,
             "like_pct": 100 * sum(_f(r["likes"]) for r in items) / tot,
             "comments_per_1k": 1000 * sum(_f(r["comments"]) for r in items) / tot,
             "shares_per_1k": 1000 * sum(_f(r["shares"]) for r in items) / tot,
@@ -203,10 +211,11 @@ def summarize(items):
 
 
 def table(title, g, names=None, min_n=1):
-    lines = [f"### {title}", "", "| | posts | median views | likes % | comments / 1k views | shares / 1k views | score |", "|---|---|---|---|---|---|---|"]
+    lines = [f"### {title}", "", "| | posts | median views | likes % | comments / 1k views | shares / 1k views | avg watch (videos) | score |", "|---|---|---|---|---|---|---|---|"]
     rows = sorted(((k, summarize(v)) for k, v in g.items() if len(v) >= min_n), key=lambda x: -x[1]["score"])
     for k, s in rows:
-        lines.append(f"| {(names or {}).get(k, k)} | {s['n']} | {s['median_views']:,.0f} | {s['like_pct']:.1f} | {s['comments_per_1k']:.1f} | {s['shares_per_1k']:.1f} | {s['score']:.2f} |")
+        aw = f"{s['avg_watch']:.1f}s" if s["avg_watch"] else "–"
+        lines.append(f"| {(names or {}).get(k, k)} | {s['n']} | {s['median_views']:,.0f} | {s['like_pct']:.1f} | {s['comments_per_1k']:.1f} | {s['shares_per_1k']:.1f} | {aw} | {s['score']:.2f} |")
     return "\n".join(lines) + "\n"
 
 
@@ -215,7 +224,7 @@ def report():
     rs = scored(rows)
     now = dt.datetime.now(CT)
     out = [f"# TikTok performance report", "", f"Updated {now:%Y-%m-%d %H:%M} Central. {len(rows)} posts tracked, {len(rs)} with stats so far.",
-           "Score = 50% views, 20% like rate, 15% comment rate, 15% share rate, each ranked against this account's own posts (0 to 1). "
+           "Score = 70% views, 12% share rate, 10% comment rate, 8% like rate, each ranked against this account's own posts (0 to 1). "
            "Buffer does not report saves; check TikTok Studio for those.", ""]
     if not rs:
         out.append("No stats yet. Buffer refreshes TikTok numbers about once a day.")
@@ -230,6 +239,9 @@ def report():
         out.append(table("Topic categories", groups([r for r in rs if r["category"]], lambda r: [r["category"]])))
         out.append(table("Topics (2+ posts)", groups([r for r in rs if r["type"] in ("V", "C", "P")], lambda r: r["topics"].split()), min_n=2))
         out.append(table("Weekday", groups(rs, lambda r: [r["weekday"]])))
+        dv = [r for r in rs if r["type"] == "D" and _f(r.get("avg_watch_sec")) > 0]
+        if dv:
+            out += [f"Daily word videos (12 s): people watch {100 * statistics.mean(_f(r['avg_watch_sec']) for r in dv) / 12:.0f}% of the video on average (over 100% means rewatches).", ""]
         best = sorted(rs, key=lambda r: -r["score"])
         fmt = lambda r: f"- {r['date']} {r['time']} · {TYPE_NAME.get(r['type'], r['type'])} · “{r['title']}” · {int(_f(r['views'])):,} views, {int(_f(r['likes']))} likes, {int(_f(r['comments']))} comments, {int(_f(r['shares']))} shares"
         out += ["### Top posts", ""] + [fmt(r) for r in best[:5]] + ["", "### Weakest posts", ""] + [fmt(r) for r in best[-5:][::-1]] + [""]

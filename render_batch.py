@@ -40,6 +40,15 @@ def render(post_ids, outdir, handle=None):
                 with open(fn, "wb") as f:
                     f.write(base64.b64decode(t.split(",", 1)[1]))
                 r["tall"] = fn
+            if pid.startswith("S:"):   # frames for the 9pm verse video
+                vv = page.evaluate("([id, o]) => window.renderVerseVideo(id, o)", [pid, {"handle": handle} if handle else {}])
+                r["vframes"] = []
+                for i, data in enumerate(vv["frames"]):
+                    fn = os.path.join(d, f"vv{i:02d}.jpg")
+                    with open(fn, "wb") as f:
+                        f.write(base64.b64decode(data.split(",", 1)[1]))
+                    r["vframes"].append(fn)
+                r["vdurs"] = vv["durs"]
             r.pop("imgs"); r["files"] = files; r["dir"] = d
             results.append(r)
         b.close()

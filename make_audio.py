@@ -13,19 +13,22 @@ import os, subprocess
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "audio", "daily_birds_source.wav")
 OUT = os.path.join(HERE, "web", "daily_audio.m4a")
+VERSE_OUT = os.path.join(HERE, "web", "verse_audio.m4a")   # longer bed for the 9pm verse videos
 START, LEN, XF, COPIES = 0.85, 12.5, 0.6, 4
 
-def build(src=SRC, out=OUT):
+def build(src=SRC, out=OUT, length=LEN):
+    clip = 4.1   # usable seconds of the source after START
+    copies = max(COPIES, int((length + XF) // (clip - XF)) + 2)
     inputs = []
-    for _ in range(COPIES):
+    for _ in range(copies):
         inputs += ["-ss", str(START), "-i", src]
     chain, last = [], "0:a"
-    for i in range(1, COPIES):
+    for i in range(1, copies):
         lab = f"x{i}"
         chain.append(f"[{last}][{i}:a]acrossfade=d={XF}:c1=tri:c2=tri[{lab}]")
         last = lab
     chain.append(f"[{last}]highpass=f=200:poles=2,loudnorm=I=-19:TP=-3:LRA=7,"
-                 f"atrim=0:{LEN},afade=t=in:st=0:d=0.8,afade=t=out:st={LEN - 1.6}:d=1.6,"
+                 f"atrim=0:{length},afade=t=in:st=0:d=0.8,afade=t=out:st={length - 1.6}:d=1.6,"
                  f"aformat=channel_layouts=stereo[a]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(chain),
                     "-map", "[a]", "-ar", "44100", "-c:a", "aac", "-b:a", "192k", out], check=True)
@@ -33,3 +36,4 @@ def build(src=SRC, out=OUT):
 
 if __name__ == "__main__":
     print("wrote", build())
+    print("wrote", build(out=VERSE_OUT, length=30.0))

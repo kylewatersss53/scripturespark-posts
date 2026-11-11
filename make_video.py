@@ -27,5 +27,31 @@ def make_daily_video(frame, out, music=MUSIC, total=TOTAL):
     subprocess.run(cmd, check=True)
     return out
 
+VERSE_MUSIC = os.path.join(HERE, "web", "verse_audio.m4a")
+
+def make_verse_video(frames, durs, out, music=VERSE_MUSIC, xf=0.35):
+    """9pm verse video: a sequence of 1080x1920 frames (hook, then the verse phrase by phrase),
+    crossfaded, with the birdsong bed. Clip i lasts durs[i] (+ the crossfade overlap)."""
+    total = round(sum(durs), 2)
+    cmd = ["ffmpeg", "-loglevel", "error", "-y"]
+    for i, (f, d) in enumerate(zip(frames, durs)):
+        cmd += ["-loop", "1", "-framerate", "30", "-t", f"{d + (xf if i < len(frames) - 1 else 0):.3f}", "-i", f]
+    cmd += ["-i", music]
+    chain, last, acc = [], "0:v", 0.0
+    prep = [f"[{i}:v]scale=1080:1920,setsar=1,fps=30,format=yuv420p[p{i}]" for i in range(len(frames))]
+    last = "p0"
+    for i in range(1, len(frames)):
+        acc += durs[i - 1]
+        chain.append(f"[{last}][p{i}]xfade=transition=fade:duration={xf}:offset={acc:.3f}[x{i}]")
+        last = f"x{i}"
+    a = len(frames)
+    fc = ";".join(prep + chain + [f"[{last}]fade=t=in:st=0:d=0.4,trim=duration={total}[v]",
+                                  f"[{a}:a]atrim=0:{total},afade=t=in:st=0:d=0.8,afade=t=out:st={max(0, total - 1.6):.2f}:d=1.6,asetpts=PTS-STARTPTS[a]"])
+    cmd += ["-filter_complex", fc, "-map", "[v]", "-map", "[a]",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-t", str(total), "-movflags", "+faststart", out]
+    subprocess.run(cmd, check=True)
+    return out
+
 if __name__ == "__main__":
     print(make_daily_video(sys.argv[2], sys.argv[1]))

@@ -192,7 +192,8 @@ def build():
             hook = pick(SINGLE_HOOKS, f"S{tid}{i}").format(hook=own)
             if tid in ("beatitudes", "commandments", "armor", "iam", "namesofgod", "prophecies", "fruit"):
                 hook = own
-            posts.append({"id": f"S:{tid}:{i}", "t": "S", "k": tid, "v": lab, "ti": hook})
+            # vh: topic-specific hook used for the 9pm verse video (first second on screen + start of caption, for search)
+            posts.append({"id": f"S:{tid}:{i}", "t": "S", "k": tid, "v": lab, "ti": hook, "vh": own})
 
     # Stacks: 5 topics each, from a category pool (or mixed), never repeating a combination.
     rng = random.Random(7)

@@ -564,7 +564,7 @@
     if (post.t === "V") body = `${cap} 🔖\n\nSave this so it's here the next time you need it. Which verse is yours? Comment the number.`;
     else if (post.t === "C") body = `${cap} 📖\n\nSave this for your next quiet time. Which chapter are you reading first?`;
     else if (post.t === "P") body = `${cap} 📖\n\nOne chapter a day for 7 days. Save this and start tomorrow. Comment “Day 1” when you begin.`;
-    else if (post.t === "S") body = `${post.ti}\n\n“${V[post.v]}”\n${post.v}\n\nSave this for the day you need it. 🔖`;
+    else if (post.t === "S") body = `${post.vh || post.ti}\n\n“${V[post.v]}”\n${post.v}\n\nSave this for the day you need it. 🔖`;
     else body = `${cap} 📖\n\nSwipe through and save the one you need. Which list are you starting with?`;
     const plan = ks.map(k => APP_PLANS[k]).find(Boolean);
     if (plan) body += `\n\nTry the 14-day “${plan}” plan in the Scripture Spark app with a friend.`;
@@ -700,5 +700,94 @@
     return c;
   }
 
-  root.ScriptureEngine = { W, H, PALETTES, loadFonts, loadPromo, setPromo, buildSlides, caption, renderSlide, paletteFor, hash };
+  // ---------- verse video (9pm post): hook, then the verse revealed phrase by phrase ----------
+  // 1080x1920 frames + seconds per frame; make_video.py crossfades them into a short video.
+  // Text stays inside the video safe area: below TikTok's top tabs, above the caption, clear of the right-hand buttons.
+  function verseChunks(toks) {
+    // phrase boundaries at punctuation, 3+ words per phrase, at most 6 phrases
+    let chunks = [], cur = 0;
+    toks.forEach((tk, i) => {
+      cur++;
+      const end = /[,;:.!?…—”’)]$/.test(tk.t) && !/^(Mr|Mrs|St)\.$/.test(tk.t);
+      if (end && cur >= 3) { chunks.push(cur); cur = 0; }
+    });
+    if (cur) { if (chunks.length && cur < 3) chunks[chunks.length - 1] += cur; else chunks.push(cur); }
+    // split long phrases before a natural break word, as close to the middle as possible
+    const BREAK = new Set(["and", "but", "for", "that", "who", "which", "so", "because", "when", "is", "are", "was", "will", "to", "with", "in", "as", "or", "nor", "yet", "if"]);
+    for (let guard = 0; guard < 20; guard++) {
+      let start = 0, idx = chunks.findIndex(k => k > 11);
+      if (idx < 0) break;
+      for (let i = 0; i < idx; i++) start += chunks[i];
+      const k = chunks[idx], mid = k / 2;
+      let best = Math.round(mid), bestD = 1e9;
+      for (let j = 3; j <= k - 3; j++) {
+        const w = toks[start + j].t.toLowerCase().replace(/[^a-z]/g, "");
+        if (BREAK.has(w) && Math.abs(j - mid) < bestD) { best = j; bestD = Math.abs(j - mid); }
+      }
+      chunks.splice(idx, 1, best, k - best);
+    }
+    while (chunks.length > 6) {   // merge the shortest neighbouring pair
+      let best = 0;
+      for (let i = 1; i < chunks.length - 1; i++) if (chunks[i] + chunks[i + 1] < chunks[best] + chunks[best + 1]) best = i;
+      chunks.splice(best, 2, chunks[best] + chunks[best + 1]);
+    }
+    return chunks;
+  }
+  function renderVerseVideo(post, lib, opts = {}) {
+    const VW = 1080, VH = 1920, TOP = 300, BOT = 1430, X = 100, TW = VW - 2 * X - 40;
+    const pal = paletteFor(post), seed = hash(post.id);
+    const text = lib.verses[post.v], ref = post.v;
+    const frames = [], durs = [];
+    const canvas = () => {
+      const c = document.createElement("canvas"); c.width = VW; c.height = VH;
+      const ctx = c.getContext("2d");
+      ctx.save(); ctx.scale(VW / W, VH / H); background(ctx, pal, seed); ctx.restore();
+      if (opts.handle) { font(ctx, SERIF, 34, 400); ctx.fillStyle = hexA(pal.ink, 0.6); spaced(ctx, opts.handle, VW / 2, TOP - 60, 3, "center"); }
+      return [c, ctx];
+    };
+    // 1) hook
+    {
+      const [c, ctx] = canvas();
+      const t = fit(ctx, post.vh || post.ti, { family: SERIF, weight: 500, maxW: TW, maxH: 700, max: 112, min: 70, lh: 1.08 });
+      const y = (TOP + BOT - t.height) / 2 - 40;
+      ctx.fillStyle = pal.ink; font(ctx, SERIF, t.size, 500);
+      ctx.save(); ctx.letterSpacing = "-1px"; drawLines(ctx, t.lines, X, y, t.size, 1.08); ctx.restore();
+      rule(ctx, pal, X, y + t.height + 50, 90);
+      frames.push(c.toDataURL("image/jpeg", 0.93)); durs.push(2.2);
+    }
+    // 2) verse, one more phrase per frame, then the reference
+    const o = { family: SERIF, style: "normal", maxW: TW, maxH: BOT - TOP - 330, lh: 1.32, max: 74, min: 42 };
+    const R = fitRich((() => { const [, ctx] = canvas(); return ctx; })(), text, "", null, o);
+    const toks = R.lines.flat();
+    const chunks = verseChunks(toks);
+    const kickerH = 110, blockH = kickerH + R.height + 130;
+    const y0 = TOP + Math.max(0, (BOT - TOP - blockH) / 2);
+    const draw = (shown, withRef) => {
+      const [c, ctx] = canvas();
+      font(ctx, SERIF, 44, 400, "italic"); ctx.fillStyle = hexA(pal.ink, 0.62); ctx.textAlign = "left";
+      let hook = post.vh || post.ti; while (ctx.measureText(hook).width > TW && hook.length > 8) hook = hook.slice(0, -2).trim() + "…";
+      ctx.fillText(hook, X, y0 + 44);
+      rule(ctx, pal, X, y0 + 78, 70);
+      let n = 0;
+      R.lines.forEach((ln, i) => {
+        let cx = X; const by = y0 + kickerH + R.size * 0.82 + i * R.size * o.lh;
+        ln.forEach(tk => {
+          if (n < shown) { font(ctx, SERIF, R.size, 400); ctx.fillStyle = pal.ink; ctx.textAlign = "left"; ctx.fillText(tk.t, cx, by); }
+          cx += tk.w + R.space; n++;
+        });
+      });
+      if (withRef) { font(ctx, SANS, 34, 600); ctx.fillStyle = pal.acc; spaced(ctx, (ref + " · BSB").toUpperCase(), X, y0 + kickerH + R.height + 70, 2.5); }
+      return c.toDataURL("image/jpeg", 0.93);
+    };
+    let shown = 0;
+    chunks.forEach(k => {
+      shown += k;
+      frames.push(draw(shown, false));
+      durs.push(Math.min(3.2, Math.max(1.1, 0.45 + 0.3 * k)));
+    });
+    frames.push(draw(toks.length, true)); durs.push(2.6);
+    return { frames, durs };
+  }
+
+  root.ScriptureEngine = { W, H, PALETTES, loadFonts, loadPromo, setPromo, buildSlides, caption, renderSlide, renderVerseVideo, paletteFor, hash };
 })(typeof window !== "undefined" ? window : globalThis);
