@@ -4,7 +4,7 @@ Published slots are frozen: if PREV_SITE points at the currently published site 
 `images` branch there), any slot key already in its manifest is copied as-is (same images, video, title,
 caption) instead of re-rendered. Posts already queued in Buffer therefore never change underneath their
 captions, even when topics, titles, quiz questions or the schedule are edited. Set FRESH=1 to re-render
-everything (e.g. to push a layout fix to queued posts whose post and caption are unchanged).
+everything, or FRESH_KEYS=key,key to re-render specific slots (only for slots not yet queued in Buffer).
 """
 import json, os, shutil, sys, datetime as dt
 import render_batch
@@ -12,6 +12,7 @@ from make_video import make_daily_video, make_verse_video
 HERE = os.path.dirname(os.path.abspath(__file__))
 start_day = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else dt.date.today()
 days = int(sys.argv[2]) if len(sys.argv) > 2 else 5
+VERSE_LAUNCH = dt.date(2026, 11, 10)
 SLOTS = [(0, "07:00"), (1, "12:00"), (5, "16:00"), (2, "19:00"), (3, "21:00")]   # (schedule index, Central time); 5 = quiz, 3 = verse video
 L = json.load(open(os.path.join(HERE, "build", "library.json")))
 s0 = dt.date.fromisoformat(L["meta"]["start"])
@@ -19,8 +20,11 @@ site = os.path.join(HERE, "site"); shutil.rmtree(site, ignore_errors=True); os.m
 
 prev_dir = os.environ.get("PREV_SITE", "")
 prev = {}
+fresh_keys = set(k.strip() for k in os.environ.get("FRESH_KEYS", "").split(",") if k.strip())
 if prev_dir and not os.environ.get("FRESH") and os.path.exists(os.path.join(prev_dir, "manifest.json")):
     for e in json.load(open(os.path.join(prev_dir, "manifest.json"), encoding="utf-8")):
+        if e["key"] in fresh_keys:
+            continue
         files = e["images"] + ([e["video"]] if e.get("video") else [])
         if all(os.path.exists(os.path.join(prev_dir, f)) for f in files):
             prev[e["key"]] = e
@@ -33,7 +37,9 @@ for k in range(days):
 jobs.sort(key=lambda j: (j[0], j[1]))
 todo = sorted({pid for d, hhmm, pid, key in jobs if key not in prev})
 tmp = os.path.join(HERE, "_render"); shutil.rmtree(tmp, ignore_errors=True)
-res = {r["id"]: r for r in render_batch.render(todo, tmp, handle="@scripturesparkapp")} if todo else {}
+# verse videos are a nightly series: episode number = days since launch + 1
+extra = {pid: {"ep": (d - VERSE_LAUNCH).days + 1} for d, hhmm, pid, key in jobs if pid.startswith("S:") and key not in prev}
+res = {r["id"]: r for r in render_batch.render(todo, tmp, handle="@scripturesparkapp", extra=extra)} if todo else {}
 manifest, kept = [], 0
 for d, hhmm, pid, key in jobs:
     if key in prev:   # already published: keep it exactly as it is
@@ -49,8 +55,8 @@ for d, hhmm, pid, key in jobs:
     if r.get("tall"):   # daily word -> 12 s full-screen video with birdsong (post this instead of the images)
         make_daily_video(r["tall"], os.path.join(site, key, "video.mp4"))
         entry["video"] = f"{key}/video.mp4"
-    if r.get("vframes"):   # 9pm single verse -> short verse video (hook, then the verse phrase by phrase)
-        make_verse_video(r["vframes"], r["vdurs"], os.path.join(site, key, "video.mp4"))
+    if r.get("verse_video"):   # 9pm single verse -> short verse video (hook, then the verse phrase by phrase, worship music)
+        make_verse_video(r["verse_video"], os.path.join(site, key, "video.mp4"), key=pid)
         entry["video"] = f"{key}/video.mp4"
     manifest.append(entry)
 json.dump(manifest, open(os.path.join(site, "manifest.json"), "w"), ensure_ascii=False, indent=1)

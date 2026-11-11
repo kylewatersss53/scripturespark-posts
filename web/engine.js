@@ -564,7 +564,7 @@
     if (post.t === "V") body = `${cap} 🔖\n\nSave this so it's here the next time you need it. Which verse is yours? Comment the number.`;
     else if (post.t === "C") body = `${cap} 📖\n\nSave this for your next quiet time. Which chapter are you reading first?`;
     else if (post.t === "P") body = `${cap} 📖\n\nOne chapter a day for 7 days. Save this and start tomorrow. Comment “Day 1” when you begin.`;
-    else if (post.t === "S") body = `${post.vh || post.ti}\n\n“${V[post.v]}”\n${post.v}\n\nSave this for the day you need it. 🔖`;
+    else if (post.t === "S") body = `${post.vh || post.ti}\n\n“${V[post.v]}”\n${post.v}\n\nSave this for the day you need it 🔖 New verse every night at 9. Follow so you don't miss tomorrow's.`;
     else body = `${cap} 📖\n\nSwipe through and save the one you need. Which list are you starting with?`;
     const plan = ks.map(k => APP_PLANS[k]).find(Boolean);
     if (plan) body += `\n\nTry the 14-day “${plan}” plan in the Scripture Spark app with a friend.`;
@@ -734,59 +734,79 @@
     return chunks;
   }
   function renderVerseVideo(post, lib, opts = {}) {
-    const VW = 1080, VH = 1920, TOP = 300, BOT = 1430, X = 100, TW = VW - 2 * X - 40;
+    // Layered output for make_video.make_verse_video:
+    //   bg: oversized background (1296x2304) that drifts slowly behind the text
+    //   layers: transparent 1080x1920 PNGs, each shown from `start` (fading in) until `end` (fading out)
+    // Research basis: hook text on screen from the first frame, a repeatable "show" opening (series label),
+    // kinetic text (one phrase at a time), 10-18 s total, subtle motion, text inside the video safe area.
+    const VW = 1080, VH = 1920, TOP = 360, BOT = 1430, X = 100, TW = VW - 2 * X - 40;
     const pal = paletteFor(post), seed = hash(post.id);
-    const text = lib.verses[post.v], ref = post.v;
-    const frames = [], durs = [];
-    const canvas = () => {
-      const c = document.createElement("canvas"); c.width = VW; c.height = VH;
-      const ctx = c.getContext("2d");
-      ctx.save(); ctx.scale(VW / W, VH / H); background(ctx, pal, seed); ctx.restore();
-      if (opts.handle) { font(ctx, SERIF, 34, 400); ctx.fillStyle = hexA(pal.ink, 0.6); spaced(ctx, opts.handle, VW / 2, TOP - 60, 3, "center"); }
-      return [c, ctx];
-    };
-    // 1) hook
+    const text = lib.verses[post.v], ref = post.v, hookText = post.vh || post.ti;
+    const BW = 1296, BH = 2304;
+    const bgc = document.createElement("canvas"); bgc.width = BW; bgc.height = BH;
+    { const g = bgc.getContext("2d"); g.save(); g.scale(BW / W, BH / H); background(g, pal, seed); g.restore(); }
+    const layer = () => { const c = document.createElement("canvas"); c.width = VW; c.height = VH; return [c, c.getContext("2d")]; };
+    const png = c => c.toDataURL("image/png");
+    const layers = [];
+    // series label + handle: the same opening every night
     {
-      const [c, ctx] = canvas();
-      const t = fit(ctx, post.vh || post.ti, { family: SERIF, weight: 500, maxW: TW, maxH: 700, max: 112, min: 70, lh: 1.08 });
+      const [c, ctx] = layer();
+      font(ctx, SANS, 30, 600); ctx.fillStyle = pal.acc;
+      spaced(ctx, (opts.series || "TONIGHT'S VERSE").toUpperCase() + (opts.ep ? `  ·  #${opts.ep}` : ""), VW / 2, 262, 5, "center");
+      if (opts.handle) { font(ctx, SERIF, 30, 400); ctx.fillStyle = hexA(pal.ink, 0.55); spaced(ctx, opts.handle, VW / 2, 310, 3, "center"); }
+      layers.push({ img: png(c), start: 0, end: null, fadeIn: 0, fadeOut: 0 });
+    }
+    // 1) hook, big, visible from the very first frame
+    const HOOK = 2.1;
+    {
+      const [c, ctx] = layer();
+      const t = fit(ctx, hookText, { family: SERIF, weight: 500, maxW: TW, maxH: 700, max: 112, min: 70, lh: 1.08 });
       const y = (TOP + BOT - t.height) / 2 - 40;
       ctx.fillStyle = pal.ink; font(ctx, SERIF, t.size, 500);
       ctx.save(); ctx.letterSpacing = "-1px"; drawLines(ctx, t.lines, X, y, t.size, 1.08); ctx.restore();
       rule(ctx, pal, X, y + t.height + 50, 90);
-      frames.push(c.toDataURL("image/jpeg", 0.93)); durs.push(2.2);
+      layers.push({ img: png(c), start: 0, end: HOOK + 0.15, fadeIn: 0, fadeOut: 0.35 });
     }
-    // 2) verse, one more phrase per frame, then the reference
+    // 2) verse: small hook kicker, then one phrase at a time, then the reference
+    const [mc, mctx] = layer();
     const o = { family: SERIF, style: "normal", maxW: TW, maxH: BOT - TOP - 330, lh: 1.32, max: 74, min: 42 };
-    const R = fitRich((() => { const [, ctx] = canvas(); return ctx; })(), text, "", null, o);
+    const R = fitRich(mctx, text, "", null, o);
     const toks = R.lines.flat();
     const chunks = verseChunks(toks);
     const kickerH = 110, blockH = kickerH + R.height + 130;
     const y0 = TOP + Math.max(0, (BOT - TOP - blockH) / 2);
-    const draw = (shown, withRef) => {
-      const [c, ctx] = canvas();
+    let t0 = HOOK - 0.1;
+    {
+      const [c, ctx] = layer();
       font(ctx, SERIF, 44, 400, "italic"); ctx.fillStyle = hexA(pal.ink, 0.62); ctx.textAlign = "left";
-      let hook = post.vh || post.ti; while (ctx.measureText(hook).width > TW && hook.length > 8) hook = hook.slice(0, -2).trim() + "…";
+      let hook = hookText; while (ctx.measureText(hook).width > TW && hook.length > 8) hook = hook.slice(0, -2).trim() + "…";
       ctx.fillText(hook, X, y0 + 44);
       rule(ctx, pal, X, y0 + 78, 70);
-      let n = 0;
-      R.lines.forEach((ln, i) => {
-        let cx = X; const by = y0 + kickerH + R.size * 0.82 + i * R.size * o.lh;
-        ln.forEach(tk => {
-          if (n < shown) { font(ctx, SERIF, R.size, 400); ctx.fillStyle = pal.ink; ctx.textAlign = "left"; ctx.fillText(tk.t, cx, by); }
-          cx += tk.w + R.space; n++;
-        });
-      });
-      if (withRef) { font(ctx, SANS, 34, 600); ctx.fillStyle = pal.acc; spaced(ctx, (ref + " · BSB").toUpperCase(), X, y0 + kickerH + R.height + 70, 2.5); }
-      return c.toDataURL("image/jpeg", 0.93);
-    };
-    let shown = 0;
-    chunks.forEach(k => {
-      shown += k;
-      frames.push(draw(shown, false));
-      durs.push(Math.min(3.2, Math.max(1.1, 0.45 + 0.3 * k)));
+      layers.push({ img: png(c), start: t0, end: null, fadeIn: 0.4, fadeOut: 0, verse: true });
+    }
+    let n = 0, idx = 0;
+    const pos = [];
+    R.lines.forEach((ln, i) => {
+      let cx = X; const by = y0 + kickerH + R.size * 0.82 + i * R.size * o.lh;
+      ln.forEach(tk => { pos.push({ tk, x: cx, y: by }); cx += tk.w + R.space; });
     });
-    frames.push(draw(toks.length, true)); durs.push(2.6);
-    return { frames, durs };
+    chunks.forEach(k => {
+      const [c, ctx] = layer();
+      font(ctx, SERIF, R.size, 400); ctx.fillStyle = pal.ink; ctx.textAlign = "left";
+      for (let j = idx; j < idx + k; j++) ctx.fillText(pos[j].tk.t, pos[j].x, pos[j].y);
+      idx += k;
+      layers.push({ img: png(c), start: t0 + 0.1, end: null, fadeIn: 0.45, fadeOut: 0, verse: true });
+      t0 += Math.min(3.0, Math.max(1.15, 0.5 + 0.3 * k));
+    });
+    {
+      const [c, ctx] = layer();
+      font(ctx, SANS, 34, 600); ctx.fillStyle = pal.acc; spaced(ctx, (ref + " · BSB").toUpperCase(), X, y0 + kickerH + R.height + 70, 2.5);
+      layers.push({ img: png(c), start: t0, end: null, fadeIn: 0.4, fadeOut: 0, verse: true });
+    }
+    const total = Math.round((t0 + 2.6) * 100) / 100;
+    // verse text fades out over the last half second so the loop back to the hook is clean
+    layers.forEach(L => { if (L.verse) { L.end = total; L.fadeOut = 0.45; } });
+    return { bg: bgc.toDataURL("image/jpeg", 0.93), layers, total };
   }
 
   root.ScriptureEngine = { W, H, PALETTES, loadFonts, loadPromo, setPromo, buildSlides, caption, renderSlide, renderVerseVideo, paletteFor, hash };

@@ -13,7 +13,8 @@ def serve():
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
 
-def render(post_ids, outdir, handle=None):
+def render(post_ids, outdir, handle=None, extra=None):
+    """extra: optional {post_id: {opts}} merged into the render options for that post (e.g. verse video episode number)."""
     httpd = serve()
     port = httpd.server_address[1]
     results = []
@@ -40,15 +41,19 @@ def render(post_ids, outdir, handle=None):
                 with open(fn, "wb") as f:
                     f.write(base64.b64decode(t.split(",", 1)[1]))
                 r["tall"] = fn
-            if pid.startswith("S:"):   # frames for the 9pm verse video
-                vv = page.evaluate("([id, o]) => window.renderVerseVideo(id, o)", [pid, {"handle": handle} if handle else {}])
-                r["vframes"] = []
-                for i, data in enumerate(vv["frames"]):
-                    fn = os.path.join(d, f"vv{i:02d}.jpg")
+            if pid.startswith("S:"):   # layers for the 9pm verse video (see engine renderVerseVideo)
+                vo = dict({"handle": handle} if handle else {}, **((extra or {}).get(pid, {})))
+                vv = page.evaluate("([id, o]) => window.renderVerseVideo(id, o)", [pid, vo])
+                bg = os.path.join(d, "vv_bg.jpg")
+                with open(bg, "wb") as f:
+                    f.write(base64.b64decode(vv["bg"].split(",", 1)[1]))
+                layers = []
+                for i, L in enumerate(vv["layers"]):
+                    fn = os.path.join(d, f"vv_{i:02d}.png")
                     with open(fn, "wb") as f:
-                        f.write(base64.b64decode(data.split(",", 1)[1]))
-                    r["vframes"].append(fn)
-                r["vdurs"] = vv["durs"]
+                        f.write(base64.b64decode(L.pop("img").split(",", 1)[1]))
+                    layers.append(dict(L, file=fn))
+                r["verse_video"] = {"bg": bg, "layers": layers, "total": vv["total"]}
             r.pop("imgs"); r["files"] = files; r["dir"] = d
             results.append(r)
         b.close()

@@ -34,6 +34,44 @@ def build(src=SRC, out=OUT, length=LEN):
                     "-map", "[a]", "-ar", "44100", "-c:a", "aac", "-b:a", "192k", out], check=True)
     return out
 
+# ---------- worship music beds for the 9pm verse videos ----------
+# Sources: royalty-free worship instrumentals from Pixabay Music (Pixabay Content License: commercial use on
+# social media allowed, no attribution required; the license forbids redistributing the files as-is, so the
+# originals stay out of git in audio/worship_src/ and only edited beds are committed). See audio/WORSHIP_SOURCES.md.
+# Each bed: a full, steady 30 s section (no quiet intro), softly layered with the birdsong (brand sound),
+# loudness-normalised to about -16 LUFS, faded at both ends.
+WORSHIP_SRC = os.path.join(HERE, "audio", "worship_src")
+BEDS_DIR = os.path.join(HERE, "web", "worship")
+WORSHIP_SECTIONS = {   # file -> start seconds of the sections picked by loudness/steadiness analysis
+    "denis-pavlov-beautiful-worship-piano.mp3": [340, 165, 295],
+    "denis-pavlov-worship-piano-peaceful-prayer.mp3": [425, 320, 470],
+    "leberch-worship-instrumental.mp3": [65, 110],
+    "leberch-worship-music.mp3": [100, 155, 45],
+    "zeldafleming-jesus-you-alone.mp3": [175, 125, 80],
+}
+BED_LEN = 30.0
+
+def build_worship_beds():
+    os.makedirs(BEDS_DIR, exist_ok=True)
+    birds = VERSE_OUT if os.path.exists(VERSE_OUT) else build(out=VERSE_OUT, length=30.0)
+    n = 0
+    for fname, starts in sorted(WORSHIP_SECTIONS.items()):
+        src = os.path.join(WORSHIP_SRC, fname)
+        if not os.path.exists(src):
+            print("missing", src, "(upload it to rebuild this bed)"); continue
+        for st in starts:
+            out = os.path.join(BEDS_DIR, f"{os.path.splitext(fname)[0]}-{st}.m4a")
+            fc = (f"[0:a]atrim=0:{BED_LEN},asetpts=PTS-STARTPTS,highpass=f=50,aformat=channel_layouts=stereo,"
+                  f"loudnorm=I=-16:TP=-2:LRA=9[m];[1:a]volume=0.22[b];[m][b]amix=inputs=2:duration=first:normalize=0,"
+                  f"afade=t=in:st=0:d=0.6,afade=t=out:st={BED_LEN - 2}:d=2[a]")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(st), "-t", str(BED_LEN + 1), "-i", src, "-i", birds,
+                            "-filter_complex", fc, "-map", "[a]", "-ar", "44100", "-c:a", "aac", "-b:a", "160k", out], check=True)
+            n += 1
+    print("wrote", n, "worship beds ->", BEDS_DIR)
+
 if __name__ == "__main__":
+    import sys
+    if sys.argv[1:] == ["worship"]:
+        build_worship_beds(); raise SystemExit
     print("wrote", build())
     print("wrote", build(out=VERSE_OUT, length=30.0))
