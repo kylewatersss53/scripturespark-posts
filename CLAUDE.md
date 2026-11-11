@@ -19,6 +19,13 @@ Bookmarks/saves and app awareness. Post 4x daily (America/Chicago): 07:00 "Today
 - `publish_images.sh START DAYS`: force-pushes `site/` to the orphan `images` branch. Public URLs: `https://raw.githubusercontent.com/kylewatersss53/scripturespark-posts/images/<key>/<NN>.jpg`.
 - `build_app.py` → `build/app/` (Post Studio web app, published as a claude.ai artifact: manual daily view, library search, save slides, copy captions).
 
+## Analytics loop
+- Buffer gives per-post TikTok stats (views, likes, comments, shares, reach, watch time; no saves), refreshed about daily.
+- The nightly task saves the last 8 days of sent posts with metrics to JSON and runs `python3 perf.py ingest <file>` → `analytics/performance.csv` (each post matched to its schedule slot by time + title), then `python3 perf.py report` → `analytics/REPORT.md` (by format, slot, quiz style, title style, category, topic, weekday; top/weakest posts). It commits `analytics/` to `main`.
+- Sundays it also runs `python3 perf.py tune` → appends a step to `analytics/tuning.json` (needs 28+ scored posts over 7+ days). Score = 50% views, 20% like rate, 15% comment rate, 15% share rate (percentile ranks within the account). Weights are shrunk for small samples and clamped (list formats and quiz styles 0.6–1.6, topics 0.7–1.5, categories 0.8–1.3) so nothing disappears.
+- `gen.py` applies a tuning step only from its `effective_from` (= made + 6 days), so queued and already-rendered days never change. With no tuning file the schedule is exactly the default. Tuning changes the list-format mix, quiz-style mix, and prefers better topics among the next eligible posts; it does not change posting times.
+- Because the nightly task pushes analytics commits to `main`, merge `main` into a working branch before fast-forwarding `main` again.
+
 ## Buffer
 - Org "My organization" `6af36ee396c2cde5badc9174`, TikTok channel `scripturesparkapp` `6af36f7962b70b94b0e7bd92`. Free plan: max 10 scheduled posts, 10 images per TikTok photo post.
 - Posts are created with `schedulingType: automatic`, `mode: customScheduled`. Daily slots (manifest has `video`): one video asset by URL. Carousel slots: image assets by URL. Buffer copies images at publish time, but scheduled posts reference the raw URLs until then, so the images branch must always cover every queued slot (today + 5 days).

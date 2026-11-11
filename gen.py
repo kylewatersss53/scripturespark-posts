@@ -222,7 +222,8 @@ def build():
             made += 1
 
     byid = {p["id"]: p for p in posts}
-    schedule = make_schedule(posts, T)
+    hist = load_tuning()
+    schedule = make_schedule(posts, T, hist)
     # daily "God is saying to you today" post, first slot every day; messages cycle without repeats
     daily = []
     for line in open(os.path.join(HERE, "daily", "messages.txt"), encoding="utf-8"):
@@ -243,7 +244,7 @@ def build():
     Qs, qprobs = quiz.load()
     if qprobs:
         raise SystemExit("Fix quiz problems first (python3 quiz.py):\n" + "\n".join(qprobs))
-    add_quiz(posts, schedule, Qs)
+    add_quiz(posts, schedule, Qs, hist)
     lib = {
         "meta": {"translation": "Berean Standard Bible (BSB)", "start": START.isoformat(), "days": len(schedule),
                  "built": dt.datetime.now().isoformat(timespec="minutes")},
@@ -259,6 +260,39 @@ def build():
     print("posts:", len(posts), counts)
     print("schedule days:", len(schedule), "size KB:", os.path.getsize(os.path.join(OUT, "library.json")) // 1024)
     return lib
+
+
+# ---------------- performance tuning (analytics/tuning.json, written by perf.py tune) ----------------
+
+TUNING = os.path.join(HERE, "analytics", "tuning.json")
+
+def load_tuning():
+    try:
+        hist = json.load(open(TUNING, encoding="utf-8")).get("history", [])
+    except FileNotFoundError:
+        return []
+    return sorted(hist, key=lambda t: t["effective_from"])
+
+def tuning_for(d, hist):
+    """The tuning step in effect on date d (the latest one whose effective_from <= d), or None."""
+    cur = None
+    for t in hist:
+        if t["effective_from"] <= d.isoformat():
+            cur = t
+    return cur
+
+def weighted_pattern(base, weights, length):
+    """Spread types over `length` slots in proportion to base count x weight (smooth weighted round-robin),
+    so a favored type shows up more often but every type still appears."""
+    keys = list(base)
+    w = {k: base[k] * float(weights.get(k, 1.0)) for k in keys}
+    total, cur, seq = sum(w.values()), {k: 0.0 for k in keys}, []
+    for _ in range(length):
+        for k in keys:
+            cur[k] += w[k]
+        best = max(keys, key=lambda k: (cur[k], -keys.index(k)))
+        seq.append(best); cur[best] -= total
+    return seq
 
 
 # ---------------- daily quiz ----------------
@@ -277,7 +311,7 @@ QUIZ_TITLES = {
           ("Guess the Book", "Only real Bible readers get 4/4")],
 }
 
-def add_quiz(posts, schedule, Qs):
+def add_quiz(posts, schedule, Qs, hist=()):
     """One quiz post per day. Each style's questions cycle in shuffled order, so a question
     only repeats after its whole pool has been used; no two questions in a post share a verse."""
     rng = random.Random(23)
@@ -298,7 +332,12 @@ def add_quiz(posts, schedule, Qs):
 
     for i, day in enumerate(schedule):
         d = (START + dt.timedelta(i)).isoformat()
-        f = QUIZ_PATTERN[i % len(QUIZ_PATTERN)]
+        tn = tuning_for(START + dt.timedelta(i), hist)
+        if tn and tn.get("quiz_styles"):
+            base = {k: QUIZ_PATTERN.count(k) for k in dict.fromkeys(QUIZ_PATTERN)}
+            f = weighted_pattern(base, tn["quiz_styles"], len(QUIZ_PATTERN))[i % len(QUIZ_PATTERN)]
+        else:
+            f = QUIZ_PATTERN[i % len(QUIZ_PATTERN)]
         kicker, head = pick(QUIZ_TITLES[f], "Q" + d)
         ti = f"{kicker} {head}" if kicker.endswith("?") else f"{kicker}: {head}"
         pid = f"Q:{d}"
@@ -358,7 +397,7 @@ def pinned_for_year(y):
     return pins
 
 
-def make_schedule(posts, T):
+def make_schedule(posts, T, hist=()):
     """Each day: [list, list, single verse, list]. The app shows as many slots as the user posts per day.
     Lists (what people bookmark) are 3 of 4 slots. Topics don't repeat within ~5 days."""
     rng = random.Random(42)
@@ -389,18 +428,26 @@ def make_schedule(posts, T):
     s_cur = [0]
     recent = []
 
-    def take_list(avoid):
+    def take_list(avoid, pattern=pattern, tw=None):
         for step in range(len(pattern)):
             typ = pattern[(pat_i[0] + step) % len(pattern)]
             pool = pools[typ]
+            found = []
             for look in range(min(25, len(pool))):
                 j = (cur[typ] + look) % len(pool)
+                if not set(tops(pool[j])) & avoid:
+                    found.append(j)
+                    if not tw or len(found) >= 6:
+                        break
+            if found:
+                # with tuning, take the best-performing topic among the next few eligible posts
+                score = lambda jj: sum(tw(k) for k in tops(pool[jj])) / len(tops(pool[jj]))
+                j = max(found, key=lambda jj: (score(jj), -found.index(jj))) if tw else found[0]
                 pid = pool[j]
-                if not set(tops(pid)) & avoid:
-                    a = cur[typ] % len(pool)
-                    pool[a], pool[j] = pool[j], pool[a]
-                    cur[typ] += 1; pat_i[0] += 1
-                    return pid
+                a = cur[typ] % len(pool)
+                pool[a], pool[j] = pool[j], pool[a]
+                cur[typ] += 1; pat_i[0] += 1
+                return pid
         typ = pattern[pat_i[0] % len(pattern)]; pat_i[0] += 1
         pid = pools[typ][cur[typ] % len(pools[typ])]; cur[typ] += 1
         return pid
@@ -437,11 +484,20 @@ def make_schedule(posts, T):
         if pinned_a is None and d.weekday() == 6 and i % 42 < 7:
             pinned_a = "V:sunday" if (i // 42) % 2 == 0 else "C:sunday"
         avoid = set(recent)
+        tn = tuning_for(d, hist)
+        pat, tw = pattern, None
+        if tn:
+            if tn.get("list_types"):
+                base = {k: pattern.count(k) for k in dict.fromkeys(pattern)}
+                pat = weighted_pattern(base, tn["list_types"], len(pattern))
+            if tn.get("topics") or tn.get("categories"):
+                tws, cws = tn.get("topics", {}), tn.get("categories", {})
+                tw = lambda k: float(tws.get(k, 1.0)) * float(cws.get(T[k]["cat"], 1.0))
         day = []
-        a = pinned_a or take_list(avoid); avoid |= set(tops(a)); day.append(a)
-        b = take_list(avoid); avoid |= set(tops(b)); day.append(b)
+        a = pinned_a or take_list(avoid, pat, tw); avoid |= set(tops(a)); day.append(a)
+        b = take_list(avoid, pat, tw); avoid |= set(tops(b)); day.append(b)
         c = pinned_b or take_single(avoid); avoid |= {byid[c]["k"]}; day.append(c)
-        e = take_list(avoid); day.append(e)
+        e = take_list(avoid, pat, tw); day.append(e)
         recent = (recent + [t for pid in day for t in tops(pid)])[-24:]
         schedule.append(day)
     return schedule
