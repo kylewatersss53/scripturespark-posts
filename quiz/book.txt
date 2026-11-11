@@ -1,0 +1,74 @@
+# Guess the Book. One reference per line; the book name must not appear in the verse.
+# Wrong answers are picked automatically from books of the same kind (python3 quiz.py validates).
+Genesis 1:1
+Exodus 14:14
+Deuteronomy 31:6
+Joshua 1:9
+Psalm 23:1
+Psalm 46:10
+Psalm 119:105
+Psalm 139:14
+Psalm 34:18
+Psalm 37:4
+Psalm 91:1
+Psalm 30:5
+Psalm 103:12
+Proverbs 3:5
+Proverbs 18:10
+Proverbs 16:3
+Proverbs 4:23
+Proverbs 22:6
+Ecclesiastes 3:1
+Isaiah 40:31
+Isaiah 41:10
+Isaiah 26:3
+Isaiah 43:2
+Isaiah 53:5
+Isaiah 9:6
+Jeremiah 29:11
+Lamentations 3:23
+Micah 6:8
+Zephaniah 3:17
+Nahum 1:7
+Matthew 5:14
+Matthew 6:34
+Matthew 11:28
+Matthew 7:7
+Matthew 6:33
+Mark 10:27
+Luke 6:31
+Luke 2:11
+John 3:16
+John 14:6
+John 16:33
+John 15:5
+John 8:32
+John 10:10
+Romans 8:28
+Romans 12:2
+Romans 6:23
+Romans 5:8
+Romans 15:13
+1 Corinthians 13:4
+1 Corinthians 10:13
+2 Corinthians 12:9
+2 Corinthians 5:17
+2 Corinthians 5:7
+Galatians 5:22
+Galatians 6:9
+Ephesians 2:8
+Ephesians 6:11
+Ephesians 4:32
+Philippians 4:13
+Philippians 4:6
+Philippians 1:6
+Colossians 3:23
+1 Thessalonians 5:17
+2 Timothy 1:7
+Hebrews 11:1
+Hebrews 13:8
+James 1:5
+1 Peter 5:7
+1 John 4:19
+1 John 1:9
+Revelation 21:4

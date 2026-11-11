@@ -1,0 +1,75 @@
+# Finish the Verse. One verse per line:
+# reference | missing word (as it appears in the BSB text) | wrong | wrong | wrong
+# The missing word must appear exactly once in the verse (python3 quiz.py validates).
+
+John 3:16 | loved | blessed | saved | called
+Philippians 4:13 | strength | hope | peace | courage
+Jeremiah 29:11 | hope | home | purpose | promise
+Proverbs 3:5 | understanding | wisdom | strength | plans
+Psalm 23:1 | shepherd | king | rock | refuge
+Joshua 1:9 | courageous | faithful | patient | humble
+Isaiah 40:31 | eagles | doves | angels | lions
+Romans 8:28 | good | glory | blessing | joy
+Matthew 6:33 | kingdom | face | presence | will
+Psalm 46:10 | still | quiet | strong | faithful
+Romans 6:23 | death | shame | sorrow | darkness
+Ephesians 2:8 | grace | works | love | mercy
+2 Timothy 1:7 | fear | weakness | sorrow | doubt
+Hebrews 11:1 | faith | trust | love | grace
+Psalm 119:105 | lamp | guide | shield | sword
+Matthew 11:28 | rest | peace | strength | joy
+John 8:32 | free | whole | wise | right
+Romans 12:2 | mind | heart | spirit | soul
+Galatians 5:22 | fruit | gift | power | voice
+Lamentations 3:23 | morning | day | season | moment
+Psalm 34:18 | brokenhearted | humble | faithful | weary
+Proverbs 18:10 | tower | fortress | shield | refuge
+Matthew 5:14 | light | salt | hope | joy
+Matthew 5:13 | earth | world | nations | church
+Psalm 118:24 | rejoice | sing | rest | dance
+1 Corinthians 13:4 | patient | gentle | faithful | humble
+1 Peter 5:7 | anxiety | burdens | worries | fears
+Philippians 4:6 | anxious | fearful | worried | troubled
+Psalm 37:4 | desires | dreams | plans | wishes
+Proverbs 16:3 | works | prayers | dreams | days
+Romans 8:31 | against | above | beside | without
+Micah 6:8 | humbly | faithfully | boldly | daily
+Psalm 139:14 | wonderfully | beautifully | carefully | perfectly
+Hebrews 13:8 | same | Lord | King | light
+James 1:5 | wisdom | faith | strength | patience
+Isaiah 26:3 | peace | rest | joy | safety
+John 11:35 | wept | prayed | smiled | spoke
+John 1:1 | beginning | silence | darkness | garden
+Genesis 1:1 | heavens | light | stars | seas
+Psalm 56:3 | afraid | weak | alone | lost
+1 John 1:9 | faithful | gracious | quick | ready
+Ephesians 4:32 | kind | patient | gentle | honest
+Psalm 51:10 | clean | new | pure | willing
+John 15:5 | vine | root | tree | gardener
+Deuteronomy 31:6 | forsake | forget | fail | abandon
+Zephaniah 3:17 | singing | dancing | shouting | laughter
+Psalm 91:1 | shadow | house | presence | arms
+Proverbs 22:6 | Train | Teach | Raise | Guide
+1 Thessalonians 5:17 | ceasing | fear | doubt | worry
+Matthew 22:39 | neighbor | brother | enemy | family
+Exodus 14:14 | fight | provide | speak | wait
+Ecclesiastes 3:1 | season | reason | moment | blessing
+Matthew 6:34 | trouble | sorrow | struggle | burdens
+Luke 6:31 | others | friends | neighbors | strangers
+1 John 4:19 | first | always | truly | freely
+2 Corinthians 5:7 | sight | feelings | works | fear
+Psalm 34:8 | Taste | Come | Look | Listen
+Proverbs 4:23 | diligence | wisdom | courage | patience
+Galatians 6:9 | weary | tired | lazy | afraid
+Ephesians 6:11 | armor | shield | robe | belt
+Psalm 55:22 | burden | worries | sins | tears
+Romans 5:8 | sinners | children | strangers | enemies
+Psalm 103:12 | west | sky | sea | heavens
+Psalm 30:5 | morning | evening | spring | end
+Mark 10:27 | possible | good | known | allowed
+Psalm 27:1 | light | shield | strength | song
+Isaiah 9:6 | Counselor | Teacher | Shepherd | Healer
+John 10:10 | fullness | freedom | abundance | peace
+1 Corinthians 10:13 | escape | answer | reward | helper
+2 Corinthians 12:9 | sufficient | enough | eternal | perfect
+Romans 15:13 | overflow | grow | stand | rest

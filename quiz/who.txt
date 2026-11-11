@@ -1,0 +1,61 @@
+# Who Said It? One quote per line:
+# reference | exact quote (must appear in the BSB text) | speaker | wrong | wrong | wrong | name check [@ context reference]
+# The name check must appear in the reference text, or in the context reference after "@" (python3 quiz.py validates).
+
+Genesis 4:9 | Am I my brother’s keeper? | Cain | Abel | Esau | Jacob | Cain
+Ruth 1:16 | wherever you go, I will go | Ruth | Naomi | Esther | Rachel | Ruth
+1 Samuel 3:10 | Speak, for Your servant is listening. | Samuel | Eli | David | Elijah | Samuel
+Isaiah 6:8 | Here am I. Send me! | Isaiah | Jeremiah | Moses | Jonah | Isaiah @ Isaiah 1:1
+Esther 4:16 | And if I perish, I perish! | Esther | Ruth | Deborah | Hannah | Esther @ Esther 4:15
+Job 1:20-21 | The LORD gave, and the LORD has taken away. | Job | David | Solomon | Jeremiah | Job
+Exodus 4:10 | I am slow of speech and tongue. | Moses | Aaron | Jeremiah | Gideon | Moses
+Jeremiah 1:6 | I surely do not know how to speak, for I am only a child! | Jeremiah | Samuel | David | Isaiah | Jeremiah @ Jeremiah 1:1
+1 Samuel 17:45 | You come against me with sword and spear and javelin | David | Saul | Jonathan | Samson | David
+Genesis 50:20 | what you intended against me for evil, God intended for good | Joseph | Jacob | Moses | Daniel | Joseph @ Genesis 50:19
+John 1:29 | Look, the Lamb of God, who takes away the sin of the world! | John the Baptist | Peter | Andrew | Isaiah | John
+John 20:28 | My Lord and my God! | Thomas | Peter | Mary Magdalene | John | Thomas
+Matthew 16:16 | You are the Christ, the Son of the living God. | Peter | John | Martha | Andrew | Peter
+Luke 1:38 | I am the Lord’s servant | Mary | Elizabeth | Hannah | Anna | Mary
+Matthew 27:24 | I am innocent of this man’s blood | Pilate | Judas | Herod | Caiaphas | Pilate
+Matthew 27:4 | I have sinned by betraying innocent blood | Judas | Peter | Pilate | Barabbas | Judas @ Matthew 27:3
+John 3:4 | How can a man be born when he is old? | Nicodemus | Zacchaeus | Peter | Thomas | Nicodemus
+Matthew 27:54 | Truly this was the Son of God. | The centurion | Pilate | Peter | Joseph of Arimathea | centurion
+Acts 16:29-30 | Sirs, what must I do to be saved? | The Philippian jailer | Cornelius | Lydia | King Agrippa | jailer
+2 Timothy 4:7 | I have fought the good fight, I have finished the race, I have kept the faith. | Paul | Peter | Timothy | John | Paul @ 2 Timothy 1:1
+Mark 9:24 | I do believe; help my unbelief! | A boy’s father | Thomas | Peter | Martha | boy’s father
+Luke 5:8 | Go away from me, Lord | Peter | Matthew | Zacchaeus | Isaiah | Peter
+Luke 19:8 | half of my possessions I give to the poor | Zacchaeus | Matthew | Nicodemus | Barnabas | Zacchaeus
+John 4:29 | Come, see a man who told me everything I ever did. | The Samaritan woman | Mary Magdalene | Martha | Lydia | woman @ John 4:28
+1 Kings 18:21 | How long will you waver between two opinions? | Elijah | Elisha | Moses | Samuel | Elijah
+Genesis 3:13 | The serpent deceived me | Eve | Adam | Sarah | Rebekah | woman
+Genesis 3:12 | The woman whom You gave me | Adam | Eve | Cain | Noah | man
+Exodus 5:2 | Who is the LORD that I should obey His voice | Pharaoh | Goliath | Nebuchadnezzar | Haman | Pharaoh
+Daniel 2:47 | Your God is truly the God of gods and Lord of kings | King Nebuchadnezzar | King Darius | Pharaoh | King Cyrus | Nebuchadnezzar @ Daniel 2:46
+Ruth 1:20 | Do not call me Naomi | Naomi | Ruth | Orpah | Hannah | Naomi
+1 Samuel 1:27 | I prayed for this boy | Hannah | Sarah | Elizabeth | Rachel | Hannah @ 1 Samuel 1:26
+Jonah 4:2 | I knew that You are a gracious and compassionate God | Jonah | Elijah | Jeremiah | Moses | Jonah @ Jonah 4:1
+Acts 26:28 | Can you persuade me in such a short time to become a Christian? | King Agrippa | Felix | Festus | Pilate | Agrippa
+John 18:38 | What is truth? | Pilate | Herod | Caiaphas | Agrippa | Pilate
+Matthew 3:14 | I need to be baptized by You | John the Baptist | Peter | Andrew | James | John
+Luke 2:29 | You now dismiss Your servant in peace. | Simeon | Zechariah | Joseph | Eli | Simeon @ Luke 2:28
+Luke 10:40 | do You not care that my sister has left me to serve alone? | Martha | Mary | Lydia | Dorcas | Martha
+1 Kings 19:4 | I have had enough, LORD | Elijah | Jonah | Moses | Job | Elijah @ 1 Kings 19:2
+Numbers 22:28 | What have I done to you that you have beaten me these three times? | Balaam's donkey | The serpent | Balaam | A raven | donkey
+Genesis 3:1 | Did God really say | The serpent | Eve | Adam | Cain | serpent
+Genesis 22:7 | where is the lamb for the burnt offering? | Isaac | Abraham | Jacob | Ishmael | Isaac
+Genesis 22:8 | God Himself will provide the lamb | Abraham | Isaac | Jacob | Melchizedek | Abraham
+Luke 1:46-47 | My soul magnifies the Lord | Mary | Elizabeth | Hannah | Anna | Mary
+John 6:68 | Lord, to whom would we go? You have the words of eternal life. | Peter | John | Thomas | Nathanael | Peter
+Acts 3:6 | Silver or gold I do not have | Peter | Paul | John | Stephen | Peter
+Genesis 32:26 | I will not let you go unless you bless me. | Jacob | Esau | Abraham | Moses | Jacob
+2 Samuel 7:18 | Who am I, O Lord GOD, and what is my house, that You have brought me this far? | King David | King Solomon | King Saul | King Hezekiah | David
+1 Kings 3:7 | I am only a little child, not knowing how to go out or come in. | Solomon | Samuel | Jeremiah | Josiah | Solomon @ 1 Kings 3:5
+Matthew 8:8 | Lord, I am not worthy to have You come under my roof. | The centurion | Zacchaeus | Jairus | Nicodemus | centurion
+John 13:8 | Never shall You wash my feet! | Peter | Judas | Thomas | John | Peter
+Acts 8:36 | Look, here is water! What is there to prevent me from being baptized? | The Ethiopian eunuch | Cornelius | Lydia | The Philippian jailer | eunuch
+Exodus 3:11 | Who am I, that I should go to Pharaoh | Moses | Aaron | Joseph | Joshua | Moses
+Judges 6:15 | my clan is the weakest in Manasseh, and I am the youngest in my father’s house | Gideon | David | Saul | Samson | Gideon
+Genesis 28:16 | Surely the LORD is in this place, and I was unaware of it. | Jacob | Abraham | Isaac | Joseph | Jacob
+John 9:25 | I was blind, but now I see! | A man born blind | Bartimaeus | Paul | Zacchaeus | blind from birth @ John 9:1
+1 Samuel 15:22 | obedience is better than sacrifice | Samuel | Nathan | Elijah | Moses | Samuel
+Genesis 18:12 | After I am worn out and my master is old, will I now have this pleasure? | Sarah | Rebekah | Hannah | Elizabeth | Sarah @ Genesis 18:10

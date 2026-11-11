@@ -5,7 +5,7 @@ from make_video import make_daily_video
 HERE = os.path.dirname(os.path.abspath(__file__))
 start_day = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else dt.date.today()
 days = int(sys.argv[2]) if len(sys.argv) > 2 else 5
-SLOTS = [(0, "07:00"), (1, "12:00"), (2, "19:00")]
+SLOTS = [(0, "07:00"), (1, "12:00"), (5, "16:00"), (2, "19:00")]   # (schedule index, Central time); 5 = daily Bible quiz
 L = json.load(open(os.path.join(HERE, "build", "library.json")))
 s0 = dt.date.fromisoformat(L["meta"]["start"])
 site = os.path.join(HERE, "site"); shutil.rmtree(site, ignore_errors=True); os.makedirs(site)
@@ -14,6 +14,7 @@ for k in range(days):
     d = start_day + dt.timedelta(k); i = (d - s0).days
     for slot, hhmm in SLOTS:
         jobs.append((d, hhmm, L["schedule"][i][slot]))
+jobs.sort(key=lambda j: (j[0], j[1]))
 tmp = os.path.join(HERE, "_render"); shutil.rmtree(tmp, ignore_errors=True)
 res = {r["id"]: r for r in render_batch.render(sorted({j[2] for j in jobs}), tmp, handle="@scripturesparkapp")}
 manifest = []

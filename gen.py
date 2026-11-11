@@ -7,9 +7,11 @@ Post types
   S  : single verse post (hook slide + verse slide + CTA)
   KC : stack of 5 chapter lists (like the screenshot carousel)
   KV : stack of 5 verse lists
+  D  : daily word ("Today God is saying to you"), slot 0
+  Q  : Bible quiz (4 multiple-choice questions, swipe to reveal), slot 5 / 4pm
 """
 import datetime as dt, glob, hashlib, json, os, random, re
-import bible, library
+import bible, library, quiz
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "build")
@@ -237,10 +239,16 @@ def build():
         pid = f"D:{d}"
         posts.append({"id": pid, "t": "D", "date": d, "m": order[i], "ti": f"Today God is saying to you: {daily[order[i]]['o']}"})
         day.insert(0, pid)
+    # daily Bible quiz, appended as the last slot (index 5) of every day
+    Qs, qprobs = quiz.load()
+    if qprobs:
+        raise SystemExit("Fix quiz problems first (python3 quiz.py):\n" + "\n".join(qprobs))
+    add_quiz(posts, schedule, Qs)
     lib = {
         "meta": {"translation": "Berean Standard Bible (BSB)", "start": START.isoformat(), "days": len(schedule),
                  "built": dt.datetime.now().isoformat(timespec="minutes")},
         "topics": T, "verses": verses_text, "daily": daily, "chapters": summaries, "posts": posts, "schedule": schedule,
+        "quiz": Qs,
     }
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, "library.json"), "w", encoding="utf-8") as f:
@@ -251,6 +259,51 @@ def build():
     print("posts:", len(posts), counts)
     print("schedule days:", len(schedule), "size KB:", os.path.getsize(os.path.join(OUT, "library.json")) // 1024)
     return lib
+
+
+# ---------------- daily quiz ----------------
+
+# Rotation of quiz styles (trivia most often). 11-day cycle: T x4, F x3, W x2, B x2.
+QUIZ_PATTERN = ["T", "F", "W", "T", "B", "T", "F", "W", "B", "F", "T"]
+QUIZ_TITLES = {
+    "T": [("Bible Trivia", "Can you get 4/4?"), ("Bible Trivia", "How well do you know your Bible?"),
+          ("Bible Trivia", "Only true Bible readers get 4/4"), ("Bible Trivia", "Bet you can’t get all 4 right"),
+          ("Bible Quiz", "No Googling. How many can you get?")],
+    "F": [("Finish the Verse", "Can you get 4/4?"), ("Finish the Verse", "Can you finish all 4 without looking?"),
+          ("Finish the Verse", "Only real Bible readers get 4/4")],
+    "W": [("Who Said It?", "Bible edition. Can you get 4/4?"), ("Who Said It?", "Guess who said it in the Bible"),
+          ("Who Said It?", "4 quotes. How many can you name?")],
+    "B": [("Guess the Book", "Which book of the Bible is this from?"), ("Guess the Book", "Can you name all 4 books?"),
+          ("Guess the Book", "Only real Bible readers get 4/4")],
+}
+
+def add_quiz(posts, schedule, Qs):
+    """One quiz post per day. Each style's questions cycle in shuffled order, so a question
+    only repeats after its whole pool has been used; no two questions in a post share a verse."""
+    rng = random.Random(23)
+    pools = {f: sorted(k for k, q in Qs.items() if q["f"] == f) for f in "TFWB"}
+    queues = {f: [] for f in pools}
+
+    def take(f):
+        out, skipped = [], []
+        while len(out) < 4:
+            if not queues[f]:
+                cyc = pools[f][:]; rng.shuffle(cyc); queues[f] = cyc
+            qid = queues[f].pop(0)
+            if qid in out or any(Qs[qid]["r"] == Qs[o]["r"] for o in out):
+                skipped.append(qid); continue
+            out.append(qid)
+        queues[f] = skipped + queues[f]
+        return out
+
+    for i, day in enumerate(schedule):
+        d = (START + dt.timedelta(i)).isoformat()
+        f = QUIZ_PATTERN[i % len(QUIZ_PATTERN)]
+        kicker, head = pick(QUIZ_TITLES[f], "Q" + d)
+        ti = f"{kicker} {head}" if kicker.endswith("?") else f"{kicker}: {head}"
+        pid = f"Q:{d}"
+        posts.append({"id": pid, "t": "Q", "date": d, "f": f, "qs": take(f), "ti": ti, "kick": kicker, "head": head})
+        day.append(pid)
 
 
 # ---------------- schedule ----------------

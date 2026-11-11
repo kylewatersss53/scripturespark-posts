@@ -305,6 +305,133 @@
     footer(ctx, pal, "SWIPE  →");
   }
 
+  // ---------- quiz ----------
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  // words of `text`, flagging the ones inside the highlighted span (first occurrence of `hl`, or at `pos`)
+  function richTokens(text, hl, pos) {
+    let a = -1, b = -1;
+    if (hl) { a = pos != null ? pos : text.indexOf(hl); if (a >= 0) b = a + hl.length; }
+    const out = []; const re = /\S+/g; let m;
+    while ((m = re.exec(text))) out.push({ t: m[0], hl: a >= 0 && m.index < b && m.index + m[0].length > a });
+    return out;
+  }
+  function layoutRich(ctx, toks, family, size, style, maxW) {
+    const lines = []; let line = [], w = 0;
+    const space = (font(ctx, family, size, 400, style), ctx.measureText(" ").width);
+    toks.forEach(tk => {
+      font(ctx, family, size, tk.hl ? 600 : 400, style);
+      const tw = ctx.measureText(tk.t).width;
+      if (line.length && w + space + tw > maxW) { lines.push(line); line = []; w = 0; }
+      w += (line.length ? space : 0) + tw; line.push({ ...tk, w: tw });
+    });
+    if (line.length) lines.push(line);
+    return { lines, space };
+  }
+  function fitRich(ctx, text, hl, pos, o) {
+    const toks = richTokens(text, hl, pos);
+    for (let size = o.max; size >= o.min; size -= 2) {
+      const L = layoutRich(ctx, toks, o.family, size, o.style || "normal", o.maxW);
+      if (L.lines.length * size * o.lh <= o.maxH) return { ...L, size, height: L.lines.length * size * o.lh };
+    }
+    const L = layoutRich(ctx, toks, o.family, o.min, o.style || "normal", o.maxW);
+    return { ...L, size: o.min, height: L.lines.length * o.min * o.lh };
+  }
+  function drawRich(ctx, R, x, y, o, ink, acc, align = "left") {
+    ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
+    R.lines.forEach((ln, i) => {
+      const lw = ln.reduce((a, tk, j) => a + tk.w + (j ? R.space : 0), 0);
+      let cx = align === "center" ? x - lw / 2 : x;
+      const by = y + R.size * 0.82 + i * R.size * o.lh;
+      ln.forEach(tk => {
+        font(ctx, o.family, R.size, tk.hl ? 600 : 400, o.style || "normal");
+        ctx.fillStyle = tk.hl ? acc : ink; ctx.fillText(tk.t, cx, by); cx += tk.w + R.space;
+      });
+    });
+  }
+  function drawOptions(ctx, pal, opts4, y, rowH, gap, answer) {
+    // answer: undefined on the question slide; index of the correct option on the answer slide
+    const x = M - 20, w = W - 2 * (M - 20);
+    opts4.forEach((txt, i) => {
+      const top = y + i * (rowH + gap), right = answer === i, dim = answer != null && !right;
+      ctx.save(); ctx.globalAlpha = dim ? 0.38 : 1;
+      roundRect(ctx, x, top, w, rowH, rowH / 2);
+      ctx.fillStyle = right ? pal.acc : "rgba(255,255,255,0.62)"; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = right ? pal.acc : hexA(pal.ink, 0.12); ctx.stroke();
+      const cr = rowH * 0.31, cx = x + rowH * 0.5, cy = top + rowH / 2;
+      ctx.beginPath(); ctx.arc(cx, cy, cr, 0, 7); ctx.fillStyle = right ? "#FFFFFF" : pal.acc; ctx.fill();
+      font(ctx, SANS, Math.round(cr * 0.95), 600); ctx.fillStyle = right ? pal.acc : "#FFFFFF"; ctx.textAlign = "center";
+      ctx.fillText("ABCD"[i], cx, cy + cr * 0.34);
+      const tx = x + rowH + 6, tw = w - rowH - (right ? rowH : 36);
+      let size = Math.round(rowH * 0.4);
+      font(ctx, SERIF, size, 500);
+      while (ctx.measureText(txt).width > tw && size > 26) { size -= 2; font(ctx, SERIF, size, 500); }
+      ctx.fillStyle = right ? "#FFFFFF" : pal.ink; ctx.textAlign = "left";
+      ctx.fillText(txt, tx, cy + size * 0.34);
+      if (right) { // check mark
+        const kx = x + w - rowH * 0.62, ky = cy;
+        ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = rowH * 0.075; ctx.lineCap = "round"; ctx.lineJoin = "round";
+        ctx.beginPath(); ctx.moveTo(kx - rowH * 0.16, ky); ctx.lineTo(kx - rowH * 0.04, ky + rowH * 0.12); ctx.lineTo(kx + rowH * 0.18, ky - rowH * 0.13); ctx.stroke();
+      }
+      ctx.restore();
+    });
+    return y + opts4.length * (rowH + gap) - gap;
+  }
+  const QUIZ_ASK = { T: "", F: "Finish the verse", W: "Who said it?", B: "Which book is this from?" };
+  function drawQuizCover(ctx, pal, s, opts) {
+    font(ctx, SERIF, 1100, 500); ctx.fillStyle = hexA(pal.acc, 0.09); ctx.textAlign = "right"; ctx.fillText("?", W + 40, H - 120);
+    let y = 360;
+    font(ctx, SANS, 40, 600); ctx.fillStyle = pal.acc; spaced(ctx, s.kicker.toUpperCase(), M, y, 6);
+    y += 50;
+    const t = fit(ctx, s.head, { family: SERIF, weight: 500, maxW: CW, maxH: 560, max: 150, min: 88, lh: 1.02 });
+    ctx.fillStyle = pal.ink; font(ctx, SERIF, t.size, 500);
+    ctx.save(); ctx.letterSpacing = "-2px"; drawLines(ctx, t.lines, M, y, t.size, 1.02); ctx.restore();
+    y += t.height + 70; rule(ctx, pal, M, y, 120); y += 60;
+    font(ctx, SERIF, 52, 400, "italic"); ctx.fillStyle = hexA(pal.ink, 0.78); ctx.textAlign = "left";
+    ctx.fillText("4 questions. No looking it up.", M, y + 40);
+    ctx.fillText("Comment your score at the end.", M, y + 112);
+    // four empty score dots
+    for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(M + 34 + i * 92, y + 230, 30, 0, 7); ctx.lineWidth = 5; ctx.strokeStyle = hexA(pal.acc, 0.55); ctx.stroke(); }
+    footer(ctx, pal, "SWIPE TO START  →");
+  }
+  function quizPrompt(ctx, pal, s, top, bottom) {
+    // the question / verse / quote block, vertically centered between top and bottom
+    const isT = s.f === "T", italic = s.f === "W" || s.f === "B";
+    const o = { family: SERIF, style: italic ? "italic" : "normal", maxW: CW, maxH: bottom - top - (s.f === "F" ? 70 : 0), lh: isT ? 1.12 : 1.3,
+                max: isT ? 80 : 64, min: isT ? 50 : 36 };
+    let R;
+    if (isT) { R = fit(ctx, s.q, { family: SERIF, weight: 500, maxW: CW, maxH: o.maxH, max: o.max, min: o.min, lh: o.lh }); }
+    else R = fitRich(ctx, s.q, s.f === "F" ? "_____" : "", null, o);
+    const blockH = R.height + (s.f === "F" ? 70 : 0);
+    const y = top + Math.max(0, (bottom - top - blockH) / 2);
+    if (isT) { ctx.fillStyle = pal.ink; font(ctx, SERIF, R.size, 500); ctx.save(); ctx.letterSpacing = "-0.5px"; drawLines(ctx, R.lines, M, y, R.size, o.lh); ctx.restore(); }
+    else drawRich(ctx, R, M, y, o, pal.ink, pal.acc);
+    if (s.f === "F") { font(ctx, SANS, 30, 600); ctx.fillStyle = pal.acc; spaced(ctx, s.r.toUpperCase(), M, y + R.height + 48, 2.5); }
+  }
+  function drawQuizQ(ctx, pal, s, opts) {
+    font(ctx, SANS, 32, 600); ctx.fillStyle = pal.acc;
+    spaced(ctx, `QUESTION ${s.n} OF ${s.of}` + (QUIZ_ASK[s.f] ? "  ·  " + QUIZ_ASK[s.f].toUpperCase() : ""), M, 220, 3);
+    const rowH = 118, gap = 24, oy = H - 150 - (4 * rowH + 3 * gap);
+    quizPrompt(ctx, pal, s, 260, oy - 50);
+    drawOptions(ctx, pal, s.o, oy, rowH, gap);
+    footer(ctx, pal, "SWIPE FOR THE ANSWER  →");
+  }
+  function drawQuizA(ctx, pal, s, opts) {
+    font(ctx, SANS, 32, 600); ctx.fillStyle = pal.acc; spaced(ctx, `ANSWER ${s.n} OF ${s.of}`, M, 220, 3);
+    const rowH = 100, gap = 20;
+    const top = drawOptions(ctx, pal, s.o, 262, rowH, gap, s.a) + 70, bottom = H - 150;
+    const o = { family: SERIF, style: "normal", maxW: CW, maxH: bottom - top - 160, lh: 1.32, max: 52, min: 30 };
+    const hl = s.f === "B" ? "" : s.hl, pos = s.f === "F" ? s.hlpos : null;
+    const R = fitRich(ctx, s.p, hl, pos, o);
+    let y = top + Math.max(0, (bottom - top - (R.height + 150)) / 2);
+    rule(ctx, pal, M, y, 70); y += 46;
+    drawRich(ctx, R, M, y, o, pal.ink, pal.acc);
+    font(ctx, SANS, 30, 600); ctx.fillStyle = pal.acc; spaced(ctx, (s.r + " · BSB").toUpperCase(), M, y + R.height + 52, 2.5);
+    footer(ctx, pal, s.n < s.of ? "NEXT QUESTION  →" : "HOW MANY DID YOU GET?  COMMENT BELOW");
+  }
+
   // ---------- content: post spec -> slides ----------
   const CTAS = [
     ["Save this for later.", "You'll want it the next time life gets heavy."],
@@ -387,6 +514,15 @@
         PROMO_SLIDE,
       ];
     }
+    if (post.t === "Q") {
+      const slides = [{ kind: "quizcover", kicker: post.kick, head: post.head }];
+      post.qs.forEach((qid, i) => {
+        const q = lib.quiz[qid], base = { ...q, n: i + 1, of: post.qs.length };
+        slides.push({ kind: "quizq", ...base }, { kind: "quiza", ...base });
+      });
+      slides.push(PROMO_SLIDE);
+      return slides;
+    }
     if (post.t === "KC" || post.t === "KV") {
       const isC = post.t === "KC";
       const slides = [];
@@ -417,6 +553,10 @@
     if (post.t === "D") {
       const m = lib.daily[post.m];
       return `Today God is saying to you: ${m.o} 🤍\n\n“${m.v}” ${m.r}\n\nSave this for when you need it, and send it to someone who needs to hear it today.\n\nWant someone to read the Bible with? Search “Scripture Spark” in the App Store.\n\n#godisspeaking #dailydevotional #bibleverse #christian #jesus #scripturespark #christiantiktok`;
+    }
+    if (post.t === "Q") {
+      const ftag = { T: "#bibletrivia", F: "#finishtheverse", W: "#whosaidit", B: "#bookofthebible" }[post.f];
+      return `${post.ti} 🧠\n\n4 questions, with the answer right after each one. No Googling! Comment your score out of 4 👇\n\nSend this to the friend who thinks they know the Bible best.\n\nWant to know your Bible better? Scripture Spark lets you read the Bible together with a friend or your spouse. Search “Scripture Spark” in the App Store.\n\n${[...new Set([ftag, "#biblequiz", "#bibletrivia", "#bible", "#christian", "#jesus", "#scripturespark", "#christiantiktok"])].join(" ")}`;
     }
     if (post.t === "V") body = `${cap} 🔖\n\nSave this so it's here the next time you need it. Which verse is yours? Comment the number.`;
     else if (post.t === "C") body = `${cap} 📖\n\nSave this for your next quiet time. Which chapter are you reading first?`;
@@ -532,7 +672,7 @@
     const tall = !!opts.tall && slide.kind === "daily";
     const c = document.createElement("canvas"); c.width = W; c.height = tall ? TALL_H : H;
     const ctx = c.getContext("2d");
-    const pal = opts.palette != null ? PALETTES[opts.palette] : paletteForSlide(post, index);
+    const pal = opts.palette != null ? PALETTES[opts.palette] : post.t === "Q" ? paletteFor(post) : paletteForSlide(post, index);
     if (slide.kind === "daily") {
       const h = hash(post.id), night = h % 5 < 3;
       const p = night ? NIGHT[h % NIGHT.length] : PALETTES[h % PALETTES.length];
@@ -551,6 +691,9 @@
     else if (slide.kind === "cta") drawCta(ctx, pal, slide, opts);
     else if (slide.kind === "stack") drawStackCover(ctx, pal, slide, opts);
     else if (slide.kind === "promo") drawPromo(ctx, pal);
+    else if (slide.kind === "quizcover") drawQuizCover(ctx, pal, slide, opts);
+    else if (slide.kind === "quizq") drawQuizQ(ctx, pal, slide, opts);
+    else if (slide.kind === "quiza") drawQuizA(ctx, pal, slide, opts);
     return c;
   }
 

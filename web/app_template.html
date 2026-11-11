@@ -195,7 +195,7 @@ section > p { margin: 0 0 14px; }
   "use strict";
   const E = window.ScriptureEngine;
   const $ = s => document.querySelector(s);
-  const TYPE = { D: "Today’s word", V: "10 verses", C: "10 chapters", P: "7-day plan", S: "Single verse", KC: "Chapter lists", KV: "Verse lists" };
+  const TYPE = { D: "Today’s word", V: "10 verses", C: "10 chapters", P: "7-day plan", S: "Single verse", KC: "Chapter lists", KV: "Verse lists", Q: "Bible quiz" };
   const store = {
     get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },

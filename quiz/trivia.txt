@@ -1,0 +1,135 @@
+# Bible Trivia. One question per line:
+# question | correct answer | wrong | wrong | wrong | reference | check phrase & check phrase
+# Every check phrase must appear in the BSB text of the reference (python3 quiz.py validates).
+# The answer slide shows that BSB text as proof, so the reference must actually answer the question.
+
+How long did the rain fall during the flood? | Forty days and forty nights | Seven days | Twelve days and nights | One hundred days | Genesis 7:12 | forty days and forty nights
+How long was Jonah inside the great fish? | Three days and three nights | One night | Seven days | Forty days | Jonah 1:17 | three days and three nights
+Who was thrown into the den of lions? | Daniel | David | Joseph | Elijah | Daniel 6:16 | den of lions & Daniel
+What was the name of the giant champion of the Philistines? | Goliath | Og | Sihon | Nimrod | 1 Samuel 17:4 | Goliath
+Which city was Goliath from? | Gath | Jericho | Nineveh | Babylon | 1 Samuel 17:4 | from Gath
+Samson said his strength would leave him if what happened? | His hair was shaved | He drank wine | He lost his sword | He broke a vow of silence | Judges 16:17 | If I am shaved, my strength will leave me
+What did Jesus turn water into at the wedding? | Wine | Oil | Milk | Honey | John 2:9 | water that had been turned into wine
+How many loaves of bread fed the 5,000? | Five | Seven | Twelve | Three | Matthew 14:17 | five loaves
+How many fish did the disciples have to feed the 5,000? | Two | Five | Seven | Twelve | Matthew 14:17 | two fish
+How many baskets of leftovers were picked up after Jesus fed the 5,000? | Twelve | Seven | Five | Three | Matthew 14:20 | twelve basketfuls
+Jesus told Peter he would deny Him how many times? | Three | Two | Seven | Once | Luke 22:61 | deny Me three times
+How much were the chief priests willing to pay Judas? | Thirty pieces of silver | Twenty shekels | Fifty pieces of gold | Ten talents | Matthew 26:14-15 | thirty pieces of silver & Judas Iscariot
+Who said he would never believe unless he saw the nail marks? | Thomas | Peter | Andrew | Philip | John 20:24-25 | Thomas & nail marks
+Where did God plant a garden for the first man? | Eden | Canaan | Goshen | Bethel | Genesis 2:8 | garden in Eden
+What wood did God tell Noah to build the ark from? | Gopher wood | Cedar | Oak | Acacia | Genesis 6:13-14 | gopher wood & Noah
+What did God create on the first day? | Light | The sun and moon | Animals | Plants | Genesis 1:3-5 | Let there be light & the first day
+On which day did God rest from all His work? | The seventh day | The sixth day | The first day | The tenth day | Genesis 2:2 | seventh day & rested
+What new name did God give Sarai? | Sarah | Rebekah | Rachel | Leah | Genesis 17:15 | Sarah
+How old was Abraham when Isaac was born? | 100 | 75 | 90 | 120 | Genesis 21:5 | a hundred years old & Isaac
+Who became Isaac's wife? | Rebekah | Rachel | Leah | Sarah | Genesis 24:67 | took Rebekah as his wife
+Who was born grasping his twin brother's heel? | Jacob | Esau | Isaac | Joseph | Genesis 25:25-26 | grasping Esau’s heel & Jacob
+What did Esau get in exchange for his birthright? | Bread and lentil stew | A coat | A field | Ten sheep | Genesis 25:33-34 | lentil stew & birthright
+What new name was Jacob given after he struggled with God? | Israel | Abraham | Judah | Benjamin | Genesis 32:28 | but Israel
+Which son did Israel give a robe of many colors? | Joseph | Benjamin | Reuben | Judah | Genesis 37:3 | Joseph & robe of many colors
+How many sons did Jacob have? | Twelve | Seven | Ten | Three | Genesis 35:22 | Jacob had twelve sons
+Who interpreted Pharaoh's dreams? | Joseph | Daniel | Moses | Aaron | Genesis 41:25 | Joseph said to Pharaoh & dreams
+Who found baby Moses' basket in the reeds of the Nile? | Pharaoh's daughter | Miriam | Moses' mother | Zipporah | Exodus 2:5 | daughter of Pharaoh & basket among the reeds
+How did the angel of the LORD appear to Moses? | In fire within a bush | In a dream | In a cloud | On a mountain top | Exodus 3:2 | fire from within a bush
+Who did God send to speak for Moses because he "can speak well"? | Aaron | Joshua | Caleb | Jethro | Exodus 4:14 | Aaron & speak well
+What was the final plague on Egypt? | The death of the firstborn | Locusts | Darkness | Hail | Exodus 12:29 | struck down every firstborn
+In which sea were Pharaoh's officers drowned? | The Red Sea | The Dead Sea | The Sea of Galilee | The Mediterranean | Exodus 15:4 | Red Sea
+What did Israel call the bread from heaven in the wilderness? | Manna | Matzah | Showbread | Barley cakes | Exodus 16:31 | called the bread manna
+Manna tasted like wafers made with what? | Honey | Olive oil | Salt | Milk | Exodus 16:31 | wafers made with honey
+On which mountain did God give Moses the stone tablets? | Mount Sinai | Mount Carmel | Mount Zion | Mount of Olives | Exodus 31:18 | Mount Sinai & tablets
+What did Aaron make from the people's gold? | A molten calf | A golden throne | A golden crown | A bronze snake | Exodus 32:4 | molten calf
+How long did Israel wander in the wilderness? | Forty years | Seven years | Twelve years | Seventy years | Numbers 14:33 | forty years
+Whose donkey spoke to him? | Balaam's | Abraham's | Saul's | Gideon's | Numbers 22:28 | donkey & Balaam
+Who led Israel across the Jordan after Moses died? | Joshua | Caleb | Aaron | Gideon | Joshua 1:1-2 | Joshua & cross over the Jordan
+Which city's walls fell after Israel marched around them for seven days? | Jericho | Jerusalem | Babylon | Gath | Hebrews 11:30 | walls of Jericho & seven days
+Who welcomed the Israelite spies in Jericho? | Rahab | Ruth | Deborah | Miriam | Hebrews 11:31 | Rahab & spies
+How many men did Gideon fight the Midianites with? | Three hundred | Ten thousand | Twelve | One thousand | Judges 7:7 | three hundred men & Gideon
+Where did Naomi and Ruth arrive at the start of the barley harvest? | Bethlehem | Jerusalem | Moab | Nazareth | Ruth 1:22 | Bethlehem & barley harvest
+Who did Ruth marry? | Boaz | Obed | Jesse | Elimelech | Ruth 4:13 | Boaz took Ruth
+Who was Samuel's mother? | Hannah | Sarah | Elizabeth | Rachel | 1 Samuel 1:20 | Hannah & Samuel
+Whose head did Samuel pour a flask of oil on? | Saul's | David's | Jonathan's | Eli's | 1 Samuel 10:1 | poured it on Saul’s head
+What did David use to defeat Goliath? | A sling and a stone | A sword | A bow and arrow | A spear | 1 Samuel 17:50 | sling and a stone
+Whose soul was "knit together" with David's? | Jonathan's | Saul's | Absalom's | Nathan's | 1 Samuel 18:1 | Jonathan and David were knit together
+What instrument did David play for King Saul? | The harp | The trumpet | The flute | The drum | 1 Samuel 16:23 | his harp and play
+What did Solomon ask God to give him? | An understanding heart | Great riches | A long life | Victory over enemies | 1 Kings 3:9 | an understanding heart
+Who built the temple in Jerusalem? | Solomon | David | Saul | Hezekiah | 1 Kings 6:14 | Solomon built the temple
+How was Elijah taken up into heaven? | In a whirlwind | On a cloud | Up a ladder | On an angel's wings | 2 Kings 2:11 | Elijah went up into heaven in a whirlwind
+What animals brought Elijah bread and meat? | Ravens | Doves | Eagles | Sparrows | 1 Kings 17:6 | The ravens would bring him bread and meat
+On which mountain did Elijah face the prophets of Baal? | Mount Carmel | Mount Sinai | Mount Hermon | Mount Nebo | 1 Kings 18:19 | Mount Carmel & prophets of Baal
+Who asked to inherit a double portion of Elijah's spirit? | Elisha | Jonah | Gehazi | Obadiah | 2 Kings 2:9 | double portion & Elisha
+How many times was Naaman told to wash in the Jordan? | Seven | Three | Twelve | Once | 2 Kings 5:10 | seven times in the Jordan
+Esther's other name was what? | Hadassah | Vashti | Zeresh | Abigail | Esther 2:7 | Hadassah (that is, Esther)
+Who raised Esther as his own daughter? | Mordecai | Haman | Ahasuerus | Hegai | Esther 2:7 | Mordecai had taken her in as his own daughter
+Who said, "The LORD gave, and the LORD has taken away"? | Job | David | Solomon | Jeremiah | Job 1:20-21 | Job & The LORD gave, and the LORD has taken away
+Who was thrown into the blazing fiery furnace? | Shadrach, Meshach, and Abednego | Daniel | Elijah and Elisha | Peter, James, and John | Daniel 3:20 | Shadrach, Meshach, and Abednego & furnace
+Which king signed the decree that sent Daniel to the lions? | Darius | Nebuchadnezzar | Cyrus | Belshazzar | Daniel 6:9 | King Darius signed
+In which town was Jesus born? | Bethlehem | Nazareth | Jerusalem | Capernaum | Matthew 2:1 | born in Bethlehem
+Who came from the east to worship the newborn King? | The Magi | Shepherds | Roman soldiers | Temple priests | Matthew 2:1 | Magi from the east
+What gifts did the Magi bring? | Gold, frankincense, and myrrh | Gold, silver, and bronze | Oil, wine, and bread | Spices, linen, and gold | Matthew 2:11 | gold and frankincense and myrrh
+In which town did Jesus grow up? | Nazareth | Bethlehem | Capernaum | Jericho | Matthew 2:23 | Nazareth
+In which river was Jesus baptized? | The Jordan | The Nile | The Euphrates | The Tigris | Matthew 3:13 | to the Jordan to be baptized by John
+How long did Jesus fast in the wilderness? | Forty days and forty nights | Seven days | Three days | Twelve days | Matthew 4:2 | forty days and forty nights
+What did Peter and Andrew do for work? | They were fishermen | They were carpenters | They were tax collectors | They were shepherds | Matthew 4:18 | they were fishermen
+Who was Peter's brother? | Andrew | James | John | Philip | Matthew 4:18 | Peter and his brother Andrew
+How many apostles did Jesus choose? | Twelve | Seventy | Seven | Three | Luke 6:13 | chose twelve of them
+What did Zacchaeus climb to see Jesus? | A sycamore tree | A roof | A wall | A hill | Luke 19:4 | climbed a sycamore tree
+Who did Jesus call out of the tomb with "come out!"? | Lazarus | Jairus | Bartimaeus | Nicodemus | John 11:43 | Lazarus, come out
+What were the names of Lazarus's sisters? | Mary and Martha | Ruth and Naomi | Mary and Elizabeth | Leah and Rachel | John 11:1 | Mary and her sister Martha
+Which disciple got out of the boat and walked on the water? | Peter | John | Thomas | Andrew | Matthew 14:29 | Peter got down out of the boat, walked on the water
+Where was Matthew sitting when Jesus called him? | At the tax booth | In a fishing boat | In the temple | Under a fig tree | Matthew 9:9 | sitting at the tax booth
+What did Jesus ride into Jerusalem? | A young donkey | A white horse | A camel | A chariot | John 12:14 | young donkey
+What did the crowd take with them to meet Jesus? | Palm branches | Olive branches | Flags | Their cloaks | John 12:13 | palm branches
+Which prisoner did Pilate release instead of Jesus? | Barabbas | Simon | Judas | Lazarus | Matthew 27:26 | Pilate released Barabbas
+Who was forced to carry the cross of Jesus? | Simon of Cyrene | Joseph of Arimathea | Peter | A Roman centurion | Mark 15:21 | Simon of Cyrene & carry the cross
+What is the Hebrew name of "The Place of the Skull"? | Golgotha | Gethsemane | Bethany | Gabbatha | John 19:17 | Golgotha
+Who asked Pilate for the body of Jesus? | Joseph of Arimathea | Nicodemus | Peter | John | John 19:38 | Joseph of Arimathea & body of Jesus
+Who told the disciples, "I have seen the Lord!"? | Mary Magdalene | Martha | Salome | Mary the mother of Jesus | John 20:18 | Mary Magdalene & I have seen the Lord
+How long did the risen Jesus appear to His followers before ascending? | Forty days | Three days | Seven days | Fifty days | Acts 1:3 | forty days
+What came to rest on the believers at Pentecost? | Tongues like flames of fire | A white dove | A bright cloud | A rainbow | Acts 2:3 | tongues like flames of fire
+Who prayed "Lord Jesus, receive my spirit" while being stoned? | Stephen | Paul | James | Peter | Acts 7:59 | Stephen & receive my spirit
+Saul was traveling to which city when a light from heaven flashed? | Damascus | Jerusalem | Rome | Antioch | Acts 9:3 | near to Damascus
+Saul was also called what? | Paul | Silas | Barnabas | Timothy | Acts 13:9 | Saul, who was also called Paul
+Who was praying and singing hymns with Paul in prison at midnight? | Silas | Peter | Barnabas | Luke | Acts 16:25 | Paul and Silas were praying and singing hymns
+On which island was Paul shipwrecked? | Malta | Crete | Cyprus | Patmos | Acts 28:1 | Malta
+Where was John when he received the visions of Revelation? | The island of Patmos | Rome | Ephesus | Jerusalem | Revelation 1:9 | island of Patmos
+Faith, hope, and love: which is the greatest? | Love | Faith | Hope | They are equal | 1 Corinthians 13:13 | the greatest of these is love
+In the armor of God, the sword of the Spirit is what? | The word of God | Faith | Truth | Righteousness | Ephesians 6:17 | sword of the Spirit, which is the word of God
+How much silver was Joseph sold for? | Twenty shekels | Thirty pieces | Fifty shekels | Ten pieces | Genesis 37:28 | twenty shekels of silver
+Who lived 969 years? | Methuselah | Adam | Noah | Enoch | Genesis 5:27 | Methuselah lived a total of 969 years
+Who "walked with God, and then he was no more"? | Enoch | Elijah | Methuselah | Abel | Genesis 5:24 | Enoch walked with God
+What sign did God set in the clouds after the flood? | A rainbow | A star | A dove | A pillar of fire | Genesis 9:13 | My rainbow in the clouds
+What did the dove bring back to Noah? | An olive leaf | A fig | A twig of cedar | A feather | Genesis 8:11 | olive leaf
+Where did God confuse the language of the whole world? | Babel | Ur | Sodom | Egypt | Genesis 11:9 | called Babel
+What did Lot's wife become when she looked back? | A pillar of salt | A pillar of stone | A tree | Dust | Genesis 19:26 | pillar of salt
+Who wrestled with a man until daybreak? | Jacob | Esau | Abraham | Samson | Genesis 32:24 | Jacob & wrestled with him until daybreak
+What did Miriam play as the women danced? | A tambourine | A harp | A trumpet | A flute | Exodus 15:20 | Miriam & tambourine
+How long was Moses with the LORD when the Ten Commandments were written? | Forty days and forty nights | Seven days | Three days | One night | Exodus 34:28 | forty days and forty nights & Ten Commandments
+Which judge was left-handed? | Ehud | Gideon | Samson | Jephthah | Judges 3:15 | Ehud & left-handed
+Which prophetess judged Israel under a palm tree? | Deborah | Miriam | Huldah | Anna | Judges 4:4-5 | Deborah & prophetess & Palm of Deborah
+What did Gideon lay on the threshing floor as a sign? | A fleece of wool | A sword | A loaf of bread | A stone | Judges 6:37 | fleece of wool
+What was Absalom riding when his head got caught in an oak? | A mule | A horse | A camel | A chariot | 2 Samuel 18:9 | Absalom was riding on his mule
+Who told David, "You are that man!"? | Nathan | Samuel | Gad | Elijah | 2 Samuel 12:7 | Nathan said to David & You are that man
+How many years did God add to Hezekiah's life? | Fifteen | Ten | Seven | Forty | 2 Kings 20:6 | fifteen years
+How many days did it take to finish the wall of Jerusalem under Nehemiah? | Fifty-two | Forty | Seven | One hundred | Nehemiah 6:15 | fifty-two days
+Who was the husband of Mary, the mother of Jesus? | Joseph | Zechariah | Joachim | Simeon | Matthew 1:16 | Joseph, the husband of Mary
+What name was Zechariah told to give his son? | John | Jesus | Samuel | James | Luke 1:13 | give him the name John & Zechariah
+Where did Jesus perform the first of His signs? | Cana in Galilee | Jerusalem | Capernaum | Bethlehem | John 2:11 | the first of His signs, at Cana in Galilee
+Which Pharisee came to Jesus at night? | Nicodemus | Gamaliel | Caiaphas | Simon | John 3:1-2 | Nicodemus & came to Jesus at night
+Which blind beggar cried, "Jesus, Son of David, have mercy on me!"? | Bartimaeus | Lazarus | Zacchaeus | Malchus | Mark 10:46-47 | Bartimaeus & have mercy on me
+Jesus healed ten lepers. How many came back to thank Him? | One | Ten | Nine | Three | Luke 17:17 | all ten cleansed & the other nine
+In the parable, the lost son ended up feeding what? | Pigs | Sheep | Goats | Camels | Luke 15:15 | feed the pigs
+In the Good Samaritan, who passed by on the other side first? | A priest | A Levite | A soldier | A tax collector | Luke 10:31 | a priest was going down the same road & passed by on the other side
+Jesus said the kingdom of heaven is like which seed? | A mustard seed | A grain of wheat | A fig seed | An olive pit | Matthew 13:31 | mustard seed
+What happened while Peter was still speaking his third denial? | The rooster crowed | It started to rain | The temple veil tore | An earthquake hit | Luke 22:60 | the rooster crowed
+What was torn in two when Jesus died? | The veil of the temple | Peter's net | Pilate's robe | The scroll of Isaiah | Matthew 27:51 | veil of the temple was torn in two
+Who was chosen to replace Judas as an apostle? | Matthias | Barnabas | Silas | Stephen | Acts 1:26 | the lot fell to Matthias
+What trade did Paul share with Aquila and Priscilla? | Tentmaking | Fishing | Carpentry | Tax collecting | Acts 18:2-3 | tentmakers
+Who fell asleep during Paul's long sermon and fell from a window? | Eutychus | Timothy | Tychicus | Demas | Acts 20:9 | Eutychus & fell from the third story
+Which disciple was also called Didymus? | Thomas | Matthew | Bartholomew | Thaddaeus | John 11:16 | Thomas called Didymus
+Paul called whom "my true child in the faith"? | Timothy | Titus | Silas | Mark | 1 Timothy 1:2 | To Timothy, my true child in the faith
+How many prophets of Baal did Elijah call to Mount Carmel? | 450 | 40 | 12 | 1,000 | 1 Kings 18:19 | four hundred and fifty prophets of Baal
+How old was Isaac when Jacob and Esau were born? | Sixty | Forty | One hundred | Twenty | Genesis 25:25-26 | Isaac was sixty years old when the twins were born
+How tall was Goliath? | Six cubits and a span | Four cubits | Ten cubits | Eight cubits | 1 Samuel 17:4 | six cubits and a span
+What was Joseph of Arimathea, according to John? | A secret disciple of Jesus | A Roman soldier | A high priest | A tax collector | John 19:38 | a disciple of Jesus (but secretly
+Who returned to Bethlehem with her daughter-in-law Ruth? | Naomi | Orpah | Hannah | Rachel | Ruth 1:22 | Naomi & daughter-in-law Ruth
+What did Jesus tell Zacchaeus? | Hurry down, I must stay at your house | Give everything to the poor | Go and sin no more | Follow Me to Jerusalem | Luke 19:5 | Zacchaeus, hurry down, for I must stay at your house today
