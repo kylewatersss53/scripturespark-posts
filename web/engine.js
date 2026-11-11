@@ -3,6 +3,9 @@
 (function (root) {
   "use strict";
   const W = 1080, H = 1440, M = 110, CW = W - 2 * M;
+  // TikTok draws the caption, username and scroll bar over roughly the bottom 250px of a photo post.
+  // Everything that matters ends above SAFE_B; the small "swipe" footer sits just above the overlay.
+  const SAFE_B = H - 310, FOOT_Y = H - 262;
 
   // ---------- palettes: soft skies, all light so dark serif text stays crisp ----------
   const PALETTES = [
@@ -182,7 +185,7 @@
   }
   function footer(ctx, pal, text) {
     font(ctx, SANS, 24, 500); ctx.fillStyle = hexA(pal.ink, 0.42);
-    spaced(ctx, text, W / 2, H - 70, 3, "center");
+    spaced(ctx, text, W / 2, FOOT_Y, 3, "center");
   }
   function rule(ctx, pal, x, y, w) {
     ctx.fillStyle = hexA(pal.acc, 0.45); ctx.fillRect(x, y, w, 3);
@@ -194,14 +197,14 @@
     const topY = opts.handle ? 150 : 110;
     ctx.save(); ctx.letterSpacing = "-4px";
     // prefer a big two-line title like the feed; fall back to three lines
-    let title = fit(ctx, s.title, { family: SERIF, weight: 500, maxW: TW, maxH: 2 * 0.98 * 140 + 1, max: 140, min: 118, lh: 0.98 });
-    if (title.lines.length > 2) title = fit(ctx, s.title, { family: SERIF, weight: 500, maxW: TW, maxH: 3 * 0.98 * 120 + 1, max: 120, min: 76, lh: 0.98 });
+    let title = fit(ctx, s.title, { family: SERIF, weight: 500, maxW: TW, maxH: 2 * 0.98 * 124 + 1, max: 124, min: 104, lh: 0.98 });
+    if (title.lines.length > 2) title = fit(ctx, s.title, { family: SERIF, weight: 500, maxW: TW, maxH: 3 * 0.98 * 106 + 1, max: 106, min: 72, lh: 0.98 });
     ctx.fillStyle = pal.ink; font(ctx, SERIF, title.size, 500);
     drawLines(ctx, title.lines, LM, topY, title.size, 0.98); ctx.restore();
-    let y = topY + title.height + 40;
-    const n = s.items.length, avail = H - 80 - y;
-    const row = Math.min(118, avail / n);
-    const size = Math.min(84, Math.round(row * 0.84));
+    let y = topY + title.height + 36;
+    const n = s.items.length, avail = SAFE_B - y;
+    const row = Math.min(104, avail / n);
+    const size = Math.min(72, Math.round(row * 0.82));
     const isDay = s.items[0] && /^Day/.test(s.items[0][0]);
     const numX = isDay ? LM + 30 : LM + 92, labX = isDay ? LM + 230 : LM + 140;
     s.items.forEach(([num, label], i) => {
@@ -217,8 +220,8 @@
 
   function drawPairs(ctx, pal, s, opts) {
     // s.blocks: [{kicker, head?, body, italic?}]
-    const top = opts.handle ? 190 : 130, bottom = H - 130;
-    const n = s.blocks.length, gap = 100;
+    const top = opts.handle ? 180 : 130, bottom = SAFE_B;
+    const n = s.blocks.length, gap = 84, HEAD = 80;
     const avail = bottom - top - gap * (n - 1);
     const wc = s.blocks.map(b => Math.max(8, b.body.split(/\s+/).length));
     const wsum = wc.reduce((a, x) => a + x, 0);
@@ -226,8 +229,8 @@
     // share height by length, then use one common size so the slide reads evenly
     let size = maxSize;
     s.blocks.forEach((b, i) => {
-      const fixed = 64 + (b.head ? 92 * 1.1 + 18 : 0);
-      const share = (avail - s.blocks.reduce((a, x) => a + 64 + (x.head ? 92 * 1.1 + 18 : 0), 0)) * wc[i] / wsum;
+      const fixed = 64 + (b.head ? HEAD * 1.1 + 16 : 0);
+      const share = (avail - s.blocks.reduce((a, x) => a + 64 + (x.head ? HEAD * 1.1 + 16 : 0), 0)) * wc[i] / wsum;
       const f = fit(ctx, b.body, { family: SERIF, weight: 400, style: b.italic ? "italic" : "normal", maxW: CW, maxH: share, max: maxSize, min: 30, lh: 1.34 });
       size = Math.min(size, f.size);
     });
@@ -235,7 +238,7 @@
       font(ctx, SERIF, size, 400, b.italic ? "italic" : "normal");
       const lines = wrap(ctx, b.body, CW);
       const body = { size, lines, height: lines.length * size * 1.34 };
-      return { b, body, h: 64 + (b.head ? 92 * 1.1 + 18 : 0) + body.height };
+      return { b, body, h: 64 + (b.head ? HEAD * 1.1 + 16 : 0) + body.height };
     });
     const total = fits.reduce((a, f) => a + f.h, 0) + gap * (n - 1);
     let y = top + Math.max(0, (bottom - top - total) / 2);
@@ -243,10 +246,10 @@
       font(ctx, SANS, 30, 600); ctx.fillStyle = pal.acc; spaced(ctx, f.b.kicker.toUpperCase(), M, y + 28, 3);
       y += 64;
       if (f.b.head) {
-        font(ctx, SERIF, 92, 500); ctx.fillStyle = pal.ink; ctx.textAlign = "left";
+        font(ctx, SERIF, HEAD, 500); ctx.fillStyle = pal.ink; ctx.textAlign = "left";
         let hd = f.b.head; while (ctx.measureText(hd).width > CW && hd.length > 4) hd = hd.slice(0, -2) + "…";
-        ctx.fillText(hd, M, y + 76);
-        y += 92 * 1.1 + 18;
+        ctx.fillText(hd, M, y + HEAD * 0.82);
+        y += HEAD * 1.1 + 16;
       }
       font(ctx, SERIF, f.body.size, 400, f.b.italic ? "italic" : "normal"); ctx.fillStyle = pal.ink;
       drawLines(ctx, f.body.lines, M, y, f.body.size, 1.34);
@@ -257,7 +260,7 @@
 
   function drawHook(ctx, pal, s, opts) {
     const t = fit(ctx, s.text, { family: SERIF, weight: 500, maxW: CW, maxH: 760, max: 112, min: 64, lh: 1.08 });
-    const y = (H - t.height) / 2 - 40;
+    const y = (150 + SAFE_B - t.height) / 2 - 30;
     ctx.fillStyle = pal.ink; font(ctx, SERIF, t.size, 500);
     ctx.save(); ctx.letterSpacing = "-1px"; drawLines(ctx, t.lines, M, y, t.size, 1.08); ctx.restore();
     if (s.sub) {
@@ -269,9 +272,9 @@
   }
 
   function drawVerse(ctx, pal, s) {
-    const body = fit(ctx, s.text, { family: SERIF, weight: 400, maxW: CW, maxH: 860, max: 76, min: 40, lh: 1.32 });
+    const body = fit(ctx, s.text, { family: SERIF, weight: 400, maxW: CW, maxH: 780, max: 74, min: 40, lh: 1.32 });
     const total = body.height + 110;
-    let y = (H - total) / 2 - 30;
+    let y = (150 + SAFE_B - total) / 2;
     // big opening mark
     font(ctx, SERIF, 220, 500); ctx.fillStyle = hexA(pal.acc, 0.18); ctx.textAlign = "left"; ctx.fillText("“", M - 24, y + 120);
     ctx.fillStyle = pal.ink; font(ctx, SERIF, body.size, 400); drawLines(ctx, body.lines, M, y, body.size, 1.32);
@@ -381,19 +384,19 @@
   }
   const QUIZ_ASK = { T: "", F: "Finish the verse", W: "Who said it?", B: "Which book is this from?" };
   function drawQuizCover(ctx, pal, s, opts) {
-    font(ctx, SERIF, 1100, 500); ctx.fillStyle = hexA(pal.acc, 0.09); ctx.textAlign = "right"; ctx.fillText("?", W + 40, H - 120);
-    let y = 360;
+    font(ctx, SERIF, 1100, 500); ctx.fillStyle = hexA(pal.acc, 0.09); ctx.textAlign = "right"; ctx.fillText("?", W + 40, SAFE_B + 60);
+    let y = 290;
     font(ctx, SANS, 40, 600); ctx.fillStyle = pal.acc; spaced(ctx, s.kicker.toUpperCase(), M, y, 6);
     y += 50;
-    const t = fit(ctx, s.head, { family: SERIF, weight: 500, maxW: CW, maxH: 560, max: 150, min: 88, lh: 1.02 });
+    const t = fit(ctx, s.head, { family: SERIF, weight: 500, maxW: CW, maxH: 440, max: 140, min: 84, lh: 1.02 });
     ctx.fillStyle = pal.ink; font(ctx, SERIF, t.size, 500);
     ctx.save(); ctx.letterSpacing = "-2px"; drawLines(ctx, t.lines, M, y, t.size, 1.02); ctx.restore();
-    y += t.height + 70; rule(ctx, pal, M, y, 120); y += 60;
+    y += t.height + 56; rule(ctx, pal, M, y, 120); y += 44;
     font(ctx, SERIF, 52, 400, "italic"); ctx.fillStyle = hexA(pal.ink, 0.78); ctx.textAlign = "left";
     ctx.fillText("4 questions. No looking it up.", M, y + 40);
     ctx.fillText("Comment your score at the end.", M, y + 112);
     // four empty score dots
-    for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(M + 34 + i * 92, y + 230, 30, 0, 7); ctx.lineWidth = 5; ctx.strokeStyle = hexA(pal.acc, 0.55); ctx.stroke(); }
+    for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(M + 34 + i * 92, y + 196, 30, 0, 7); ctx.lineWidth = 5; ctx.strokeStyle = hexA(pal.acc, 0.55); ctx.stroke(); }
     footer(ctx, pal, "SWIPE TO START  →");
   }
   function quizPrompt(ctx, pal, s, top, bottom) {
@@ -412,16 +415,16 @@
   }
   function drawQuizQ(ctx, pal, s, opts) {
     font(ctx, SANS, 32, 600); ctx.fillStyle = pal.acc;
-    spaced(ctx, `QUESTION ${s.n} OF ${s.of}` + (QUIZ_ASK[s.f] ? "  ·  " + QUIZ_ASK[s.f].toUpperCase() : ""), M, 220, 3);
-    const rowH = 118, gap = 24, oy = H - 150 - (4 * rowH + 3 * gap);
-    quizPrompt(ctx, pal, s, 260, oy - 50);
+    spaced(ctx, `QUESTION ${s.n} OF ${s.of}` + (QUIZ_ASK[s.f] ? "  ·  " + QUIZ_ASK[s.f].toUpperCase() : ""), M, 200, 3);
+    const rowH = 104, gap = 20, oy = SAFE_B - (4 * rowH + 3 * gap);
+    quizPrompt(ctx, pal, s, 236, oy - 40);
     drawOptions(ctx, pal, s.o, oy, rowH, gap);
     footer(ctx, pal, "SWIPE FOR THE ANSWER  →");
   }
   function drawQuizA(ctx, pal, s, opts) {
-    font(ctx, SANS, 32, 600); ctx.fillStyle = pal.acc; spaced(ctx, `ANSWER ${s.n} OF ${s.of}`, M, 220, 3);
-    const rowH = 100, gap = 20;
-    const top = drawOptions(ctx, pal, s.o, 262, rowH, gap, s.a) + 70, bottom = H - 150;
+    font(ctx, SANS, 32, 600); ctx.fillStyle = pal.acc; spaced(ctx, `ANSWER ${s.n} OF ${s.of}`, M, 200, 3);
+    const rowH = 88, gap = 16;
+    const top = drawOptions(ctx, pal, s.o, 236, rowH, gap, s.a) + 56, bottom = SAFE_B;
     const o = { family: SERIF, style: "normal", maxW: CW, maxH: bottom - top - 160, lh: 1.32, max: 52, min: 30 };
     const hl = s.f === "B" ? "" : s.hl, pos = s.f === "F" ? s.hlpos : null;
     const R = fitRich(ctx, s.p, hl, pos, o);
@@ -599,7 +602,7 @@
       { t: "— " + s.ref, fam: SANS, w: 600, st: "normal", k: 0.6, lh: 1.3, gap: 1.0, color: pal.acc, spaced: true },
       { t: s.close, fam: SERIF, w: 500, st: "normal", k: 1.05, lh: 1.25, gap: 0, color: pal.ink },
     ];
-    const top = 400, bottom = H - 110;
+    const top = 400, bottom = opts.tall ? H - 200 : H - 110;
     let base = 64, laid;
     for (; base >= 28; base -= 1) {
       let y = 0; laid = [];

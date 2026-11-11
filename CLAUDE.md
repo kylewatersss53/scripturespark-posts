@@ -28,4 +28,5 @@ Bookmarks/saves and app awareness. Post 4x daily (America/Chicago): 07:00 "Today
 - Verify every new reference with `python3 library.py`; never quote Scripture from memory.
 - After engine/style changes, render samples with `render_batch.py` and look at them (`sheet.py` makes contact sheets).
 - Keep the app promo slide last in every carousel (max 10 slides total). Daily-word videos have no promo slide.
+- TikTok's caption, username and scroll bar cover roughly the bottom 250px of a photo post (and the bottom ~430px of the 1920 video frame). Keep slide content above `SAFE_B` (H-310) in `web/engine.js`; footers sit at `FOOT_Y`. Check new layouts against a mock overlay before shipping.
 - The nightly task clones `main`; changes only reach posts once merged to `main`.
