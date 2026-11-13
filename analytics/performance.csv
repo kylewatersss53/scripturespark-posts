@@ -1,9 +1,14 @@
 buffer_id,key,date,time,weekday,post,type,style,topics,category,title,title_style,views,likes,comments,shares,reach,eng_rate,avg_watch_sec,metrics_updated,ingested
-6af372196c7ea3f5e394ba94,2026-11-10-1335,2026-11-10,13:35,Tue,D:2026-11-10,D,,,,Today God is saying to you: God is bigger than your anxiety.,daily,0,0,0,0,0,0,0,2026-11-10T19:35:53.011Z,2026-11-11T20:40-06:00
-6af37fa42cac17fcaff7396a,2026-11-10-1433,2026-11-10,14:33,Tue,D:2026-11-10,D,,,,Today God is saying to you: God is bigger than your anxiety.,daily,389,23,0,1,0,6.17,4.75,2026-11-11T18:25:34.471Z,2026-11-11T20:40-06:00
-6af372419b128026cfb877f0,2026-11-10-1900,2026-11-10,19:00,Tue,V:strength,V,,strength,mind,Bible Verses to Read When You Need Strength,when-you,238,21,0,2,0,9.66,11.87,2026-11-11T18:25:34.471Z,2026-11-11T20:40-06:00
-6af3d384ffe2872794ea095f,2026-11-10-2100,2026-11-10,21:00,Tue,S:parents:0,S,,parents,family,"Parents, save this one.",other,240,2,0,0,0,0.83,2.04,2026-11-11T18:25:34.471Z,2026-11-11T20:40-06:00
-6af375dd9b128026cfb9914a,2026-11-11-0700,2026-11-11,07:00,Wed,D:2026-11-11,D,,,,Today God is saying to you: Patience is part of the process.,daily,319,21,0,1,0,6.9,6.64,2026-11-11T18:25:34.471Z,2026-11-11T20:40-06:00
-6af372779b128026cfb8904f,2026-11-11-1200,2026-11-11,12:00,Wed,V:faith,V,,faith,faith,10 Bible Verses About Faith,10-number,37,0,0,0,0,0,3.13,2026-11-11T18:25:34.471Z,2026-11-11T20:40-06:00
-6af3c713d9a6812579c3408a,2026-11-11-1600,2026-11-11,16:00,Wed,Q:2026-11-11,Q,F,,,Finish the Verse: Only real Bible readers get 4/4,quiz:F,0,0,0,0,0,0,0,2026-11-11T01:38:27.090Z,2026-11-11T20:40-06:00
-6af372786c7ea3f5e394dcbb,2026-11-11-1900,2026-11-11,19:00,Wed,C:success,C,,success,life,Bible Chapters About Success,about,0,0,0,0,0,0,0,2026-11-10T19:37:28.501Z,2026-11-11T20:40-06:00
+6af372196c7ea3f5e394ba94,2026-11-10-1335,2026-11-10,13:35,Tue,D:2026-11-10,D,,,,Today God is saying to you: God is bigger than your anxiety.,daily,0,0,0,0,0,0,0,2026-11-10T19:35:53.011Z,2026-11-12T20:39-06:00
+6af37fa42cac17fcaff7396a,2026-11-10-1433,2026-11-10,14:33,Tue,D:2026-11-10,D,,,,Today God is saying to you: God is bigger than your anxiety.,daily,410,23,0,1,338,5.85,4.73,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af372419b128026cfb877f0,2026-11-10-1900,2026-11-10,19:00,Tue,V:strength,V,,strength,mind,Bible Verses to Read When You Need Strength,when-you,347,25,0,7,0,9.22,11.33,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af3d384ffe2872794ea095f,2026-11-10-2100,2026-11-10,21:00,Tue,S:parents:0,S,,parents,family,"Parents, save this one.",other,246,2,0,0,0,0.81,2.01,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af375dd9b128026cfb9914a,2026-11-11-0700,2026-11-11,07:00,Wed,D:2026-11-11,D,,,,Today God is saying to you: Patience is part of the process.,daily,351,22,0,1,0,6.55,6.19,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af372779b128026cfb8904f,2026-11-11-1200,2026-11-11,12:00,Wed,V:faith,V,,faith,faith,10 Bible Verses About Faith,10-number,222,12,0,1,0,5.86,18.34,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af3c713d9a6812579c3408a,2026-11-11-1600,2026-11-11,16:00,Wed,Q:2026-11-11,Q,F,,,Finish the Verse: Only real Bible readers get 4/4,quiz:F,774,18,1,4,0,2.97,19.61,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af372786c7ea3f5e394dcbb,2026-11-11-1900,2026-11-11,19:00,Wed,C:success,C,,success,life,Bible Chapters About Success,about,392,21,0,4,0,6.38,5.2,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af526f72f7f0a6952e6ba35,2026-11-11-2100,2026-11-11,21:00,Wed,S:discipline:6,S,,discipline,faith,Discipline is a spiritual thing too.,other,320,22,0,0,0,6.88,2.45,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af37f432cac17fcaff70e15,2026-11-12-0700,2026-11-12,07:00,Thu,D:2026-11-12,D,,,,Today God is saying to you: Nothing can separate you from His love.,daily,320,21,0,1,0,6.88,4.71,2026-11-12T17:26:29.129Z,2026-11-12T20:39-06:00
+6af372799b7b5eddae4ed135,2026-11-12-1200,2026-11-12,12:00,Thu,V:panic,V,,panic,mind,10 Best Bible Verses for When Panic Hits,when-you,0,0,0,0,0,0,0,2026-11-10T19:37:29.817Z,2026-11-12T20:39-06:00
+6af526f8bc9f3773a1b69c1c,2026-11-12-1600,2026-11-12,16:00,Thu,Q:2026-11-12,Q,W,,,Who Said It? Guess who said it in the Bible,quiz:W,0,0,0,0,0,0,0,2026-11-12T02:39:52.812Z,2026-11-12T20:39-06:00
+6af3727a695294c6ea373a49,2026-11-12-1900,2026-11-12,19:00,Thu,C:depression,C,,depression,mind,Best Chapters to Read When Everything Feels Heavy,when-you,0,0,0,0,0,0,0,2026-11-10T19:37:30.488Z,2026-11-12T20:39-06:00
