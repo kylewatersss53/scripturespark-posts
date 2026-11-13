@@ -25,8 +25,8 @@ CSV = os.path.join(ADIR, "performance.csv")
 REPORT = os.path.join(ADIR, "REPORT.md")
 TUNING = os.path.join(ADIR, "tuning.json")
 CT = ZoneInfo("America/Chicago")
-SLOT_BY_TIME = {"07:00": 0, "12:00": 1, "16:00": 5, "19:00": 2, "21:00": 3}
-MIN_POSTS, MIN_DAYS = 28, 7
+SLOT_BY_TIME = {"07:00": 0, "12:00": 1, "16:00": 5, "19:00": 2, "21:00": 4}
+MIN_POSTS, MIN_DAYS = 10, 3
 LIST_TYPES = ["V", "C", "P", "KC", "KV"]
 QUIZ_STYLES = ["T", "F", "W", "B"]
 TYPE_NAME = {"D": "Daily word video", "V": "10 verses", "C": "10 chapters", "P": "7-day plan", "KC": "Chapter list stack",
@@ -280,31 +280,43 @@ def _weights(g, overall, k, lo, hi):
 
 
 def tune(today=None):
+    """Nightly: kill what's losing, lean into what's winning.
+    Each group's weight = its mean score vs. the overall mean, shrunk only lightly for small samples (k=2),
+    clamped wide (formats/quiz styles 0.15-3.0, topics 0.3-2.5): a clear loser drops to almost never,
+    a clear winner shows up up to 3x as often. Groups with no new data keep their previous weight, so a
+    killed format stays killed until it is deliberately retested. Applies from today + 3 (the publish
+    window is 3 days, so nothing already published or queued changes)."""
     rs = scored(load_rows())
     days = len({r["date"] for r in rs})
     if len(rs) < MIN_POSTS or days < MIN_DAYS:
         print(f"tune: not enough data yet ({len(rs)} posts over {days} days; need {MIN_POSTS} over {MIN_DAYS}). No change.")
         return
     today = today or dt.datetime.now(CT).date()
-    eff = (today + dt.timedelta(6)).isoformat()
+    eff = (today + dt.timedelta(3)).isoformat()
+    prev = (load_tuning() or [{}])[-1]
     lists = [r for r in rs if r["type"] in LIST_TYPES]
     quizzes = [r for r in rs if r["type"] == "Q"]
-    step = {"effective_from": eff, "made": today.isoformat(), "posts": len(rs)}
+    step = {"effective_from": eff, "made": today.isoformat(), "posts": len(rs), "by": "perf.py tune (nightly)"}
+    for k in ("no_weekday_pins",):
+        if k in prev:
+            step[k] = prev[k]
+    def merge(name, new):
+        out = dict(prev.get(name, {}))
+        out.update(new)
+        return out
     if lists:
         m = statistics.mean(r["score"] for r in lists)
-        step["list_types"] = {t: w for t, w in _weights(groups(lists, lambda r: [r["type"]]), m, 6, 0.6, 1.6).items() if t in LIST_TYPES}
+        step["list_types"] = merge("list_types", {t: w for t, w in _weights(groups(lists, lambda r: [r["type"]]), m, 2, 0.15, 3.0).items() if t in LIST_TYPES})
         single = [r for r in lists if r["type"] in ("V", "C", "P")]
-        tw = _weights(groups(single, lambda r: r["topics"].split()), m, 2, 0.7, 1.5)
-        cw = _weights(groups([r for r in single if r["category"]], lambda r: [r["category"]]), m, 6, 0.8, 1.3)
-        step["topics"] = tw
-        step["categories"] = cw
+        step["topics"] = merge("topics", _weights(groups(single, lambda r: r["topics"].split()), m, 1, 0.3, 2.5))
+        step["categories"] = merge("categories", _weights(groups([r for r in single if r["category"]], lambda r: [r["category"]]), m, 3, 0.6, 1.6))
     if quizzes:
         m = statistics.mean(r["score"] for r in quizzes)
-        step["quiz_styles"] = {s: w for s, w in _weights(groups(quizzes, lambda r: [r["style"]]), m, 4, 0.6, 1.6).items() if s in QUIZ_STYLES}
+        step["quiz_styles"] = merge("quiz_styles", {s: w for s, w in _weights(groups(quizzes, lambda r: [r["style"]]), m, 1, 0.15, 3.0).items() if s in QUIZ_STYLES})
     hist = [h for h in load_tuning() if h["effective_from"] < eff]   # steps that may already be live stay as they are
     hist.append(step)
     os.makedirs(ADIR, exist_ok=True)
-    json.dump({"note": "Written by perf.py tune; read by gen.py. Each step applies from effective_from until the next one.",
+    json.dump({"note": "Written by perf.py tune (nightly) and by hand (see analytics/CHANGELOG.md); read by gen.py. Each step applies from effective_from until the next one.",
                "history": hist}, open(TUNING, "w", encoding="utf-8"), indent=1)
     print(f"tune: new step from {eff} based on {len(rs)} posts: lists {step.get('list_types')}, quiz {step.get('quiz_styles')}")
 

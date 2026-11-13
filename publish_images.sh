@@ -4,7 +4,7 @@
 # Slots that are already published are kept exactly as they are (see make_site.py); FRESH=1 re-renders everything.
 set -euo pipefail
 cd "$(dirname "$0")"
-START="${1:-$(TZ=America/Chicago date +%F)}"; DAYS="${2:-5}"
+START="${1:-$(TZ=America/Chicago date +%F)}"; DAYS="${2:-3}"
 REPO="https://github.com/kylewatersss53/scripturespark-posts"
 python3 gen.py >/dev/null
 prev=$(mktemp -d)

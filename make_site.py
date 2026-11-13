@@ -13,7 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 start_day = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else dt.date.today()
 days = int(sys.argv[2]) if len(sys.argv) > 2 else 5
 VERSE_LAUNCH = dt.date(2026, 11, 10)
-SLOTS = [(0, "07:00"), (1, "12:00"), (5, "16:00"), (2, "19:00"), (3, "21:00")]   # (schedule index, Central time); 5 = quiz, 3 = verse video
+SLOTS = [(0, "07:00"), (1, "12:00"), (5, "16:00"), (2, "19:00"), (4, "21:00")]   # (schedule index, Central time); 5 = quiz, 4 = third list (9pm verse video retired 2026-11-13: lowest views and ~2 s watch time)
 L = json.load(open(os.path.join(HERE, "build", "library.json")))
 s0 = dt.date.fromisoformat(L["meta"]["start"])
 site = os.path.join(HERE, "site"); shutil.rmtree(site, ignore_errors=True); os.makedirs(site)

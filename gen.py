@@ -434,11 +434,11 @@ def make_schedule(posts, T, hist=()):
             typ = pattern[(pat_i[0] + step) % len(pattern)]
             pool = pools[typ]
             found = []
-            for look in range(min(25, len(pool))):
+            for look in range(min(40 if tw else 25, len(pool))):
                 j = (cur[typ] + look) % len(pool)
                 if not set(tops(pool[j])) & avoid:
                     found.append(j)
-                    if not tw or len(found) >= 6:
+                    if not tw or len(found) >= 12:
                         break
             if found:
                 # with tuning, take the best-performing topic among the next few eligible posts
@@ -480,9 +480,11 @@ def make_schedule(posts, T, hist=()):
             if slot == "B" and pinned_b is None and what.startswith("S:") and singles.get(what[2:]):
                 k = what[2:]; c = seasonal_cur.get(k, 0)
                 pinned_b = singles[k][c % len(singles[k])]; seasonal_cur[k] = c + 1
-        if pinned_a is None and d.weekday() == 0 and i % 28 < 7:
+        tn0 = tuning_for(d, hist)
+        no_pins = bool(tn0 and tn0.get("no_weekday_pins"))
+        if pinned_a is None and not no_pins and d.weekday() == 0 and i % 28 < 7:
             pinned_a = "V:monday" if (i // 28) % 2 == 0 else "C:monday"
-        if pinned_a is None and d.weekday() == 6 and i % 42 < 7:
+        if pinned_a is None and not no_pins and d.weekday() == 6 and i % 42 < 7:
             pinned_a = "V:sunday" if (i // 42) % 2 == 0 else "C:sunday"
         avoid = set(recent)
         tn = tuning_for(d, hist)
