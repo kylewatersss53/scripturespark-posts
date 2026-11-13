@@ -32,7 +32,7 @@ Most eyeballs on the Scripture Spark brand (views first), then shares, comments 
 - Org "My organization" `6af36ee396c2cde5badc9174`, TikTok channel `scripturesparkapp` `6af36f7962b70b94b0e7bd92`. Free plan: max 10 scheduled posts, 10 images per TikTok photo post.
 - Posts are created with `schedulingType: automatic`, `mode: customScheduled`. Daily slots (manifest has `video`): one video asset by URL. Carousel slots: image assets by URL. Buffer copies images at publish time, but scheduled posts reference the raw URLs until then, so the images branch must always cover every queued slot (today + 2 days; we publish 3).
 - A daily scheduled task (8:37pm Central) runs `publish_images.sh <today> 3` and fills free slots up to 10 (with 5 posts/day the queue covers about 2 days).
-- A weekly scheduled review (Mondays) follows `REVIEW.md`: reads `analytics/REPORT.md`, judges past changes in `analytics/CHANGELOG.md`, researches what is getting views, makes up to 3 improvements, and logs them.
+- A daily review (every night, after analytics) follows `REVIEW.md`: reads `analytics/REPORT.md`, judges past changes in `analytics/CHANGELOG.md`, researches what is getting views, makes up to 3 improvements, and logs them.
 - Published slots are frozen: `publish_images.sh` clones the `images` branch and `make_site.py` keeps any slot already published (same images, video, caption), so content edits never change queued posts. `FRESH=1` re-renders everything; `FRESH_KEYS=key,key` re-renders specific slots (only ones not queued in Buffer, or where post and caption are unchanged).
 
 ## Conventions
