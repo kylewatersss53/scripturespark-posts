@@ -300,15 +300,15 @@ def weighted_pattern(base, weights, length):
 
 # Rotation of quiz styles (trivia most often). 11-day cycle: T x4, F x3, W x2, B x2.
 QUIZ_PATTERN = ["T", "F", "W", "T", "B", "T", "F", "W", "B", "F", "T"]
-QUIZ_TITLES = {
-    "T": [("Bible Trivia", "Can you get 4/4?"), ("Bible Trivia", "How well do you know your Bible?"),
-          ("Bible Trivia", "Only true Bible readers get 4/4"), ("Bible Trivia", "Bet you can’t get all 4 right"),
-          ("Bible Quiz", "No Googling. How many can you get?")],
-    "F": [("Finish the Verse", "Can you get 4/4?"), ("Finish the Verse", "Can you finish all 4 without looking?"),
-          ("Finish the Verse", "Only real Bible readers get 4/4")],
-    "W": [("Who Said It?", "Bible edition. Can you get 4/4?"), ("Who Said It?", "Guess who said it in the Bible"),
-          ("Who Said It?", "4 quotes. How many can you name?")],
-    "B": [("Guess the Book", "Which book of the Bible is this from?"), ("Guess the Book", "Can you name all 4 books?"),
+QUIZ_TITLES = {   # identity challenge ("Only real Bible readers...") got 2,626 views vs ~400 median (2026-11-13 review)
+    "T": [("Bible Trivia", "Only real Bible readers get 4/4"), ("Bible Trivia", "Only true Bible readers get all 4 right"),
+          ("Bible Trivia", "Can you get 4/4?"), ("Bible Trivia", "Only real Bible readers get 4/4"),
+          ("Bible Quiz", "Only real Bible readers get all 4. No Googling.")],
+    "F": [("Finish the Verse", "Only real Bible readers get 4/4"), ("Finish the Verse", "Only real Bible readers can finish all 4"),
+          ("Finish the Verse", "Only real Bible readers get 4/4"), ("Finish the Verse", "Can you finish all 4 without looking?")],
+    "W": [("Who Said It?", "Only real Bible readers get 4/4"), ("Who Said It?", "Bible edition. Can you get 4/4?"),
+          ("Who Said It?", "4 quotes. Only real Bible readers name all 4")],
+    "B": [("Guess the Book", "Only real Bible readers get 4/4"), ("Guess the Book", "Can you name all 4 books?"),
           ("Guess the Book", "Only real Bible readers get 4/4")],
 }
 

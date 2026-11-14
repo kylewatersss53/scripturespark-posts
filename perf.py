@@ -300,9 +300,17 @@ def tune(today=None):
     for k in ("no_weekday_pins",):
         if k in prev:
             step[k] = prev[k]
+    hand = next((h for h in reversed(load_tuning()) if str(h.get("by", "")).startswith("hand") and h["effective_from"] < eff), {})
     def merge(name, new):
+        """Groups without new data keep their previous weight. A hand-made kill or boost stays in force
+        while the data points the same way (the stronger of the two wins); the data overrides it only
+        when it points the other way."""
         out = dict(prev.get(name, {}))
-        out.update(new)
+        for k, w in new.items():
+            h = hand.get(name, {}).get(k)
+            if h is not None and (h - 1) * (w - 1) > 0:
+                w = min(h, w) if w < 1 else max(h, w)
+            out[k] = w
         return out
     if lists:
         m = statistics.mean(r["score"] for r in lists)

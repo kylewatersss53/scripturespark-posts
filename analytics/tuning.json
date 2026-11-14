@@ -252,7 +252,7 @@
    "no_weekday_pins": true,
    "list_types": {
     "V": 0.95,
-    "C": 1.063,
+    "C": 1.5,
     "P": 0.4,
     "KC": 0.3,
     "KV": 0.3
@@ -261,7 +261,7 @@
     "anxiety": 2.0,
     "fear": 2.0,
     "overthinking": 2.0,
-    "depression": 1.111,
+    "depression": 2.0,
     "lonely": 2.0,
     "sleep": 2.0,
     "stress": 2.0,
@@ -274,12 +274,12 @@
     "peace": 2.0,
     "joy": 0.5,
     "hope": 2.0,
-    "strength": 1.016,
+    "strength": 2.0,
     "courage": 2.0,
     "guilt": 2.0,
     "regret": 2.0,
     "negativethoughts": 0.5,
-    "panic": 1.07,
+    "panic": 2.0,
     "numb": 2.0,
     "confidence": 2.0,
     "patience": 2.0,
@@ -349,7 +349,7 @@
     "newbeliever": 0.5,
     "startbible": 0.5,
     "prayer": 0.5,
-    "faith": 0.788,
+    "faith": 0.5,
     "doubt": 2.0,
     "godslove": 0.5,
     "grace": 0.5,
@@ -474,17 +474,17 @@
     "miraclesneed": 2.0
    },
    "categories": {
-    "mind": 1.066,
+    "mind": 1.3,
     "heart": 1.3,
-    "faith": 0.894,
+    "faith": 0.8,
     "life": 1.007,
     "study": 0.6
    },
    "quiz_styles": {
-    "F": 1.381,
+    "F": 3.0,
     "T": 1.0,
     "B": 0.8,
-    "W": 0.619
+    "W": 0.15
    }
   }
  ]
