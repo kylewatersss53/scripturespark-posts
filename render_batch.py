@@ -41,9 +41,10 @@ def render(post_ids, outdir, handle=None, extra=None):
                 with open(fn, "wb") as f:
                     f.write(base64.b64decode(t.split(",", 1)[1]))
                 r["tall"] = fn
-            if pid.startswith("S:"):   # layers for the 9pm verse video (see engine renderVerseVideo)
+            if pid.startswith("S:") or pid.startswith("R:"):   # layered video: 9pm verse video / 07:00 Red Letter
                 vo = dict({"handle": handle} if handle else {}, **((extra or {}).get(pid, {})))
-                vv = page.evaluate("([id, o]) => window.renderVerseVideo(id, o)", [pid, vo])
+                fn_js = "window.renderRedLetter" if pid.startswith("R:") else "window.renderVerseVideo"
+                vv = page.evaluate("([id, o]) => " + fn_js + "(id, o)", [pid, vo])
                 bg = os.path.join(d, "vv_bg.jpg")
                 with open(bg, "wb") as f:
                     f.write(base64.b64decode(vv["bg"].split(",", 1)[1]))

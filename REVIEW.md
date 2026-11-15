@@ -22,8 +22,12 @@ You may change these without asking:
 - Mix weights are tuned automatically every night (`perf.py tune`). You may also add a hand-made step to `analytics/tuning.json` (effective tomorrow or later) when the data is clear, e.g. a post far above the rest (2x+ the median) or a format/topic/quiz style clearly below (under half the median on 2+ posts). Log why in the changelog.
 - Queued posts: you MAY replace a queued Buffer post (delete it, then re-create the slot from the new manifest after publishing with `FRESH_KEYS=<that slot key>`) when its format, quiz style or topic type has been cut by the data. Never leave the queue below what it was; never post with shareNow.
 
-Ask the owner first (write it up as a proposal in your summary; don't do it):
-- Posting times, number of posts per day, new post formats, which format a time slot uses, the audio, anything about Buffer settings or the scheduled tasks.
+The owner has given creative freedom (2026-11-14): "post what you want when you want". You may also, without asking:
+- Retire a format, start a new format, change which format a time slot uses, or move a posting time, when the data or research supports it. Keep 4-6 posts a day, never more than Buffer's 10 queued, and log the change with its hypothesis.
+- Study what other faith and Bible accounts and brands are doing well (web search) and adapt the strategy in Scripture Spark's own style. Never copy another account's characters, artwork, look or wording.
+
+Still ask the owner first (proposal in your summary):
+- Anything about Buffer settings, the scheduled tasks, paid tools, or posting more than 6 times a day.
 
 Always:
 - Keep the app promo slide last in carousels (max 10 slides). Keep the brand voice. No fabricated statistics or claims on slides or captions.

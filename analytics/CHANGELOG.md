@@ -2,6 +2,14 @@
 
 Newest first. Each entry: date · change · why · metric to watch · judge after · verdict (kept / reverted / inconclusive).
 
+## 2026-11-14 (owner session) · Red Letter replaces the 7am daily word video; Trivia cut
+- **Data:** daily word videos flat at 366-421 views with ~4 s of 12 s watched (the weakest regular slot). Trivia quiz 66 views (worst). Winners: Finish the Verse 2,878; "When You" chapter lists 1,135 and 879; "When Panic Hits" 704.
+- **Changes:** from 2026-11-16 the 07:00 slot posts **Red Letter** videos: one short saying of Jesus (69 verified sayings in `redletter/sayings.txt`), hand-lettered in red on warm paper, one word at a time, first word visible from frame one, 6.5 s, worship music. Owner gave creative freedom and liked the idea (inspired by short single-message faith posts; our own look, Jesus' actual words only). Quiz styles: Trivia cut (T 0.15) from 2026-11-17.
+- **To do for the nightly reviewer:** Finish the Verse now runs most days (4 questions each); its bank has 71 questions, so add 50+ verified Finish the Verse questions soon to avoid repeats.
+- **Watch:** 07:00 views and average watch (Red Letter vs the daily word's ~380 views / 4 s); 16:00 quiz views.
+- **Judge after:** 2026-11-20.
+- **Verdict:** pending.
+
 ## 2026-11-14 (night review) · Lean harder into "When You..." lists
 - **Data (23 posts, 19 with stats):** "When You" list titles median 580 views over 6 posts (top 3 lists: Heavy 1,135 · Sick 879 · Panic 704); the weakest lists are generic/"About"/"10 Bible Verses About" (Faith 258, Unqualified 179). 10-chapter lists lead formats (median 698). Yet the next 2 weeks of the schedule were full of "About"/"for X" titles (Helping People in Need, Stewardship, Anniversaries, Loving Your Enemies, Loving Your Neighbor, Dads, Pregnancy, Body Image): the tuner compared only 12 eligible posts, so 0.5-weighted topics still got picked.
 - **Change 1 (titles):** 19 more emotional topics get "When You..." titles in `WHEN` (lost a parent/child/baby/spouse, chronic pain, surgery, addiction, divorce, prodigal child, infertility, single parents, caregivers, debt, negative thoughts, body image, perfectionism, exams, mocked for faith, starting over). Verse picks unchanged; covers checked (3-line titles fit).

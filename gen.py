@@ -254,6 +254,7 @@ def build():
     if qprobs:
         raise SystemExit("Fix quiz problems first (python3 quiz.py):\n" + "\n".join(qprobs))
     add_quiz(posts, schedule, Qs, hist)
+    add_redletter(posts, schedule)
     lib = {
         "meta": {"translation": "Berean Standard Bible (BSB)", "start": START.isoformat(), "days": len(schedule),
                  "built": dt.datetime.now().isoformat(timespec="minutes")},
@@ -351,6 +352,27 @@ def add_quiz(posts, schedule, Qs, hist=()):
         ti = f"{kicker} {head}" if kicker.endswith("?") else f"{kicker}: {head}"
         pid = f"Q:{d}"
         posts.append({"id": pid, "t": "Q", "date": d, "f": f, "qs": take(f), "ti": ti, "kick": kicker, "head": head})
+        day.append(pid)
+
+
+# ---------------- Red Letter (07:00 video since 2026-11-16): short sayings of Jesus ----------------
+
+def add_redletter(posts, schedule):
+    """One saying per day, appended as schedule index 6; sayings cycle in shuffled order without repeats."""
+    items = []
+    for line in open(os.path.join(HERE, "redletter", "sayings.txt"), encoding="utf-8"):
+        if line.strip() and not line.startswith("#"):
+            ref, words = [x.strip() for x in line.split("|", 1)]
+            if words not in bible.display_text(ref):
+                raise SystemExit(f"redletter/sayings.txt: {words!r} not in {ref}")
+            items.append((bible.label(ref), words))
+    rng = random.Random(31); order = []
+    while len(order) < len(schedule):
+        cyc = list(range(len(items))); rng.shuffle(cyc); order += cyc
+    for i, day in enumerate(schedule):
+        ref, words = items[order[i]]
+        pid = f"R:{(START + dt.timedelta(i)).isoformat()}"
+        posts.append({"id": pid, "t": "R", "w": words, "r": ref, "ti": f"\u201c{words[0].upper() + words[1:]}\u201d Jesus, {ref}"})
         day.append(pid)
 
 

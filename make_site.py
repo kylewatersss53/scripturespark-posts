@@ -13,6 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 start_day = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else dt.date.today()
 days = int(sys.argv[2]) if len(sys.argv) > 2 else 5
 VERSE_LAUNCH = dt.date(2026, 11, 10)
+REDLETTER_FROM = dt.date(2026, 11, 16)   # 07:00 switched from the daily word video to Red Letter
 SLOTS = [(0, "07:00"), (1, "12:00"), (5, "16:00"), (2, "19:00"), (4, "21:00")]   # (schedule index, Central time); 5 = quiz, 4 = third list (9pm verse video retired 2026-11-13: lowest views and ~2 s watch time)
 L = json.load(open(os.path.join(HERE, "build", "library.json")))
 s0 = dt.date.fromisoformat(L["meta"]["start"])
@@ -33,7 +34,8 @@ jobs = []
 for k in range(days):
     d = start_day + dt.timedelta(k); i = (d - s0).days
     for slot, hhmm in SLOTS:
-        jobs.append((d, hhmm, L["schedule"][i][slot], f"{d.isoformat()}-{hhmm.replace(':', '')}"))
+        idx = 6 if (hhmm == "07:00" and d >= REDLETTER_FROM) else slot
+        jobs.append((d, hhmm, L["schedule"][i][idx], f"{d.isoformat()}-{hhmm.replace(':', '')}"))
 jobs.sort(key=lambda j: (j[0], j[1]))
 todo = sorted({pid for d, hhmm, pid, key in jobs if key not in prev})
 tmp = os.path.join(HERE, "_render"); shutil.rmtree(tmp, ignore_errors=True)

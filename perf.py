@@ -30,7 +30,7 @@ MIN_POSTS, MIN_DAYS = 10, 3
 LIST_TYPES = ["V", "C", "P", "KC", "KV"]
 QUIZ_STYLES = ["T", "F", "W", "B"]
 TYPE_NAME = {"D": "Daily word video", "V": "10 verses", "C": "10 chapters", "P": "7-day plan", "KC": "Chapter list stack",
-             "KV": "Verse list stack", "S": "Verse video (9pm)", "Q": "Bible quiz"}
+             "KV": "Verse list stack", "S": "Verse video (9pm)", "Q": "Bible quiz", "R": "Red Letter video (7am)"}
 STYLE_NAME = {"T": "Bible Trivia", "F": "Finish the Verse", "W": "Who Said It?", "B": "Guess the Book"}
 FIELDS = ["buffer_id", "key", "date", "time", "weekday", "post", "type", "style", "topics", "category", "title", "title_style",
           "views", "likes", "comments", "shares", "reach", "eng_rate", "avg_watch_sec", "metrics_updated", "ingested"]

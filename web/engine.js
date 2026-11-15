@@ -62,6 +62,7 @@
     ["Inter", "inter-latin-400-normal.woff2", "400", "normal"],
     ["Inter", "inter-latin-500-normal.woff2", "500", "normal"],
     ["Inter", "inter-latin-600-normal.woff2", "600", "normal"],
+    ["Caveat", "caveat-latin-700-normal.woff2", "700", "normal"],
   ];
   async function loadFonts(base) {
     // fetch the bytes ourselves so it works anywhere same-origin fetch works
@@ -517,6 +518,7 @@
         PROMO_SLIDE,
       ];
     }
+    if (post.t === "R") return [{ kind: "redletter", id: post.id, w: post.w, r: post.r }];
     if (post.t === "Q") {
       const slides = [{ kind: "quizcover", kicker: post.kick, head: post.head }];
       post.qs.forEach((qid, i) => {
@@ -556,6 +558,9 @@
     if (post.t === "D") {
       const m = lib.daily[post.m];
       return `Today God is saying to you: ${m.o} 🤍\n\n“${m.v}” ${m.r}\n\nSave this for when you need it, and send it to someone who needs to hear it today.\n\nWant someone to read the Bible with? Search “Scripture Spark” in the App Store.\n\n#godisspeaking #dailydevotional #bibleverse #christian #jesus #scripturespark #christiantiktok`;
+    }
+    if (post.t === "R") {
+      return `“${redLetterText(post.w)}” Jesus, ${post.r} ❤️\n\nHis words, in red. Save this for the day you need to hear it, and send it to someone who does.\n\nNew words of Jesus every morning. Follow so you don't miss tomorrow's.\n\nWant someone to read the Bible with? Search “Scripture Spark” in the App Store.\n\n#jesus #wordsofjesus #jesuslovesyou #bibleverse #christian #scripturespark #christiantiktok`;
     }
     if (post.t === "Q") {
       const ftag = { T: "#bibletrivia", F: "#finishtheverse", W: "#whosaidit", B: "#bookofthebible" }[post.f];
@@ -676,6 +681,7 @@
     const c = document.createElement("canvas"); c.width = W; c.height = tall ? TALL_H : H;
     const ctx = c.getContext("2d");
     const pal = opts.palette != null ? PALETTES[opts.palette] : post.t === "Q" ? paletteFor(post) : paletteForSlide(post, index);
+    if (slide.kind === "redletter") { drawRedLetter(ctx, slide); return c; }
     if (slide.kind === "daily") {
       const h = hash(post.id), night = h % 5 < 3;
       const p = night ? NIGHT[h % NIGHT.length] : PALETTES[h % PALETTES.length];
@@ -809,5 +815,65 @@
     return { bg: bgc.toDataURL("image/jpeg", 0.93), layers, total };
   }
 
-  root.ScriptureEngine = { W, H, PALETTES, loadFonts, loadPromo, setPromo, buildSlides, caption, renderSlide, renderVerseVideo, paletteFor, hash };
+  // ---------- Red Letter (07:00 video): Jesus' actual words, one word at a time, hand-lettered in red ----------
+  const PAPERS = ["#FBF5EA", "#F3F0E8", "#FAF1EE", "#EEF2EC", "#F6F1E6", "#F1EEF6"];
+  const RED = "#B3261E", GOLD = "#D9A441";
+  function redLetterText(p) { return p.charAt(0).toUpperCase() + p.slice(1); }
+  function renderRedLetter(post, lib, opts = {}) {
+    const VW = 1080, VH = 1920, TOP = 380, BOT = 1420, TW = 860;
+    const seed = hash(post.id), paper = PAPERS[seed % PAPERS.length];
+    const BW = 1188, BH = 2112;
+    const bgc = document.createElement("canvas"); bgc.width = BW; bgc.height = BH;
+    { const g = bgc.getContext("2d"); g.fillStyle = paper; g.fillRect(0, 0, BW, BH);
+      const r = rng(seed); for (let i = 0; i < 16000; i++) { g.fillStyle = `rgba(80,60,40,${r() * 0.035})`; g.fillRect(r() * BW, r() * BH, 2, 2); } }
+    const layer = () => { const c = document.createElement("canvas"); c.width = VW; c.height = VH; return [c, c.getContext("2d")]; };
+    const png = c => c.toDataURL("image/png");
+    const text = redLetterText(post.w);
+    const [, m] = layer();
+    let size = 190, lines;
+    for (; size >= 90; size -= 6) {
+      font(m, '"Caveat", cursive', size, 700); lines = wrap(m, text, TW);
+      if (lines.length * size * 1.02 <= BOT - TOP - 260 && lines.length <= 4) break;
+    }
+    font(m, '"Caveat", cursive', size, 700);
+    const lh = size * 1.02, H = lines.length * lh, y0 = (TOP + BOT - H) / 2 - 40;
+    const words = [];
+    lines.forEach((ln, i) => {
+      const ws = ln.split(" "), sp = m.measureText(" ").width;
+      const tot = ws.reduce((a, w, j) => a + m.measureText(w).width + (j ? sp : 0), 0);
+      let x = VW / 2 - tot / 2;
+      ws.forEach(w => { words.push({ w, x, y: y0 + size * 0.8 + i * lh }); x += m.measureText(w).width + sp; });
+    });
+    const layers = [];
+    // brand frame: spark above, handle at top (always on)
+    { const [c, g] = layer();
+      const sx = VW / 2, sy = y0 - 60; g.fillStyle = GOLD; g.beginPath();
+      for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4, rr = k % 2 ? 8 : 34; g.lineTo(sx + rr * Math.sin(a), sy - rr * Math.cos(a)); } g.closePath(); g.fill();
+      if (opts.handle) { font(g, SANS, 26, 600); g.fillStyle = "rgba(60,40,30,.38)"; spaced(g, opts.handle.toUpperCase(), VW / 2, 300, 3, "center"); }
+      layers.push({ img: png(c), start: 0, end: null, fadeIn: 0, fadeOut: 0 }); }
+    // words, one at a time; the first is on screen from frame one
+    let t = 0;
+    words.forEach((wd, i) => {
+      const [c, g] = layer(); font(g, '"Caveat", cursive', size, 700); g.fillStyle = RED; g.textAlign = "left"; g.fillText(wd.w, wd.x, wd.y);
+      layers.push({ img: png(c), start: t, end: null, fadeIn: i ? 0.18 : 0, fadeOut: 0, verse: true });
+      t += 0.3;
+    });
+    // attribution
+    { const [c, g] = layer(); font(g, SANS, 32, 600); g.fillStyle = "rgba(60,40,30,.6)";
+      spaced(g, ("— Jesus · " + post.r).toUpperCase(), VW / 2, y0 + H + 80, 3, "center");
+      layers.push({ img: png(c), start: t + 0.2, end: null, fadeIn: 0.4, fadeOut: 0, verse: true }); }
+    const total = Math.round(Math.max(6.5, t + 3.4) * 100) / 100;
+    layers.forEach(L => { if (L.verse) { L.end = total; L.fadeOut = 0.4; } });
+    return { bg: bgc.toDataURL("image/jpeg", 0.93), layers, total };
+  }
+  function drawRedLetter(ctx, s) {
+    ctx.fillStyle = PAPERS[hash(s.id) % PAPERS.length]; ctx.fillRect(0, 0, W, H);
+    const text = redLetterText(s.w); let size = 170, lines;
+    for (; size >= 80; size -= 6) { font(ctx, '"Caveat", cursive', size, 700); lines = wrap(ctx, text, 860); if (lines.length * size * 1.02 <= 700) break; }
+    const lh = size * 1.02, y0 = (SAFE_B + 150 - lines.length * lh) / 2;
+    ctx.fillStyle = RED; ctx.textAlign = "center"; lines.forEach((l, i) => ctx.fillText(l, W / 2, y0 + size * 0.8 + i * lh));
+    font(ctx, SANS, 30, 600); ctx.fillStyle = "rgba(60,40,30,.6)"; spaced(ctx, ("— Jesus · " + s.r).toUpperCase(), W / 2, y0 + lines.length * lh + 70, 3, "center");
+  }
+
+  root.ScriptureEngine = { W, H, PALETTES, loadFonts, loadPromo, setPromo, buildSlides, caption, renderSlide, renderVerseVideo, renderRedLetter, paletteFor, hash };
 })(typeof window !== "undefined" ? window : globalThis);

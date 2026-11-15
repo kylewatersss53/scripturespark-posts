@@ -20,6 +20,10 @@ window.renderTall = async (id, opts) => {
   const slides = ScriptureEngine.buildSlides(post, LIB);
   return ScriptureEngine.renderSlide(slides[0], post, 0, Object.assign({}, opts || {}, { tall: true })).toDataURL("image/jpeg", 0.95);
 };
+window.renderRedLetter = async (id, opts) => {
+  const post = LIB.posts.find(p => p.id === id);
+  return ScriptureEngine.renderRedLetter(post, LIB, opts || {});
+};
 // 9pm verse video frames for single-verse posts
 window.renderVerseVideo = async (id, opts) => {
   const post = LIB.posts.find(p => p.id === id);

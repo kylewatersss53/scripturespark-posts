@@ -492,7 +492,7 @@
    "effective_from": "2026-11-17",
    "made": "2026-11-14",
    "posts": 19,
-   "by": "perf.py tune (nightly)",
+   "by": "hand (owner session): Trivia cut (66 views)",
    "no_weekday_pins": true,
    "list_types": {
     "V": 0.978,
@@ -726,7 +726,7 @@
    },
    "quiz_styles": {
     "F": 3.0,
-    "T": 0.626,
+    "T": 0.15,
     "B": 0.8,
     "W": 0.15
    },
