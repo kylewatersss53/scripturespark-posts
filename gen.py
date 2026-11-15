@@ -60,6 +60,14 @@ WHEN = {
  "behind": "When You Feel Behind in Life", "unfair": "When Life Feels Unfair", "miraclesneed": "When You Need a Miracle",
  "financialstress": "When Money Is Tight", "tiredmoms": "When You're a Tired Mom", "familyconflict": "When Family Is Hard",
  "toxicpeople": "When People Are Difficult", "repentance": "When You've Drifted From God", "peoplepleasing": "When You Need Everyone to Like You",
+ # 2026-11-14: more emotional topics get "When You..." titles (best title style on the account)
+ "lossofparent": "When You Miss Your Mom or Dad", "childloss": "When You've Lost a Child", "miscarriage": "When You've Lost a Baby",
+ "chronicillness": "When the Pain Won't Go Away", "surgery": "When You're Facing Surgery", "addiction": "When You're Fighting an Addiction",
+ "divorce": "When You're Going Through a Divorce", "prodigal": "When Your Child Has Walked Away From God", "infertility": "When You're Waiting for a Baby",
+ "singleparents": "When You're Parenting Alone", "caregivers": "When You're Caring for Someone You Love", "widows": "When You've Lost Your Spouse",
+ "debt": "When You're Drowning in Debt", "negativethoughts": "When Negative Thoughts Take Over", "bodyimage": "When You Don't Like Your Reflection",
+ "perfectionism": "When You Feel Like You Have to Be Perfect", "exams": "When You're Stressed About a Test", "persecution": "When You're Mocked for Your Faith",
+ "newbeginnings": "When You're Starting Over",
 }
 
 def verse_title(t):
@@ -429,16 +437,17 @@ def make_schedule(posts, T, hist=()):
     s_cur = [0]
     recent = []
 
-    def take_list(avoid, pattern=pattern, tw=None):
+    def take_list(avoid, pattern=pattern, tw=None, win=12):
+        # win: how many eligible posts to compare when tuning prefers better topics (tuning step "topic_window")
         for step in range(len(pattern)):
             typ = pattern[(pat_i[0] + step) % len(pattern)]
             pool = pools[typ]
             found = []
-            for look in range(min(40 if tw else 25, len(pool))):
+            for look in range(min(max(40, 2 * win) if tw else 25, len(pool))):
                 j = (cur[typ] + look) % len(pool)
                 if not set(tops(pool[j])) & avoid:
                     found.append(j)
-                    if not tw or len(found) >= 12:
+                    if not tw or len(found) >= win:
                         break
             if found:
                 # with tuning, take the best-performing topic among the next few eligible posts
@@ -489,6 +498,7 @@ def make_schedule(posts, T, hist=()):
         avoid = set(recent)
         tn = tuning_for(d, hist)
         pat, tw = pattern, None
+        win = int(tn.get("topic_window", 12)) if tn else 12
         if tn:
             if tn.get("list_types"):
                 base = {k: pattern.count(k) for k in dict.fromkeys(pattern)}
@@ -497,10 +507,10 @@ def make_schedule(posts, T, hist=()):
                 tws, cws = tn.get("topics", {}), tn.get("categories", {})
                 tw = lambda k: float(tws.get(k, 1.0)) * float(cws.get(T[k]["cat"], 1.0))
         day = []
-        a = pinned_a or take_list(avoid, pat, tw); avoid |= set(tops(a)); day.append(a)
-        b = take_list(avoid, pat, tw); avoid |= set(tops(b)); day.append(b)
+        a = pinned_a or take_list(avoid, pat, tw, win); avoid |= set(tops(a)); day.append(a)
+        b = take_list(avoid, pat, tw, win); avoid |= set(tops(b)); day.append(b)
         c = pinned_b or take_single(avoid); avoid |= {byid[c]["k"]}; day.append(c)
-        e = take_list(avoid, pat, tw); day.append(e)
+        e = take_list(avoid, pat, tw, win); day.append(e)
         recent = (recent + [t for pid in day for t in tops(pid)])[-24:]
         schedule.append(day)
     return schedule

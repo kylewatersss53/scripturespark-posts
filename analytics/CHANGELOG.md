@@ -2,6 +2,16 @@
 
 Newest first. Each entry: date · change · why · metric to watch · judge after · verdict (kept / reverted / inconclusive).
 
+## 2026-11-14 (night review) · Lean harder into "When You..." lists
+- **Data (23 posts, 19 with stats):** "When You" list titles median 580 views over 6 posts (top 3 lists: Heavy 1,135 · Sick 879 · Panic 704); the weakest lists are generic/"About"/"10 Bible Verses About" (Faith 258, Unqualified 179). 10-chapter lists lead formats (median 698). Yet the next 2 weeks of the schedule were full of "About"/"for X" titles (Helping People in Need, Stewardship, Anniversaries, Loving Your Enemies, Loving Your Neighbor, Dads, Pregnancy, Body Image): the tuner compared only 12 eligible posts, so 0.5-weighted topics still got picked.
+- **Change 1 (titles):** 19 more emotional topics get "When You..." titles in `WHEN` (lost a parent/child/baby/spouse, chronic pain, surgery, addiction, divorce, prodigal child, infertility, single parents, caregivers, debt, negative thoughts, body image, perfectionism, exams, mocked for faith, starting over). Verse picks unchanged; covers checked (3-line titles fit).
+- **Change 2 (tuning, hand step from 2026-11-16):** new step key `topic_window: 40` (gen.py compares 40 eligible posts instead of 12, so favored topics win far more often; perf.py carries it into nightly steps); the 19 new When topics x1.5. Result: from 11-16 to 11-29 almost every list is a "When You..." title (was about half).
+- **Research:** a quick search for current faith-carousel hook data found nothing new with data; the decision rests on our own numbers.
+- **Watch:** list median views per day from 11-16 vs 11-10..11-15 (median ~440); share of lists over 500 and 1,000 views; whether new When topics (divorce, addiction, body image, caregivers...) match the original When topics. Staleness risk: watch for a decline in the When median as every list uses the same phrasing.
+- **Judge after:** 2026-11-21.
+- **Verdict:** pending.
+- **Past entries:** 2026-11-13 night review (challenge headlines): inconclusive (first affected quiz is 11-16). 2026-11-13 kill/lean: inconclusive so far; early signs fine (11-13/11-14 lists Sick 879, Trauma 420; quiz still mostly F).
+
 ## 2026-11-13 (night review) · Keep hand kills in force; challenge-style quiz headlines
 - **Data (18 posts, 14 with stats):** Finish the Verse "Only real Bible readers get 4/4" 2,626 views (6x the ~400 median; best post by far); Who Said It? 128 (worst). Lists: "When You" titles median 597 vs 10-number/"About" 247-482. Daily word videos sliding 417 → 364 → 356 → 208 with ~4.6 s of 12 s watched. 9pm verse videos (retired) 134-325.
 - **Change 1 (tuning):** the nightly `perf.py tune` recomputes weights from scratch, so tonight's auto step (from 2026-11-16) had quietly un-killed Who Said It? (0.15 → 0.62) and cut Finish the Verse (3.0 → 1.38) on one post each. Now a hand-made kill or boost stays in force while the data points the same way (stronger value wins); data only overrides it when it points the other way. Step for 2026-11-16 regenerated: F 3.0, T 1.0, B 0.8, W 0.15; lists V 0.95, C 1.5, P 0.4, KC/KV 0.3.

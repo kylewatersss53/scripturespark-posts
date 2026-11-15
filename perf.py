@@ -297,7 +297,7 @@ def tune(today=None):
     lists = [r for r in rs if r["type"] in LIST_TYPES]
     quizzes = [r for r in rs if r["type"] == "Q"]
     step = {"effective_from": eff, "made": today.isoformat(), "posts": len(rs), "by": "perf.py tune (nightly)"}
-    for k in ("no_weekday_pins",):
+    for k in ("no_weekday_pins", "topic_window"):
         if k in prev:
             step[k] = prev[k]
     hand = next((h for h in reversed(load_tuning()) if str(h.get("by", "")).startswith("hand") and h["effective_from"] < eff), {})
