@@ -2,6 +2,16 @@
 
 Newest first. Each entry: date · change · why · metric to watch · judge after · verdict (kept / reverted / inconclusive).
 
+## 2026-11-15 (night review) · Trivia killed for real; Finish the Verse bank +52
+- **Data (27 posts, 24 with stats):** Finish the Verse quizzes 3,114 and 1,350 views (median 2,232, best format on the account); Trivia 71, Who Said It? 153 (worst two posts of the week). Top lists: "When You're Sick" chapters 1,267, "When Everything Feels Heavy" 1,246, "When Panic Hits" 931. Weakest lists are non-"When" topics: Hospitality 135, People Are Difficult 45 (young), Dads queued tonight. Daily word videos flat 338-562 (last week of that format). 12:00 is the weakest list slot (median 260) vs 19:00 (544).
+- **Change 1 (kill means kill):** in `gen.py` a quiz style at the kill floor (<= 0.15) is now dropped from the rotation from 2026-11-16 on; at 0.15 Trivia still came up about once every 11 days (11-17 was Trivia). The 11-16 tuning step now also has Trivia at 0.15, and the queued 11-16 16:00 "Bible Trivia" post was replaced with the regenerated Finish the Verse quiz. Result: 16:00 is Finish the Verse on ~4 of 5 days, Guess the Book on the rest.
+- **Change 2 (Finish the Verse bank):** 52 more well-known verses added to `quiz/finish.txt` (71 -> 123; quiz.py 0 problems; every blank word appears exactly once in the BSB verse). At ~3.2 F quizzes a week x 4 questions this is ~9 weeks before repeats (was ~5.5).
+- **Research:** one search for current Bible-quiz/carousel data; nothing new with data. Decision rests on our own numbers.
+- **Watch:** 16:00 median views from 11-16 (before: F 2,232 median; T/W 71/153). Whether F holds up when it runs nearly daily (fatigue).
+- **Judge after:** 2026-11-21.
+- **Verdict:** pending.
+- **Past entries:** 2026-11-14 Red Letter: pending (first post 11-16). 2026-11-14 When-You titles: inconclusive (first affected list 11-16). 2026-11-13 challenge headlines: inconclusive (first affected quiz 11-16). 2026-11-13 kill/lean (judge 11-17): leaning **kept**: lists since 11-13 include 1,267 / 672 / 315 views with When titles vs 135 for the one About title; quiz F 1,350.
+
 ## 2026-11-14 (owner session) · Red Letter replaces the 7am daily word video; Trivia cut
 - **Data:** daily word videos flat at 366-421 views with ~4 s of 12 s watched (the weakest regular slot). Trivia quiz 66 views (worst). Winners: Finish the Verse 2,878; "When You" chapter lists 1,135 and 879; "When Panic Hits" 704.
 - **Changes:** from 2026-11-16 the 07:00 slot posts **Red Letter** videos: one short saying of Jesus (69 verified sayings in `redletter/sayings.txt`), hand-lettered in red on warm paper, one word at a time, first word visible from frame one, 6.5 s, worship music. Owner gave creative freedom and liked the idea (inspired by short single-message faith posts; our own look, Jesus' actual words only). Quiz styles: Trivia cut (T 0.15) from 2026-11-17.

@@ -73,3 +73,57 @@ John 10:10 | fullness | freedom | abundance | peace
 1 Corinthians 10:13 | escape | answer | reward | helper
 2 Corinthians 12:9 | sufficient | enough | eternal | perfect
 Romans 15:13 | overflow | grow | stand | rest
+
+# Added 2026-11-15 (nightly review): 52 more well-known verses, BSB wording checked with quiz.py
+Psalm 23:4 | valley | desert | storm | night
+Psalm 121:1 | hills | heavens | mountains | waters
+Isaiah 41:10 | uphold | carry | guide | hold
+Isaiah 43:2 | waters | storms | valleys | shadows
+Isaiah 53:5 | stripes | wounds | blood | grace
+Isaiah 40:8 | forever | firm | strong | true
+John 14:6 | way | door | light | gate
+John 14:27 | Peace | Joy | Rest | Hope
+John 16:33 | overcome | conquered | defeated | won
+John 1:5 | overcome | understood | hidden | found
+John 8:12 | world | earth | nations | people
+John 10:11 | sheep | flock | lambs | children
+John 15:13 | friends | brothers | children | people
+Matthew 5:9 | peacemakers | merciful | humble | faithful
+Matthew 5:4 | mourn | weep | suffer | wait
+Matthew 7:7 | knock | call | wait | pray
+Matthew 19:26 | possible | promised | finished | good
+Matthew 4:4 | bread | food | water | gold
+Matthew 6:21 | treasure | home | hope | faith
+Matthew 18:20 | three | four | ten | more
+Romans 12:12 | affliction | trials | waiting | sorrow
+Romans 12:21 | good | love | kindness | grace
+1 Corinthians 16:14 | love | faith | truth | joy
+2 Corinthians 5:17 | creation | person | heart | spirit
+Galatians 5:1 | freedom | love | glory | grace
+Ephesians 6:10 | mighty | great | holy | endless
+Ephesians 3:20 | immeasurably | abundantly | infinitely | wonderfully
+Philippians 4:7 | surpasses | exceeds | outshines | fills
+Philippians 1:6 | completion | perfection | glory | victory
+Philippians 4:19 | needs | wants | prayers | plans
+Colossians 3:2 | above | ahead | heaven | God
+1 Thessalonians 5:16 | Rejoice | Pray | Sing | Hope
+1 Thessalonians 5:18 | circumstance | season | moment | blessing
+Hebrews 4:12 | sword | arrow | hammer | fire
+Hebrews 13:5 | forsake | forget | fail | reject
+James 1:2 | joy | peace | grace | glory
+1 Peter 5:8 | lion | wolf | serpent | thief
+1 John 4:18 | perfect | true | holy | pure
+Revelation 21:4 | tear | sin | fear | wound
+Revelation 3:20 | knock | wait | call | stand
+Psalm 19:1 | heavens | mountains | oceans | stars
+Psalm 46:1 | refuge | rock | fortress | shield
+Psalm 147:3 | brokenhearted | weary | lonely | lost
+Psalm 42:1 | deer | dove | lamb | sparrow
+Proverbs 17:17 | friend | father | mother | neighbor
+Proverbs 15:1 | gentle | kind | soft | wise
+Proverbs 16:9 | steps | path | days | future
+Isaiah 6:8 | Send | Use | Lead | Take
+Jeremiah 33:3 | unsearchable | hidden | wonderful | impossible
+Nehemiah 8:10 | joy | grace | peace | word
+John 3:30 | increase | rise | lead | shine
+Proverbs 31:25 | laugh | smile | rest | sing

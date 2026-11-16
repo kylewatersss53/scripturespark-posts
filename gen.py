@@ -345,6 +345,11 @@ def add_quiz(posts, schedule, Qs, hist=()):
         tn = tuning_for(START + dt.timedelta(i), hist)
         if tn and tn.get("quiz_styles"):
             base = {k: QUIZ_PATTERN.count(k) for k in dict.fromkeys(QUIZ_PATTERN)}
+            # 2026-11-15: a style at the kill floor (<= 0.15) is dropped, not just made rarer
+            # (at 0.15 Trivia still came up about once every 11 days).
+            if d >= "2026-11-16":   # earlier days stay as they were posted
+                alive = {k: c for k, c in base.items() if float(tn["quiz_styles"].get(k, 1.0)) > 0.15}
+                base = alive or base
             f = weighted_pattern(base, tn["quiz_styles"], len(QUIZ_PATTERN))[i % len(QUIZ_PATTERN)]
         else:
             f = QUIZ_PATTERN[i % len(QUIZ_PATTERN)]
