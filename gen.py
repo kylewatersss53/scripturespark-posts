@@ -313,8 +313,10 @@ QUIZ_TITLES = {   # identity challenge ("Only real Bible readers...") got 2,626 
     "T": [("Bible Trivia", "Only real Bible readers get 4/4"), ("Bible Trivia", "Only true Bible readers get all 4 right"),
           ("Bible Trivia", "Can you get 4/4?"), ("Bible Trivia", "Only real Bible readers get 4/4"),
           ("Bible Quiz", "Only real Bible readers get all 4. No Googling.")],
-    "F": [("Finish the Verse", "Only real Bible readers get 4/4"), ("Finish the Verse", "Only real Bible readers can finish all 4"),
-          ("Finish the Verse", "Only real Bible readers get 4/4"), ("Finish the Verse", "Can you finish all 4 without looking?")],
+    # 2026-11-16: "Can you finish all 4 without looking?" got 14,505 views (11-14) vs 3,286 / 107 for
+    # "Only real Bible readers get 4/4"; lean into the no-looking challenge, keep one identity variant.
+    "F": [("Finish the Verse", "Can you finish all 4 without looking?"), ("Finish the Verse", "No looking. Can you finish all 4?"),
+          ("Finish the Verse", "Can you finish all 4 without looking?"), ("Finish the Verse", "Only real Bible readers get 4/4")],
     "W": [("Who Said It?", "Only real Bible readers get 4/4"), ("Who Said It?", "Bible edition. Can you get 4/4?"),
           ("Who Said It?", "4 quotes. Only real Bible readers name all 4")],
     "B": [("Guess the Book", "Only real Bible readers get 4/4"), ("Guess the Book", "Can you name all 4 books?"),

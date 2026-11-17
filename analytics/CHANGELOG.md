@@ -2,6 +2,16 @@
 
 Newest first. Each entry: date · change · why · metric to watch · judge after · verdict (kept / reverted / inconclusive).
 
+## 2026-11-16 (night review) · Lean into the "without looking" Finish the Verse headline
+- **Data (31 posts, 27 with stats, metrics as of 11-16 13:30 UTC):** breakout: Finish the Verse "Can you finish all 4 without looking?" (11-14) **14,505 views**, 19 s avg watch, 64 likes, 11 shares, ~35x the account median (~370). Other F quizzes with "Only real Bible readers get 4/4": 3,286 (11-11) and 107 (11-15, only ~15 h old). Lists: "When You" median 472 (Sick 1,415 · Heavy 1,314 · Panic 942 · Trauma 731); weakest lists are relationship ones (People Are Difficult 85, Marriage Struggling 137, Hospitality 180). First Red Letter video 131 views / 1.1 s watch, but measured 30 min after posting: too early to judge. 11-15 19:00 Grief plan and 21:00 Dads list never posted (Buffer "media processing delays").
+- **Change (quiz headlines):** F headlines in `QUIZ_TITLES` now lead with the no-looking challenge ("Can you finish all 4 without looking?" x2, new "No looking. Can you finish all 4?" x1) with one "Only real Bible readers get 4/4" left. Hypothesis: the direct "can you do it without looking" dare drives more stops and comments than the identity line. Covers rendered and checked (11-18, 11-20). First affected quiz 11-18 (11-17 is queued with the identity headline and stays as a comparison).
+- **Not changed:** quiz style mix already maxed for F (3.0, T/W dropped); nightly tune left as is (love category already at 0.71).
+- **Research:** one search for current Finish the Verse/quiz carousel data; nothing with numbers.
+- **Watch:** 16:00 F views by headline (no-looking vs identity), comments/1k views.
+- **Judge after:** 2026-11-22.
+- **Verdict:** pending.
+- **Past entries:** 2026-11-13 kill/lean (judge 11-17): **kept**: When-You lists median 472 vs 271-366 for About/10-number titles; F quizzes 14,505 / 3,286 vs Trivia 71 and Who Said It? 128. 2026-11-15 Trivia kill: in force (no T/W from 11-16). Others pending.
+
 ## 2026-11-15 (night review) · Trivia killed for real; Finish the Verse bank +52
 - **Data (27 posts, 24 with stats):** Finish the Verse quizzes 3,114 and 1,350 views (median 2,232, best format on the account); Trivia 71, Who Said It? 153 (worst two posts of the week). Top lists: "When You're Sick" chapters 1,267, "When Everything Feels Heavy" 1,246, "When Panic Hits" 931. Weakest lists are non-"When" topics: Hospitality 135, People Are Difficult 45 (young), Dads queued tonight. Daily word videos flat 338-562 (last week of that format). 12:00 is the weakest list slot (median 260) vs 19:00 (544).
 - **Change 1 (kill means kill):** in `gen.py` a quiz style at the kill floor (<= 0.15) is now dropped from the rotation from 2026-11-16 on; at 0.15 Trivia still came up about once every 11 days (11-17 was Trivia). The 11-16 tuning step now also has Trivia at 0.15, and the queued 11-16 16:00 "Bible Trivia" post was replaced with the regenerated Finish the Verse quiz. Result: 16:00 is Finish the Verse on ~4 of 5 days, Guess the Book on the rest.
