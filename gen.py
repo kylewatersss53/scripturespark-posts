@@ -255,6 +255,7 @@ def build():
         raise SystemExit("Fix quiz problems first (python3 quiz.py):\n" + "\n".join(qprobs))
     add_quiz(posts, schedule, Qs, hist)
     add_redletter(posts, schedule)
+    add_topic_quiz(posts, schedule, Qs, T)
     lib = {
         "meta": {"translation": "Berean Standard Bible (BSB)", "start": START.isoformat(), "days": len(schedule),
                  "built": dt.datetime.now().isoformat(timespec="minutes")},
@@ -309,18 +310,11 @@ def weighted_pattern(base, weights, length):
 
 # Rotation of quiz styles (trivia most often). 11-day cycle: T x4, F x3, W x2, B x2.
 QUIZ_PATTERN = ["T", "F", "W", "T", "B", "T", "F", "W", "B", "F", "T"]
-QUIZ_TITLES = {   # identity challenge ("Only real Bible readers...") got 2,626 views vs ~400 median (2026-11-13 review)
-    "T": [("Bible Trivia", "Only real Bible readers get 4/4"), ("Bible Trivia", "Only true Bible readers get all 4 right"),
-          ("Bible Trivia", "Can you get 4/4?"), ("Bible Trivia", "Only real Bible readers get 4/4"),
-          ("Bible Quiz", "Only real Bible readers get all 4. No Googling.")],
-    # 2026-11-16: "Can you finish all 4 without looking?" got 14,505 views (11-14) vs 3,286 / 107 for
-    # "Only real Bible readers get 4/4"; lean into the no-looking challenge, keep one identity variant.
-    "F": [("Finish the Verse", "Can you finish all 4 without looking?"), ("Finish the Verse", "No looking. Can you finish all 4?"),
-          ("Finish the Verse", "Can you finish all 4 without looking?"), ("Finish the Verse", "Only real Bible readers get 4/4")],
-    "W": [("Who Said It?", "Only real Bible readers get 4/4"), ("Who Said It?", "Bible edition. Can you get 4/4?"),
-          ("Who Said It?", "4 quotes. Only real Bible readers name all 4")],
-    "B": [("Guess the Book", "Only real Bible readers get 4/4"), ("Guess the Book", "Can you name all 4 books?"),
-          ("Guess the Book", "Only real Bible readers get 4/4")],
+QUIZ_TITLES = {   # 2026-11-17: "Can you finish all 4 without looking?" = 14,505 views; every other headline 66-3,286. Use the winner.
+    "T": [("Bible Trivia", "Can you get all 4 without looking?")],
+    "F": [("Finish the Verse", "Can you finish all 4 without looking?")],
+    "W": [("Who Said It?", "Can you get all 4 without looking?")],
+    "B": [("Guess the Book", "Can you name all 4 without looking?")],
 }
 
 def add_quiz(posts, schedule, Qs, hist=()):
@@ -381,6 +375,60 @@ def add_redletter(posts, schedule):
         pid = f"R:{(START + dt.timedelta(i)).isoformat()}"
         posts.append({"id": pid, "t": "R", "w": words, "r": ref, "ti": f"\u201c{words[0].upper() + words[1:]}\u201d Jesus, {ref}"})
         day.append(pid)
+
+
+# ---------------- topic "without looking" quiz (07:00 since 2026-11-18) ----------------
+
+def add_topic_quiz(posts, schedule, Qs, T):
+    """Finish the Verse built from the emotional "When You..." topics (the two things that win: the
+    "Can you finish all 4 without looking?" challenge and need-based topics). Blank = the verse's checked
+    keyword; wrong answers = other keywords from the same topic. Appended as schedule index 7."""
+    import re as _re
+    word = lambda w, t: _re.search(r"(?<![\w’'])" + _re.escape(w) + r"(?![\w’'])", t, _re.I)
+    by_topic = {}
+    for t in library.load_topics():
+        if t["id"] not in T or not T[t["id"]].get("when"):
+            continue
+        kws = [kw for _, kw, _ in t["verses"] if kw]
+        qs = []
+        for ref, kw, _ in t["verses"]:
+            if not kw:
+                continue
+            lab = bible.label(ref); disp = bible.display_text(ref)
+            hits = list(_re.finditer(r"(?<![\w’'])" + _re.escape(kw) + r"(?![\w’'])", disp))
+            if len(hits) != 1 or len(disp.split()) > 40:
+                continue
+            wrong = []
+            for w in kws:
+                if " " not in w and w.lower() != kw.lower() and w.lower() not in [x.lower() for x in wrong] and not word(w, disp):
+                    wrong.append(w)
+            if len(wrong) < 3:
+                continue
+            wrong = sorted(wrong, key=lambda w: h(lab + w))[:3]
+            m = hits[0]
+            qid = "FT" + format(h(t["id"] + lab), "x")
+            opts, a = quiz._order(qid, kw, wrong)
+            Qs[qid] = {"f": "F", "q": disp[:m.start()] + quiz.BLANK + disp[m.end():], "o": opts, "a": a, "r": lab,
+                       "p": disp, "hl": kw, "hlpos": m.start()}
+            qs.append(qid)
+        if len(qs) >= 4:
+            by_topic[t["id"]] = qs
+    order = sorted(by_topic, key=lambda k: h("tq" + k))
+    rng = random.Random(41)
+    pos = {k: 0 for k in by_topic}
+    for i, day in enumerate(schedule):
+        tid = order[i % len(order)]
+        if i and i % len(order) == 0:
+            rng.shuffle(order)
+        qs = by_topic[tid]
+        pick = [qs[(pos[tid] + j) % len(qs)] for j in range(4)]
+        pos[tid] = (pos[tid] + 4) % len(qs)
+        label = " ".join(w if w in ("I", "God", "God's", "Jesus", "Christ") else w.lower() for w in T[tid]["when"].split())
+        d = (START + dt.timedelta(i)).isoformat()
+        posts.append({"id": f"QT:{d}", "t": "Q", "f": "F", "k": tid, "date": d, "qs": pick,
+                      "kick": "Verses for " + label, "head": "Can you finish all 4 without looking?",
+                      "ti": f"Can you finish these 4 Bible verses for {label} without looking?"})
+        day.append(f"QT:{d}")
 
 
 # ---------------- schedule ----------------

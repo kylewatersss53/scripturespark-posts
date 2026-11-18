@@ -4,6 +4,9 @@ Goal: **the most eyeballs on the Scripture Spark brand.** Views first; shares an
 
 Read `CLAUDE.md` first. It describes the pipeline, the validators and the rules that always apply.
 
+## The winning hook (owner, 2026-11-17)
+"Can you finish all 4 without looking?" got 14,505 views, 4x the next best post. Every night, ask: where else can this challenge wording ("Can you ___ without looking?") go? Test it on new formats and titles before inventing new hooks, and don't drift away from it.
+
 ## 1. Look back
 - `git pull`, then `python3 perf.py report` and read `analytics/REPORT.md`. Also skim `analytics/performance.csv` for the posts behind the numbers.
 - Read `analytics/CHANGELOG.md`. For each change made 1–3 weeks ago, compare the metric it was meant to move (same slot or format, before vs after). Write the verdict under that entry: **kept** (it helped), **reverted** (it hurt; undo it), or **inconclusive** (not enough posts yet; keep watching).

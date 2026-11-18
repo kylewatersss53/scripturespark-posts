@@ -387,7 +387,9 @@
   function drawQuizCover(ctx, pal, s, opts) {
     font(ctx, SERIF, 1100, 500); ctx.fillStyle = hexA(pal.acc, 0.09); ctx.textAlign = "right"; ctx.fillText("?", W + 40, SAFE_B + 60);
     let y = 290;
-    font(ctx, SANS, 40, 600); ctx.fillStyle = pal.acc; spaced(ctx, s.kicker.toUpperCase(), M, y, 6);
+    let ks = 40; font(ctx, SANS, ks, 600);
+    while (ks > 24 && [...s.kicker].reduce((a, ch) => a + ctx.measureText(ch.toUpperCase()).width + 6, 0) > CW) { ks -= 2; font(ctx, SANS, ks, 600); }
+    ctx.fillStyle = pal.acc; spaced(ctx, s.kicker.toUpperCase(), M, y, 6);
     y += 50;
     const t = fit(ctx, s.head, { family: SERIF, weight: 500, maxW: CW, maxH: 440, max: 140, min: 84, lh: 1.02 });
     ctx.fillStyle = pal.ink; font(ctx, SERIF, t.size, 500);
