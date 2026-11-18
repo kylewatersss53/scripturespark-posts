@@ -427,7 +427,7 @@ def add_topic_quiz(posts, schedule, Qs, T):
         d = (START + dt.timedelta(i)).isoformat()
         posts.append({"id": f"QT:{d}", "t": "Q", "f": "F", "k": tid, "date": d, "qs": pick,
                       "kick": "Verses for " + label, "head": "Can you finish all 4 without looking?",
-                      "ti": f"Can you finish these 4 Bible verses for {label} without looking?"})
+                      "ti": f"Can you finish all 4 without looking? Bible verses for {label}"})  # 2026-11-17: lead with the exact winning words
         day.append(f"QT:{d}")
 
 

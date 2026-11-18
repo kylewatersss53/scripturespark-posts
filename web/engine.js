@@ -568,7 +568,7 @@
       const ftag = { T: "#bibletrivia", F: "#finishtheverse", W: "#whosaidit", B: "#bookofthebible" }[post.f];
       return `${post.ti} 🧠\n\n4 questions, with the answer right after each one. No Googling! Comment your score out of 4 👇\n\nSend this to the friend who thinks they know the Bible best.\n\nWant to know your Bible better? Scripture Spark lets you read the Bible together with a friend or your spouse. Search “Scripture Spark” in the App Store.\n\n${[...new Set([ftag, "#biblequiz", "#bibletrivia", "#bible", "#christian", "#jesus", "#scripturespark", "#christiantiktok"])].join(" ")}`;
     }
-    if (post.t === "V") body = `${cap} 🔖\n\nSave this so it's here the next time you need it. Which verse is yours? Comment the number.`;
+    if (post.t === "V") body = `${cap} 🔖\n\nSave this so it's here the next time you need it. Which one can you quote without looking? Comment the number.`;
     else if (post.t === "C") body = `${cap} 📖\n\nSave this for your next quiet time. Which chapter are you reading first?`;
     else if (post.t === "P") body = `${cap} 📖\n\nOne chapter a day for 7 days. Save this and start tomorrow. Comment “Day 1” when you begin.`;
     else if (post.t === "S") body = `${post.vh || post.ti}\n\n“${V[post.v]}”\n${post.v}\n\nSave this for the day you need it 🔖 New verse every night at 9. Follow so you don't miss tomorrow's.`;

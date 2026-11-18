@@ -2,6 +2,16 @@
 
 Newest first. Each entry: date · change · why · metric to watch · judge after · verdict (kept / reverted / inconclusive).
 
+## 2026-11-17 (night review) · Put the winning words first on topic quizzes; "without looking" in list captions
+- **Data (38 sent posts, 33 with stats, metrics as of 11-17 16:54 UTC):** Finish the Verse keeps winning: 16,517 (11-14, "without looking"), 3,286, 1,284 (11-16, "Only real Bible readers can finish all 4", ~19 h old), 110 (11-15). Lists: best Sick 1,494 · Heavy 1,382 · Dads 1,200 (retried 11-15 21:00 post) · Panic 946 · Trauma 762; the 11-16 lists (Overthinking 113, Patience 111, Peace 167) are only ~1 day old. Red Letter ended at 194 / 119 views (retired). 16:00 slot median 128 is dragged down by the killed T/W styles; F alone median ~1,284+.
+- **Change 1 (topic quiz title/caption first line):** the new 07:00 topic quiz used "Can you finish these 4 Bible verses for when ... without looking?", which buries the winning words at the end of a 90+ character line. Now the TikTok title and caption first line start with the exact winner: "Can you finish all 4 without looking? Bible verses for when ...". Slide cover unchanged (already the exact hook). First affected: 2026-11-19 07:00 (11-18 is queued with the old wording and stays as a comparison).
+- **Change 2 (verse-list caption CTA):** 10-verse list captions now ask "Which one can you quote without looking? Comment the number." instead of "Which verse is yours?". Hypothesis: the dare that drives quiz comments also lifts list comments (lists average 0.3 comments / 1k views). From 2026-11-19.
+- **Not changed:** tuning (tonight's auto step already has F 3.0, T/W 0.15, P/KC/KV cut); no queued posts replaced (none are in a cut format/style).
+- **Watch:** 07:00 views 11-18 (old wording) vs 11-19+ (new); V list comments / 1k views from 11-19.
+- **Judge after:** 2026-11-22.
+- **Verdict:** pending.
+- **Past entries:** 2026-11-14 When-You titles (judge 11-21): inconclusive; 11-16/11-17 When lists are still young and low (111-167). 2026-11-15 Trivia kill: in force, kept (no T/W posted since 11-13; F 1,284 on 11-16). 2026-11-16 "without looking" headlines: first post 11-18, pending.
+
 ## 2026-11-17 (owner session) · Lean all the way into "Can you finish all 4 without looking?"
 - **Data:** "Finish the Verse: Can you finish all 4 without looking?" 14,505 views (11-14). Every other headline: "Only real Bible readers get 4/4" 3,286 then 107; Who Said It 128; Trivia 71. Best lists 1,315-1,415 ("When You" chapter lists). Red Letter (11-16 07:00) 131 views, 1.1 s watched: killed after one post because it is 10x below the slot's old baseline and the owner asked for decisive leaning.
 - **Changes:** (1) every quiz headline is now the exact winning wording. (2) 07:00 from 2026-11-18 is a second "without looking" quiz built from the "When You" topics' verified verses (683 generated questions): "Can you finish these 4 Bible verses for when you're anxious without looking?". Combines the winning hook with the winning topics. (3) Red Letter retired.
