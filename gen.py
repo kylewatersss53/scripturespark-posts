@@ -539,6 +539,24 @@ def make_schedule(posts, T, hist=()):
         pid = pools[typ][cur[typ] % len(pools[typ])]; cur[typ] += 1
         return pid
 
+    promoted = set()
+
+    def take_promoted(avoid, ids):
+        """Tuning key "promote": list post ids (proven topics in another format) scheduled first, one a day
+        in the 19:00 list slot, skipping any whose topic is too recent. Each runs once; the pool cursor skips it."""
+        for pid in ids:
+            if pid in byid and pid not in promoted and not set(tops(pid)) & avoid:
+                promoted.add(pid)
+                typ = byid[pid]["t"]
+                if typ in pools and pid in pools[typ]:
+                    pool = pools[typ]; j = pool.index(pid)
+                    if j >= cur[typ] % len(pool):
+                        a = cur[typ] % len(pool)
+                        pool[a], pool[j] = pool[j], pool[a]
+                        cur[typ] += 1
+                return pid
+        return None
+
     def take_single(avoid):
         for look in range(40):
             j = (s_cur[0] + look) % len(single_order)
@@ -585,7 +603,8 @@ def make_schedule(posts, T, hist=()):
                 tw = lambda k: float(tws.get(k, 1.0)) * float(cws.get(T[k]["cat"], 1.0))
         day = []
         a = pinned_a or take_list(avoid, pat, tw, win); avoid |= set(tops(a)); day.append(a)
-        b = take_list(avoid, pat, tw, win); avoid |= set(tops(b)); day.append(b)
+        b = (take_promoted(avoid, tn.get("promote", [])) if tn else None) or take_list(avoid, pat, tw, win)
+        avoid |= set(tops(b)); day.append(b)
         c = pinned_b or take_single(avoid); avoid |= {byid[c]["k"]}; day.append(c)
         e = take_list(avoid, pat, tw, win); day.append(e)
         recent = (recent + [t for pid in day for t in tops(pid)])[-24:]
