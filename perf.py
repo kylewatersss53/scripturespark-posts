@@ -29,6 +29,7 @@ SLOT_BY_TIME = {"07:00": 0, "12:00": 1, "16:00": 5, "19:00": 2, "21:00": 4}
 MIN_POSTS, MIN_DAYS = 10, 3
 LIST_TYPES = ["V", "C", "P", "KC", "KV"]
 QUIZ_STYLES = ["T", "F", "W", "B"]
+QUIZ_LABELS = [("finish the verse", "F"), ("bible trivia", "T"), ("who said it", "W"), ("guess the book", "B"), ("can you finish", "F")]
 TYPE_NAME = {"D": "Daily word video", "V": "10 verses", "C": "10 chapters", "P": "7-day plan", "KC": "Chapter list stack",
              "KV": "Verse list stack", "S": "Verse video (9pm)", "Q": "Bible quiz", "R": "Red Letter video (7am)"}
 STYLE_NAME = {"T": "Bible Trivia", "F": "Finish the Verse", "W": "Who Said It?", "B": "Guess the Book"}
@@ -110,6 +111,19 @@ def match(node, L, byid):
         for t in (byid[pid].get("vh"), byid[pid].get("ti")):
             if t and first.startswith(_norm(t)):
                 return byid[pid], f"{d.isoformat()}-{tm.replace(':', '')}"
+    # quiz headlines get rewritten often (QUIZ_TITLES), so a sent quiz may not match today's title:
+    # fall back to that day's quiz post for the slot, with the style read from the posted label
+    if first:
+        for label, style in QUIZ_LABELS:
+            if first.startswith(label):
+                want = "QT:" if hhmm == "07:00" else "Q:"
+                for pid in day:
+                    if pid.startswith(want):
+                        p = dict(byid[pid])
+                        if want == "Q:" and style:
+                            p["f"] = style
+                        p["ti"] = (node.get("text") or "").split("\n")[0].split(" \U0001f9e0")[0].strip()
+                        return p, f"{d.isoformat()}-{hhmm.replace(':', '')}"
     # published slots are frozen, so after a content edit the post may no longer be in that day's schedule
     if hhmm in SLOT_BY_TIME and first:
         for p in L["posts"]:
@@ -142,6 +156,12 @@ def ingest(path):
     added = updated = skipped = 0
     for node in _nodes(json.load(open(path, encoding="utf-8"))):
         post, key = match(node, L, byid)
+        if not post and node["id"] in rows:
+            # already tracked (matched when it was sent): just refresh its numbers
+            rows[node["id"]].update({**_metrics(node), "metrics_updated": node.get("metricsUpdatedAt") or "",
+                                     "ingested": dt.datetime.now(CT).isoformat(timespec="minutes")})
+            updated += 1
+            continue
         if not post:
             skipped += 1
             continue
