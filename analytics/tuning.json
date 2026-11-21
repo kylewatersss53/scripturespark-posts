@@ -2226,7 +2226,7 @@
    "effective_from": "2026-11-23",
    "made": "2026-11-20",
    "posts": 48,
-   "by": "perf.py tune (nightly)",
+   "by": "hand (night review 2026-11-20)",
    "no_weekday_pins": true,
    "topic_window": 40,
    "promote": [
@@ -2472,7 +2472,7 @@
    "quiz_styles": {
     "F": 3.0,
     "T": 0.15,
-    "B": 1.268,
+    "B": 2.5,
     "W": 0.15
    }
   }
