@@ -2480,7 +2480,7 @@
    "effective_from": "2026-11-24",
    "made": "2026-11-21",
    "posts": 53,
-   "by": "perf.py tune (nightly)",
+   "by": "perf.py tune (nightly) + hand (night review 2026-11-21: 7-day plans killed)",
    "no_weekday_pins": true,
    "topic_window": 40,
    "promote": [
@@ -2494,7 +2494,7 @@
    "list_types": {
     "V": 1.061,
     "C": 1.032,
-    "P": 0.4,
+    "P": 0.15,
     "KC": 0.3,
     "KV": 0.3
    },

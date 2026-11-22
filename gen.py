@@ -70,11 +70,17 @@ WHEN = {
  "newbeginnings": "When You're Starting Over",
 }
 
+def if_(w):
+    """ "When You Feel Alone" -> "If You Feel Alone" (title variety for the When-You topics). """
+    return "If " + w[5:] if w.startswith("When ") else w
+
 def verse_title(t):
     if t["tv"]:
         return t["tv"]
     if t["id"] in WHEN:
-        return pick([f"10 Best Bible Verses for {WHEN[t['id']]}", f"Bible Verses for {WHEN[t['id']]}", f"Bible Verses to Read {WHEN[t['id']]}"], "V" + t["id"])
+        # 2026-11-21: "Read This If..." added so the covers don't all read "Bible Verses for When..."
+        return pick([f"10 Best Bible Verses for {WHEN[t['id']]}", f"Bible Verses for {WHEN[t['id']]}", f"Bible Verses to Read {WHEN[t['id']]}",
+                     f"Read This {if_(WHEN[t['id']])}", f"Read This {if_(WHEN[t['id']])}"], "V" + t["id"])
     p, s = prep(t), t["subject"]
     if p == "About":
         return pick([f"Bible Verses About {s}", f"What the Bible Says About {s}", f"10 Bible Verses About {s}"], "V" + t["id"])
@@ -84,7 +90,8 @@ def chapter_title(t):
     if t["tc"]:
         return t["tc"]
     if t["id"] in WHEN:
-        return pick([f"Best Chapters to Read {WHEN[t['id']]}", f"Bible Chapters to Read {WHEN[t['id']]}"], "C" + t["id"])
+        return pick([f"Best Chapters to Read {WHEN[t['id']]}", f"Bible Chapters to Read {WHEN[t['id']]}",
+                     f"Read These Chapters {if_(WHEN[t['id']])}", f"Read These Chapters {if_(WHEN[t['id']])}"], "C" + t["id"])
     p, s = prep(t), t["subject"]
     if p == "About":
         return pick([f"Bible Chapters About {s}", f"Best Chapters to Read About {s}"], "C" + t["id"])
@@ -189,8 +196,12 @@ def build():
         tid = t["id"]
         if len(T[tid]["v"]) >= 8:
             posts.append({"id": f"V:{tid}", "t": "V", "k": tid, "ti": verse_title(t)})
+            if posts[-1]["ti"].startswith("Read This If"):   # keep "Bible verses" in the caption's first line (search)
+                posts[-1]["cap"] = posts[-1]["ti"] + ": 10 Bible verses"
         if len(T[tid]["c"]) >= 6:
             posts.append({"id": f"C:{tid}", "t": "C", "k": tid, "ti": chapter_title(t)})
+            if posts[-1]["ti"].startswith("Read These Chapters If"):
+                posts[-1]["cap"] = posts[-1]["ti"].replace("Read These Chapters", "Read These Bible Chapters", 1)
         if len(T[tid]["c"]) >= 7 and t["cat"] != "study":
             posts.append({"id": f"P:{tid}", "t": "P", "k": tid, "ti": plan_title(t)})
         plural = re.search(r"\b(these|verses|chapters|them|ones)\b", t["hook"], re.I)
@@ -597,6 +608,9 @@ def make_schedule(posts, T, hist=()):
         if tn:
             if tn.get("list_types"):
                 base = {k: pattern.count(k) for k in dict.fromkeys(pattern)}
+                # 2026-11-21: a list format at the kill floor (<= 0.15) is dropped, like quiz styles
+                if d >= dt.date(2026, 11, 22):
+                    base = {k: c for k, c in base.items() if float(tn["list_types"].get(k, 1.0)) > 0.15} or base
                 pat = weighted_pattern(base, tn["list_types"], len(pattern))
             if tn.get("topics") or tn.get("categories"):
                 tws, cws = tn.get("topics", {}), tn.get("categories", {})
