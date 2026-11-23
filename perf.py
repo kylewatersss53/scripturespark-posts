@@ -52,6 +52,8 @@ def title_style(post):
         return "quiz:" + post["f"]
     if post["t"] == "D":
         return "daily"
+    if ti.startswith("Read This") or ti.startswith("Read These"):
+        return "read-this"
     if " When " in ti or ti.startswith("When "):
         return "when-you"
     if ti.startswith("10 "):
@@ -130,6 +132,14 @@ def match(node, L, byid):
             for t in (p.get("vh"), p.get("ti")):
                 if t and len(_norm(t)) > 12 and first.startswith(_norm(t)) and (p["t"] != "D" or p["date"] == d.isoformat()):
                     return p, f"{d.isoformat()}-{hhmm.replace(':', '')}"
+    # list titles get reworded too (e.g. "Read This If..."), and the slot keeps its frozen post: a list
+    # posted at a list slot is that slot's post, with the title as it was posted
+    if hhmm in SLOT_BY_TIME and SLOT_BY_TIME[hhmm] < len(day) and first:
+        p = byid[day[SLOT_BY_TIME[hhmm]]]
+        if p["t"] in LIST_TYPES:
+            p = dict(p)
+            p["ti"] = re.split(r"[\U0001F300-\U0001FAFF\u2600-\u27BF]", (node.get("text") or "").split("\n")[0])[0].strip()
+            return p, f"{d.isoformat()}-{hhmm.replace(':', '')}"
     return None, None
 
 
@@ -320,7 +330,7 @@ def tune(today=None):
     for k in ("no_weekday_pins", "topic_window", "promote"):
         if k in prev:
             step[k] = prev[k]
-    hand = next((h for h in reversed(load_tuning()) if str(h.get("by", "")).startswith("hand") and h["effective_from"] < eff), {})
+    hand = next((h for h in reversed(load_tuning()) if "hand" in str(h.get("by", "")) and h["effective_from"] < eff), {})
     def merge(name, new):
         """Groups without new data keep their previous weight. A hand-made kill or boost stays in force
         while the data points the same way (the stronger of the two wins); the data overrides it only
