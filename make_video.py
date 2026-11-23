@@ -68,5 +68,33 @@ def make_verse_video(spec, out, music=None, key=""):
     subprocess.run(cmd, check=True)
     return out
 
+# quiz video: the carousel as a timed full-screen video (cover, then each question with a countdown bar,
+# then its answer, then the app promo). Frames come from render_batch (engine opts.tall + opts.video).
+QUIZ_TIMES = {"quizcover": 2.5, "quizq": 5.0, "quiza": 3.0, "promo": 3.0}
+def make_quiz_video(frames, kinds, out, music=None, key=""):
+    music = music or pick_bed(key or out)
+    durs = [QUIZ_TIMES.get(k, 3.0) for k in kinds]
+    total = sum(durs)
+    cmd = ["ffmpeg", "-loglevel", "error", "-y"]
+    for f, dd in zip(frames, durs):
+        cmd += ["-loop", "1", "-framerate", "30", "-t", f"{dd:.2f}", "-i", f]
+    cmd += ["-stream_loop", "-1", "-i", music]
+    fc = []
+    bar_y = 170 + 1440 - 262 - 8    # where the "swipe" footer sits on the carousel
+    for i, (k, dd) in enumerate(zip(kinds, durs)):
+        f = f"[{i}:v]fps=30,format=yuv420p,setsar=1"
+        if k == "quizq":   # countdown: a bar that empties before the answer appears
+            f += (f",drawbox=x=90:y={bar_y}:w=900:h=16:color=0x000000@0.10:t=fill"
+                  f",drawbox=x=90:y={bar_y}:w='max(2,900*(1-t/{dd:.2f}))':h=16:color=0x2b6b6f@0.85:t=fill")
+        fc.append(f + f"[v{i}]")
+    n = len(frames)
+    fc.append("".join(f"[v{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[v]")
+    fc.append(f"[{n}:a]atrim=0:{total:.2f},afade=t=in:st=0:d=0.5,afade=t=out:st={max(0, total - 1.5):.2f}:d=1.5,asetpts=PTS-STARTPTS[a]")
+    cmd += ["-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[a]",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-t", f"{total:.2f}", "-movflags", "+faststart", out]
+    subprocess.run(cmd, check=True)
+    return out
+
 if __name__ == "__main__":
     print(make_daily_video(sys.argv[2], sys.argv[1]))

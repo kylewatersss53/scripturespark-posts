@@ -20,6 +20,12 @@ window.renderTall = async (id, opts) => {
   const slides = ScriptureEngine.buildSlides(post, LIB);
   return ScriptureEngine.renderSlide(slides[0], post, 0, Object.assign({}, opts || {}, { tall: true })).toDataURL("image/jpeg", 0.95);
 };
+// every slide as a full-screen 1080x1920 video frame (quiz video)
+window.renderVideoFrames = async (id, opts) => {
+  const post = LIB.posts.find(p => p.id === id);
+  const slides = ScriptureEngine.buildSlides(post, LIB);
+  return { kinds: slides.map(s => s.kind), imgs: slides.map((s, i) => ScriptureEngine.renderSlide(s, post, i, Object.assign({}, opts || {}, { tall: true, video: true })).toDataURL("image/jpeg", 0.93)) };
+};
 window.renderRedLetter = async (id, opts) => {
   const post = LIB.posts.find(p => p.id === id);
   return ScriptureEngine.renderRedLetter(post, LIB, opts || {});

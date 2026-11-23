@@ -184,7 +184,12 @@
     font(ctx, SERIF, 34, 400); ctx.fillStyle = hexA(pal.ink, 0.62);
     spaced(ctx, opts.handle, W / 2, 92, 3, "center");
   }
+  let VIDEO = false;   // set by renderSlide for opts.video frames: no "swipe" prompts in a video
   function footer(ctx, pal, text) {
+    if (VIDEO) {
+      if (/^SWIPE|^NEXT QUESTION/.test(text)) return;
+      if (/^HOW MANY/.test(text)) text = "HOW MANY DID YOU GET?  COMMENT YOUR SCORE";
+    }
     font(ctx, SANS, 24, 500); ctx.fillStyle = hexA(pal.ink, 0.42);
     spaced(ctx, text, W / 2, FOOT_Y, 3, "center");
   }
@@ -679,7 +684,8 @@
   // clear of TikTok's top tabs and bottom caption overlay.
   const TALL_H = 1920, TALL_Y = 170;
   function renderSlide(slide, post, index, opts = {}) {
-    const tall = !!opts.tall && slide.kind === "daily";
+    const tall = !!opts.tall && (slide.kind === "daily" || !!opts.video);
+    VIDEO = !!opts.video;
     const c = document.createElement("canvas"); c.width = W; c.height = tall ? TALL_H : H;
     const ctx = c.getContext("2d");
     const pal = opts.palette != null ? PALETTES[opts.palette] : post.t === "Q" ? paletteFor(post) : paletteForSlide(post, index);
@@ -693,7 +699,9 @@
       night ? drawDaily(ctx, p, slide, opts) : drawDailyLight(ctx, p, slide, opts);
       return c;
     }
+    if (tall) { ctx.save(); ctx.scale(1, TALL_H / H); }
     background(ctx, pal, hash(post.id) + index * 7919);
+    if (tall) { ctx.restore(); ctx.translate(0, TALL_Y); }
     if (slide.kind !== "cta" && slide.kind !== "promo") header(ctx, pal, opts);
     if (slide.kind === "list") drawList(ctx, pal, slide, opts);
     else if (slide.kind === "pairs") drawPairs(ctx, pal, slide, opts);

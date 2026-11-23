@@ -55,6 +55,15 @@ def render(post_ids, outdir, handle=None, extra=None):
                         f.write(base64.b64decode(L.pop("img").split(",", 1)[1]))
                     layers.append(dict(L, file=fn))
                 r["verse_video"] = {"bg": bg, "layers": layers, "total": vv["total"]}
+            if (pid.startswith("Q:") or pid.startswith("QT:")) and (os.environ.get("QUIZ_VIDEO") or (extra or {}).get(pid, {}).get("quiz_video")):
+                qv = page.evaluate("([id, o]) => window.renderVideoFrames(id, o)", [pid, {"handle": handle} if handle else {}])
+                frames = []
+                for i, data in enumerate(qv["imgs"], 1):
+                    fn = os.path.join(d, f"qv_{i:02d}.jpg")
+                    with open(fn, "wb") as f:
+                        f.write(base64.b64decode(data.split(",", 1)[1]))
+                    frames.append(fn)
+                r["quiz_video"] = {"frames": frames, "kinds": qv["kinds"]}
             r.pop("imgs"); r["files"] = files; r["dir"] = d
             results.append(r)
         b.close()
