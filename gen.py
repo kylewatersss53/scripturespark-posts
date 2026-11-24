@@ -80,7 +80,11 @@ def verse_title(t):
     if t["id"] in WHEN:
         # 2026-11-21: "Read This If..." added so the covers don't all read "Bible Verses for When..."
         return pick([f"10 Best Bible Verses for {WHEN[t['id']]}", f"Bible Verses for {WHEN[t['id']]}", f"Bible Verses to Read {WHEN[t['id']]}",
-                     f"Read This {if_(WHEN[t['id']])}", f"Read This {if_(WHEN[t['id']])}"], "V" + t["id"])
+                     f"Read This {if_(WHEN[t['id']])}", f"Read This {if_(WHEN[t['id']])}",
+                     # 2026-11-23: the winning "without looking" dare on list covers (cover shows the 10 refs, the next slides are the answers)
+                     f"Bible Verses for {WHEN[t['id']]}. Can You Quote Them Without Looking?",
+                     f"Bible Verses for {WHEN[t['id']]}. Can You Quote Them Without Looking?",
+                     f"Bible Verses for {WHEN[t['id']]}. Can You Quote Them Without Looking?"], "V" + t["id"])
     p, s = prep(t), t["subject"]
     if p == "About":
         return pick([f"Bible Verses About {s}", f"What the Bible Says About {s}", f"10 Bible Verses About {s}"], "V" + t["id"])
@@ -91,7 +95,9 @@ def chapter_title(t):
         return t["tc"]
     if t["id"] in WHEN:
         return pick([f"Best Chapters to Read {WHEN[t['id']]}", f"Bible Chapters to Read {WHEN[t['id']]}",
-                     f"Read These Chapters {if_(WHEN[t['id']])}", f"Read These Chapters {if_(WHEN[t['id']])}"], "C" + t["id"])
+                     f"Read These Chapters {if_(WHEN[t['id']])}", f"Read These Chapters {if_(WHEN[t['id']])}",
+                     f"Bible Chapters for {WHEN[t['id']]}. How Many Have You Read?",
+                     f"Bible Chapters for {WHEN[t['id']]}. How Many Have You Read?"], "C" + t["id"])
     p, s = prep(t), t["subject"]
     if p == "About":
         return pick([f"Bible Chapters About {s}", f"Best Chapters to Read About {s}"], "C" + t["id"])

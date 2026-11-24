@@ -52,6 +52,8 @@ def title_style(post):
         return "quiz:" + post["f"]
     if post["t"] == "D":
         return "daily"
+    if "Without Looking" in ti or "How Many Have You Read" in ti:
+        return "dare"
     if ti.startswith("Read This") or ti.startswith("Read These"):
         return "read-this"
     if " When " in ti or ti.startswith("When "):
