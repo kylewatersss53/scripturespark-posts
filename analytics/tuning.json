@@ -3245,23 +3245,16 @@
    "effective_from": "2026-11-27",
    "made": "2026-11-24",
    "posts": 69,
-   "by": "perf.py tune (nightly)",
+   "by": "hand (night review 2026-11-24) on perf.py tune (nightly)",
    "no_weekday_pins": true,
    "topic_window": 40,
-   "promote": [
-    "V:sickness",
-    "C:depression",
-    "C:trauma",
-    "V:dads",
-    "C:lonely",
-    "V:depression"
-   ],
+   "promote": [],
    "list_types": {
     "V": 1.061,
     "C": 0.993,
     "P": 0.15,
-    "KC": 1.283,
-    "KV": 0.3
+    "KC": 2.5,
+    "KV": 1.0
    },
    "topics": {
     "anxiety": 2.0,
@@ -3391,7 +3384,7 @@
     "newjob": 0.5,
     "career": 0.5,
     "money": 0.5,
-    "financialstress": 2.0,
+    "financialstress": 2.5,
     "debt": 1.5,
     "generosity": 0.5,
     "business": 0.5,
