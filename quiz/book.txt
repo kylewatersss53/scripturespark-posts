@@ -72,3 +72,36 @@ James 1:5
 1 John 4:19
 1 John 1:9
 Revelation 21:4
+#@next-cycle  2026-11-25: questions below join the Guess the Book rotation from the next cycle built on/after 2026-11-26 (earlier quizzes unchanged)
+Genesis 50:20
+Numbers 6:24
+Deuteronomy 6:5
+Job 19:25
+Psalm 27:1
+Psalm 118:24
+Psalm 51:10
+Psalm 55:22
+Proverbs 17:17
+Proverbs 15:1
+Isaiah 55:8
+Isaiah 40:8
+Jeremiah 33:3
+Lamentations 3:22
+Matthew 28:20
+Matthew 5:9
+Luke 1:37
+John 13:34
+Romans 10:9
+Romans 3:23
+1 Corinthians 16:14
+2 Corinthians 4:18
+Galatians 2:20
+Ephesians 3:20
+Philippians 4:7
+Colossians 3:2
+1 Thessalonians 5:18
+2 Timothy 3:16
+James 1:2
+1 Peter 3:15
+1 John 4:8
+Revelation 3:20

@@ -334,18 +334,24 @@ QUIZ_TITLES = {   # 2026-11-17: "Can you finish all 4 without looking?" = 14,505
     "B": [("Guess the Book", "Can you name all 4 without looking?")],
 }
 
+LATE_FROM = "2026-11-26"   # first day a new question cycle may include "late" questions
+
 def add_quiz(posts, schedule, Qs, hist=()):
     """One quiz post per day. Each style's questions cycle in shuffled order, so a question
     only repeats after its whole pool has been used; no two questions in a post share a verse."""
     rng = random.Random(23)
-    pools = {f: sorted(k for k, q in Qs.items() if q["f"] == f) for f in "TFWB"}
+    pools = {f: sorted(k for k, q in Qs.items() if q["f"] == f and not q.get("late")) for f in "TFWB"}
+    # 2026-11-25: questions added later ("late", see quiz.py) join only cycles built from LATE_FROM on,
+    # so the cycles already in progress (and every quiz before) keep exactly the same questions.
+    late = {f: sorted(k for k, q in Qs.items() if q["f"] == f and q.get("late")) for f in "TFWB"}
     queues = {f: [] for f in pools}
+    today = [None]
 
     def take(f):
         out, skipped = [], []
         while len(out) < 4:
             if not queues[f]:
-                cyc = pools[f][:]; rng.shuffle(cyc); queues[f] = cyc
+                cyc = pools[f][:] + (late[f] if today[0] >= LATE_FROM else []); rng.shuffle(cyc); queues[f] = cyc
             qid = queues[f].pop(0)
             if qid in out or any(Qs[qid]["r"] == Qs[o]["r"] for o in out):
                 skipped.append(qid); continue
@@ -355,6 +361,7 @@ def add_quiz(posts, schedule, Qs, hist=()):
 
     for i, day in enumerate(schedule):
         d = (START + dt.timedelta(i)).isoformat()
+        today[0] = d
         tn = tuning_for(START + dt.timedelta(i), hist)
         if tn and tn.get("quiz_styles"):
             base = {k: QUIZ_PATTERN.count(k) for k in dict.fromkeys(QUIZ_PATTERN)}

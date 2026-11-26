@@ -143,6 +143,10 @@ def load():
         opts, a = _order(qid, who, [w1, w2, w3])
         add(qid, where, {"f": "W", "q": "“" + quote.rstrip() + "”", "o": opts, "a": a, "r": lab, "p": disp, "hl": quote})
 
+    # Lines after a "#@next-cycle" marker are flagged "late": gen.py adds them to the rotation only from the
+    # next question cycle it builds on/after LATE_FROM, so quizzes already scheduled keep their questions.
+    raw = open(os.path.join(QDIR, "book.txt"), encoding="utf-8").read().splitlines()
+    late_ln = next((i for i, l in enumerate(raw, 1) if l.startswith("#@next-cycle")), None)
     for where, p in _lines("book.txt"):
         ref = p[0]
         try:
@@ -157,7 +161,10 @@ def load():
         wrong = p[1:4] if len(p) >= 4 else _distractors(book, lab)
         qid = "B" + format(_h(lab), "x")
         opts, a = _order(qid, book, wrong)
-        add(qid, where, {"f": "B", "q": disp, "o": opts, "a": a, "r": lab, "p": disp, "hl": ""})
+        rec = {"f": "B", "q": disp, "o": opts, "a": a, "r": lab, "p": disp, "hl": ""}
+        if late_ln and int(where.rsplit(":", 1)[1]) > late_ln:
+            rec["late"] = True
+        add(qid, where, rec)
 
     return Q, problems
 
