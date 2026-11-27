@@ -100,6 +100,11 @@ def load():
         hl = checks.split("&")[0].strip()
         add(qid, where, {"f": "T", "q": q, "o": opts, "a": a, "r": lab, "p": bible.display_text(ref), "hl": hl})
 
+    def _late_line(fname):
+        raw = open(os.path.join(QDIR, fname), encoding="utf-8").read().splitlines()
+        return next((i for i, l in enumerate(raw, 1) if l.startswith("#@next-cycle")), None)
+
+    f_late = _late_line("finish.txt")
     for where, p in _lines("finish.txt"):
         if len(p) != 5:
             problems.append(f"{where}: needs 5 fields, has {len(p)}"); continue
@@ -119,7 +124,10 @@ def load():
         qtext = disp[: m.start()] + BLANK + disp[m.end():]
         qid = "F" + format(_h(lab + word), "x")
         opts, a = _order(qid, word, [w1, w2, w3])
-        add(qid, where, {"f": "F", "q": qtext, "o": opts, "a": a, "r": lab, "p": disp, "hl": word, "hlpos": m.start()})
+        rec = {"f": "F", "q": qtext, "o": opts, "a": a, "r": lab, "p": disp, "hl": word, "hlpos": m.start()}
+        if f_late and int(where.rsplit(":", 1)[1]) > f_late:
+            rec["late"] = True
+        add(qid, where, rec)
 
     for where, p in _lines("who.txt"):
         if len(p) != 7:
@@ -143,10 +151,9 @@ def load():
         opts, a = _order(qid, who, [w1, w2, w3])
         add(qid, where, {"f": "W", "q": "“" + quote.rstrip() + "”", "o": opts, "a": a, "r": lab, "p": disp, "hl": quote})
 
-    # Lines after a "#@next-cycle" marker are flagged "late": gen.py adds them to the rotation only from the
+    # (book.txt) Lines after a "#@next-cycle" marker are flagged "late": gen.py adds them to the rotation only from the
     # next question cycle it builds on/after LATE_FROM, so quizzes already scheduled keep their questions.
-    raw = open(os.path.join(QDIR, "book.txt"), encoding="utf-8").read().splitlines()
-    late_ln = next((i for i, l in enumerate(raw, 1) if l.startswith("#@next-cycle")), None)
+    late_ln = _late_line("book.txt")
     for where, p in _lines("book.txt"):
         ref = p[0]
         try:
