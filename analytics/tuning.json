@@ -3995,7 +3995,7 @@
    "promote": [],
    "list_types": {
     "V": 1.017,
-    "C": 1.009,
+    "C": 0.971,
     "P": 0.15,
     "KC": 2.5,
     "KV": 1.0
@@ -4017,7 +4017,7 @@
     "peace": 1.165,
     "joy": 0.5,
     "hope": 2.0,
-    "strength": 1.074,
+    "strength": 0.994,
     "courage": 2.0,
     "guilt": 0.639,
     "regret": 2.0,
@@ -4030,7 +4030,7 @@
     "lossofparent": 1.5,
     "childloss": 1.5,
     "miscarriage": 1.5,
-    "brokenheart": 0.972,
+    "brokenheart": 2.5,
     "breakup": 2.0,
     "betrayal": 2.0,
     "forgiveothers": 0.637,
@@ -4057,7 +4057,7 @@
     "jobloss": 2.0,
     "marriage": 0.5,
     "couples": 0.5,
-    "marriagestruggles": 1.029,
+    "marriagestruggles": 1.024,
     "husbands": 0.5,
     "wives": 0.5,
     "dating": 0.5,
@@ -4217,8 +4217,8 @@
     "miraclesneed": 0.63
    },
    "categories": {
-    "mind": 1.048,
-    "heart": 0.965,
+    "mind": 0.972,
+    "heart": 1.013,
     "faith": 0.798,
     "life": 1.296,
     "study": 0.6,
@@ -4227,7 +4227,7 @@
     "seasons": 0.786
    },
    "quiz_styles": {
-    "F": 0.997,
+    "F": 3.0,
     "T": 0.15,
     "B": 1.239,
     "W": 0.15

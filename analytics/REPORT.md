@@ -1,6 +1,6 @@
 # TikTok performance report
 
-Updated 2026-11-27 20:38 Central. 88 posts tracked, 87 with stats so far.
+Updated 2026-11-27 20:40 Central. 88 posts tracked, 87 with stats so far.
 Score = 70% views, 12% share rate, 10% comment rate, 8% like rate, each ranked against this account's own posts (0 to 1). Buffer does not report saves; check TikTok Studio for those.
 
 ### By format
@@ -106,11 +106,11 @@ Daily word videos (12 s): people watch 44% of the video on average (over 100% me
 
 ### Current tuning
 
-Applies from 2026-11-29 (made 2026-11-26 from 78 posts).
+Applies from 2026-11-30 (made 2026-11-27 from 87 posts).
 
 List formats: 10 verses ×1.02, 10 chapters ×0.97, 7-day plan ×0.15, Chapter list stack ×2.50, Verse list stack ×1.00
 
-Quiz styles: Finish the Verse ×3.00, Bible Trivia ×0.15, Guess the Book ×1.20, Who Said It? ×0.15
+Quiz styles: Finish the Verse ×3.00, Bible Trivia ×0.15, Guess the Book ×1.24, Who Said It? ×0.15
 
 Topics favored: depression ×2.50, panic ×2.50, brokenheart ×2.50, sickness ×2.50, divorce ×2.50, trauma ×2.50, dads ×2.50, financialstress ×2.50
 
